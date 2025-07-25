@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu Bánh Trung Thu Tùng Anh - Tinh hoa bánh truyền thống</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root {
+            --primary-dark: #0A3D62;
+            --primary-gold: #FFD700;
+            --primary-gold-hover: #F5C71A;
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --bg-light: #F9F5EB;
+            --bg-dark: #0A3D62;
+            --accent: #E74C3C;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-gold);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-gold-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-dark);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-gold);
+            color: var(--primary-dark);
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(10, 61, 98, 0.95);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 1rem 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: var(--text-light);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--primary-gold);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-left: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-gold);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-gold);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            margin-left: 2rem;
+        }
+        
+        .cart-icon i {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .cart-icon:hover i {
+            color: var(--primary-gold);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: var(--text-light);
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(10, 61, 98, 0.7), rgba(10, 61, 98, 0.7)), url('https://via.placeholder.com/1920x1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero h1 span {
+            color: var(--primary-gold);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btn {
+            margin-top: 1rem;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background-color: #fff;
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-gold);
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 6rem 0;
+            background-color: var(--bg-light);
+        }
+        
+        .products-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .products-header .section-title {
+            display: inline-block;
+        }
+        
+        .products-header .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background-color: transparent;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            margin: 0 1rem;
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-gold);
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-dark);
+        }
+        
+        .tab-btn.active::after {
+            width: 100%;
+        }
+        
+        .tab-btn:hover::after {
+            width: 100%;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* Order Form Section */
+        .order-form {
+            padding: 6rem 0;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        .order-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .order-form .section-title {
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .order-form .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .order-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #051C2C;
+            color: var(--text-light);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-title {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-gold);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-gold);
+            opacity: 1;
+        }
+        
+        .contact-info {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-title {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .close-cart {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        
+        .close-cart:hover {
+            color: var(--accent);
+        }
+        
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--primary-dark);
+        }
+        
+        .cart-item-price {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            height: 25px;
+            text-align: center;
+            margin: 0 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        .remove-item {
+            color: var(--accent);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: var(--transition);
+        }
+        
+        .remove-item:hover {
+            transform: scale(1.1);
+        }
+        
+        .cart-total {
+            padding: 1rem 0;
+            border-top: 2px solid #eee;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-total-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-total-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-cart p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-content {
+                flex: none;
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--bg-dark);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .tab-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text"><span>Tùng Anh</span> Bakery</div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Trang chủ</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Câu chuyện</a></li>
+                    <li class="nav-item"><a href="#products" class="nav-link">Sản phẩm</a></li>
+                    <li class="nav-item"><a href="#order" class="nav-link">Đặt hàng</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 data-aos="fade-up" data-aos-delay="100">Tinh Hoa <span>Bánh Trung Thu</span> Truyền Thống</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Kết hợp giữa hương vị truyền thống và sự sáng tạo hiện đại, bánh trung thu Tùng Anh mang đến trải nghiệm ẩm thực độc đáo cho mùa trăng tròn</p>
+            <a href="#products" class="btn hero-btn" data-aos="fade-up" data-aos-delay="300">Khám phá ngay</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-image" data-aos="fade-right">
+                <img src="https://via.placeholder.com/600x400" alt="Câu chuyện Tùng Anh">
+            </div>
+            <div class="about-content" data-aos="fade-left">
+                <h2 class="section-title">Câu Chuyện Thương Hiệu</h2>
+                <p>Hiệu bánh Tùng Anh được thành lập từ tình yêu với ẩm thực truyền thống Việt Nam và niềm đam mê sáng tạo. Chúng tôi bắt đầu hành trình của mình từ một xưởng bánh nhỏ tại làng nghề An Thạch, Tân Minh, Tiên Lãng, Hải Phòng.</p>
+                <p>Với hơn 20 năm kinh nghiệm, chúng tôi tự hào mang đến những chiếc bánh trung thu được làm thủ công từ nguyên liệu tự nhiên, không chất bảo quản, giữ trọn vẹn hương vị truyền thống nhưng vẫn không ngừng đổi mới để đáp ứng thị hiếu hiện đại.</p>
+                <p>Mỗi chiếc bánh từ Tùng Anh không chỉ là món quà cho vị giác mà còn là sự kết nối giữa truyền thống và hiện đại, giữa quá khứ và tương lai.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="products-header">
+                <h2 class="section-title" data-aos="fade-up">Sản Phẩm Của Chúng Tôi</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Khám phá bộ sưu tập bánh trung thu đa dạng với hương vị độc đáo</p>
+            </div>
+            
+            <div class="tab-container" data-aos="fade-up" data-aos-delay="200">
+                <button class="tab-btn active" data-tab="traditional">Bánh Truyền Thống</button>
+                <button class="tab-btn" data-tab="modern">Bánh Cách Tân</button>
+            </div>
+            
+            <div class="tab-content" id="traditional" data-aos="fade-up" data-aos-delay="300">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Thập Cẩm">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Thập Cẩm</h3>
+                            <p class="product-desc">Nhân thập cẩm truyền thống với hạt sen, đậu xanh, mứt bí</p>
+                            <div class="product-price">120.000đ</div>
+                            <button class="btn add-to-cart" data-id="1" data-name="Bánh Thập Cẩm" data-price="120000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Xanh">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Đậu Xanh</h3>
+                            <p class="product-desc">Nhân đậu xanh nguyên chất, vị thanh ngọt tự nhiên</p>
+                            <div class="product-price">90.000đ</div>
+                            <button class="btn add-to-cart" data-id="2" data-name="Bánh Đậu Xanh" data-price="90000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Hạt Sen">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Hạt Sen</h3>
+                            <p class="product-desc">Nhân hạt sen thượng hạng, vị ngọt thanh nhẹ</p>
+                            <div class="product-price">100.000đ</div>
+                            <button class="btn add-to-cart" data-id="3" data-name="Bánh Hạt Sen" data-price="100000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Đỏ">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Đậu Đỏ</h3>
+                            <p class="product-desc">Nhân đậu đỏ mềm mịn, hương vị đậm đà</p>
+                            <div class="product-price">95.000đ</div>
+                            <button class="btn add-to-cart" data-id="4" data-name="Bánh Đậu Đỏ" data-price="95000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Mè Đen">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Mè Đen</h3>
+                            <p class="product-desc">Nhân mè đen bổ dưỡng, hương vị độc đáo</p>
+                            <div class="product-price">85.000đ</div>
+                            <button class="btn add-to-cart" data-id="5" data-name="Bánh Mè Đen" data-price="85000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="modern" style="display: none;" data-aos="fade-up" data-aos-delay="300">
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Trà Xanh">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Trà Xanh</h3>
+                            <p class="product-desc">Nhân trà xanh Matcha Nhật Bản, vị đắng thanh</p>
+                            <div class="product-price">110.000đ</div>
+                            <button class="btn add-to-cart" data-id="6" data-name="Bánh Trà Xanh" data-price="110000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Tiramisu">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Tiramisu</h3>
+                            <p class="product-desc">Nhân kem phô mai Tiramisu, hương vị Ý đặc trưng</p>
+                            <div class="product-price">120.000đ</div>
+                            <button class="btn add-to-cart" data-id="7" data-name="Bánh Tiramisu" data-price="120000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Chocolate">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Chocolate</h3>
+                            <p class="product-desc">Nhân chocolate Bỉ cao cấp, vị ngọt đắng hài hòa</p>
+                            <div class="product-price">115.000đ</div>
+                            <button class="btn add-to-cart" data-id="8" data-name="Bánh Chocolate" data-price="115000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Dừa">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Dừa Lá Dứa</h3>
+                            <p class="product-desc">Nhân dừa non kết hợp với lá dứa thơm mát</p>
+                            <div class="product-price">95.000đ</div>
+                            <button class="btn add-to-cart" data-id="9" data-name="Bánh Dừa Lá Dứa" data-price="95000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Trái Cây">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Bánh Trái Cây</h3>
+                            <p class="product-desc">Nhân hỗn hợp trái cây nhiệt đới, vị chua ngọt</p>
+                            <div class="product-price">105.000đ</div>
+                            <button class="btn add-to-cart" data-id="10" data-name="Bánh Trái Cây" data-price="105000" data-image="https://via.placeholder.com/300x300">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Order Form Section -->
+    <section class="order-form" id="order">
+        <div class="container order-form-container">
+            <h2 class="section-title" data-aos="fade-up">Đặt Hàng Ngay</h2>
+            <p class="text-center" data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 2rem;">Điền thông tin đặt hàng để nhận bánh trung thu Tùng Anh tươi ngon</p>
+            
+            <form id="orderForm" data-aos="fade-up" data-aos-delay="200">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Họ và tên</label>
+                        <input type="text" id="name" class="form-control" placeholder="Nhập họ và tên" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Số điện thoại</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Nhập số điện thoại" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="form-label">Địa chỉ nhận hàng</label>
+                    <input type="text" id="address" class="form-control" placeholder="Nhập địa chỉ đầy đủ" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cakeType" class="form-label">Loại bánh yêu thích</label>
+                    <select id="cakeType" class="form-control" required>
+                        <option value="">-- Chọn loại bánh --</option>
+                        <option value="traditional">Bánh truyền thống</option>
+                        <option value="modern">Bánh cách tân</option>
+                        <option value="mixed">Kết hợp cả hai loại</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="note" class="form-label">Ghi chú</label>
+                    <textarea id="note" class="form-control" rows="4" placeholder="Nhập yêu cầu đặc biệt (nếu có)"></textarea>
+                </div>
+                
+                <button type="submit" class="btn order-btn">Đặt hàng ngay</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="logo-text" style="font-size: 1.8rem;"><span>Tùng Anh</span> Bakery</div>
+                </div>
+                <p>Hiệu bánh trung thu Tùng Anh - Nơi kết nối truyền thống và hiện đại, mang đến những chiếc bánh trung thu thơm ngon, chất lượng cho mọi gia đình.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3 class="footer-title">Liên kết nhanh</h3>
+                <ul>
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#about">Câu chuyện</a></li>
+                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#order">Đặt hàng</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3 class="footer-title">Thông tin liên hệ</h3>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>Hiệu bánh Tùng Anh, An Thạch, Tân Minh, Tiên Lãng, Hải Phòng</div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>Hotline: 0123.456.789</div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <div>Email: contact@hieubanhtunganh.com</div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-clock"></i>
+                    <div>Giờ làm việc: 8:00 - 21:00 (Thứ 2 - Chủ nhật)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <div class="container">
+                &copy; 2023 Hiệu Bánh Trung Thu Tùng Anh. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Giỏ hàng của bạn</h3>
+            <div class="close-cart" id="closeCart"><i class="fas fa-times"></i></div>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Giỏ hàng của bạn đang trống</p>
+            </div>
+        </div>
+        
+        <div class="cart-total">
+            <div class="cart-total-title">Tổng tiền:</div>
+            <div class="cart-total-price" id="cartTotal">0đ</div>
+        </div>
+        
+        <a href="#order" class="btn checkout-btn" id="checkoutBtn">Hoàn tất đặt hàng</a>
+    </div>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+            
+            // Variables
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const cartIcon = document.getElementById('cartIcon');
+            const cartSidebar = document.getElementById('cartSidebar');
+            const closeCart = document.getElementById('closeCart');
+            const overlay = document.getElementById('overlay');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const addToCartBtns = document.querySelectorAll('.add-to-cart');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.querySelector('.cart-count');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const orderForm = document.getElementById('orderForm');
+            
+            // Cart array to store items
+            let cart = [];
+            
+            // Mobile Menu Toggle
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking a nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Cart Sidebar Toggle
+            cartIcon.addEventListener('click', function() {
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeCart.addEventListener('click', closeCartSidebar);
+            overlay.addEventListener('click', closeCartSidebar);
+            
+            function closeCartSidebar() {
+                cartSidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Tab Switching
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show the selected tab content
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).style.display = 'block';
+                });
+            });
+            
+            // Add to Cart Functionality
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', addToCart);
+            });
+            
+            function addToCart(e) {
+                const button = e.currentTarget;
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const image = button.getAttribute('data-image');
+                
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                // Show success message
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Đã thêm';
+                button.style.backgroundColor = '#4CAF50';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.backgroundColor = '';
+                }, 1500);
+                
+                updateCart();
+            }
+            
+            function updateCart() {
+                // Update cart count
+                cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+                
+                // Update cart items display
+                if (cart.length === 0) {
+                    cartItems.innerHTML = `
+                        <div class="empty-cart">
+                            <i class="fas fa-shopping-basket"></i>
+                            <p>Giỏ hàng của bạn đang trống</p>
+                        </div>
+                    `;
+                } else {
+                    cartItems.innerHTML = '';
+                    cart.forEach(item => {
+                        const cartItemEl = document.createElement('div');
+                        cartItemEl.classList.add('cart-item');
+                        cartItemEl.innerHTML = `
+                            <div class="cart-item-img">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-item-info">
+                                <h4 class="cart-item-title">${item.name}</h4>
+                                <div class="cart-item-price">${formatPrice(item.price)}đ</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                    <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                </div>
+                            </div>
+                            <div class="remove-item" data-id="${item.id}">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        `;
+                        cartItems.appendChild(cartItemEl);
+                    });
+                    
+                    // Add event listeners to quantity buttons and remove buttons
+                    document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                        btn.addEventListener('click', decreaseQuantity);
+                    });
+                    
+                    document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                        btn.addEventListener('click', increaseQuantity);
+                    });
+                    
+                    document.querySelectorAll('.remove-item').forEach(btn => {
+                        btn.addEventListener('click', removeItem);
+                    });
+                }
+                
+                // Update cart total
+                const total = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                cartTotal.textContent = `${formatPrice(total)}đ`;
+            }
+            
+            function decreaseQuantity(e) {
+                const id = e.currentTarget.getAttribute('data-id');
+                const item = cart.find(item => item.id === id);
+                
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    cart = cart.filter(item => item.id !== id);
+                }
+                
+                updateCart();
+            }
+            
+            function increaseQuantity(e) {
+                const id = e.currentTarget.getAttribute('data-id');
+                const item = cart.find(item => item.id === id);
+                item.quantity++;
+                updateCart();
+            }
+            
+            function removeItem(e) {
+                const id = e.currentTarget.getAttribute('data-id');
+                cart = cart.filter(item => item.id !== id);
+                updateCart();
+            }
+            
+            // Format price with commas
+            function formatPrice(price) {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            }
+            
+            // Checkout button
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length > 0) {
+                    closeCartSidebar();
+                    
+                    // Scroll to order form
+                    document.getElementById('order').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Flash the order form to draw attention
+                    const orderFormEl = document.querySelector('.order-form-container');
+                    orderFormEl.style.animation = 'flash 1s';
+                    
+                    setTimeout(() => {
+                        orderFormEl.style.animation = '';
+                    }, 1000);
+                }
+            });
+            
+            // Order form submission
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                
+                // Show success message
+                orderForm.innerHTML = `
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary-gold); margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-light);">Đặt hàng thành công!</h3>
+                        <p style="margin-bottom: 2rem;">Cảm ơn ${name} đã đặt hàng. Chúng tôi sẽ liên hệ với bạn qua số điện thoại ${phone} để xác nhận đơn hàng.</p>
+                        <a href="#products" class="btn">Tiếp tục mua sắm</a>
+                    </div>
+                `;
+                
+                // Reset cart
+                cart = [];
+                updateCart();
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '0.5rem 0';
+                } else {
+                    header.style.padding = '1rem 0';
+                }
+            });
+            
+            // Initialize the first tab
+            document.querySelector('.tab-btn.active').click();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9649897244dbf922',t:'MTc1MzQyNDI3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+

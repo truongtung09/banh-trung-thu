@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiệu Bánh Trung Thu Tùng Anh - Tinh hoa bánh truyền thống</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-dark: #1A3A3A;
+            --primary-brown: #5D4037;
+            --accent-gold: #FFD700;
+            --text-light: #F5F5F5;
+            --bg-cream: #FFF8E1;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: var(--bg-cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-container:hover .logo {
+            transform: scale(1.05);
+        }
+
+        .logo {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1200x500');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-gold), #FFC107);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+        }
+
+        .story-image, .story-text {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 1s ease;
+        }
+
+        .story-text {
+            transform: translateX(-50px);
+        }
+
+        .story-visible .story-image,
+        .story-visible .story-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(to bottom, #fff, var(--bg-cream));
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(93, 64, 55, 0.2);
+        }
+
+        .product-image {
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .form-input {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+
+        .order-button {
+            background: linear-gradient(135deg, var(--accent-gold), #FFC107);
+            transition: all 0.3s ease;
+        }
+
+        .order-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            color: var(--accent-gold);
+        }
+
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Animation for scroll reveal */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .parallax {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-dark);
+                padding: 1rem;
+                z-index: 50;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header - Sticky Navigation -->
+    <header class="fixed w-full bg-opacity-95 bg-[#1A3A3A] text-white z-50 transition-all duration-300 shadow-md" id="header">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="logo-container flex items-center">
+                <a href="#" class="text-2xl font-bold flex items-center">
+                    <span class="logo text-[#FFD700] mr-2">🌕</span>
+                    <span class="font-playfair">Tùng Anh</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link font-medium">Trang chủ</a>
+                <a href="#story" class="nav-link font-medium">Câu chuyện</a>
+                <a href="#products" class="nav-link font-medium">Dòng bánh</a>
+                <a href="#order" class="nav-link font-medium">Đặt hàng</a>
+                <a href="#contact" class="nav-link font-medium">Liên hệ</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <!-- <div class="mobile-menu" id="mobile-menu"> -->
+           <div class="mobile-menu hidden absolute top-full left-0 w-full bg-[#1E3D3D] z-50" id="mobile-menu">
+            <a href="#home" class="block py-2 px-4 text-white hover:bg-[#2A4A4A]">Trang chủ</a>
+            <a href="#story" class="block py-2 px-4 text-white hover:bg-[#2A4A4A]">Câu chuyện</a>
+            <a href="#products" class="block py-2 px-4 text-white hover:bg-[#2A4A4A]">Dòng bánh</a>
+            <a href="#order" class="block py-2 px-4 text-white hover:bg-[#2A4A4A]">Đặt hàng</a>
+            <a href="#contact" class="block py-2 px-4 text-white hover:bg-[#2A4A4A]">Liên hệ</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section h-screen flex items-center justify-center text-center text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Tinh Hoa Bánh Trung Thu Việt</h1>
+                <p class="text-xl md:text-2xl mb-8">Hương vị truyền thống, đậm đà tinh túy văn hóa</p>
+                <a href="#products" class="cta-button inline-block px-8 py-4 rounded-full text-white font-bold text-lg">
+                    Khám phá ngay
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-[#5D4037] fade-in">Câu Chuyện Thương Hiệu</h2>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between gap-10" id="story-container">
+                <div class="story-text md:w-1/2 order-2 md:order-1">
+                    <h3 class="text-2xl font-bold mb-4 text-[#1A3A3A]">Hành Trình Gìn Giữ Hương Vị</h3>
+                    <p class="mb-4 text-lg">Từ những ngày đầu thành lập, Tùng Anh đã mang trong mình sứ mệnh gìn giữ và phát triển tinh hoa ẩm thực truyền thống Việt Nam.</p>
+                    <p class="mb-4 text-lg">Mỗi chiếc bánh trung thu của chúng tôi là sự kết hợp hoàn hảo giữa công thức cổ truyền được lưu truyền qua nhiều thế hệ và kỹ thuật làm bánh hiện đại.</p>
+                    <p class="text-lg">Chúng tôi tự hào mang đến cho bạn những chiếc bánh không chỉ ngon miệng mà còn chứa đựng câu chuyện văn hóa và tình cảm gia đình Việt.</p>
+                </div>
+                <div class="story-image md:w-1/2 order-1 md:order-2 overflow-hidden rounded-lg shadow-xl">
+                    <img src="https://via.placeholder.com/600x400" alt="Quy trình làm bánh thủ công" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-[#FFF8E1]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-[#5D4037] fade-in">Dòng Sản Phẩm</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div class="product-card rounded-xl overflow-hidden shadow-lg fade-in">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://via.placeholder.com/400x300" alt="Bánh Tinh Hoa" class="product-image w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-[#1A3A3A]">Bánh Tinh Hoa</h3>
+                        <p class="text-gray-700 mb-4">Dòng bánh cao cấp với nguyên liệu tuyển chọn, hương vị tinh tế và mẫu mã sang trọng. Lựa chọn hoàn hảo cho những dịp đặc biệt.</p>
+                        <a href="#order" class="inline-block px-6 py-2 bg-[#5D4037] text-white rounded-full hover:bg-[#4E342E] transition-all">Đặt ngay</a>
+                    </div>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div class="product-card rounded-xl overflow-hidden shadow-lg fade-in" data-delay="200">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://via.placeholder.com/400x300" alt="Bánh Truyền Thống" class="product-image w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-[#1A3A3A]">Bánh Truyền Thống</h3>
+                        <p class="text-gray-700 mb-4">Hương vị quen thuộc của tuổi thơ với nhân đậu xanh, thập cẩm, và hạt sen. Được làm theo công thức gia truyền nhiều thế hệ.</p>
+                        <a href="#order" class="inline-block px-6 py-2 bg-[#5D4037] text-white rounded-full hover:bg-[#4E342E] transition-all">Đặt ngay</a>
+                    </div>
+                </div>
+                
+                <!-- Product Card 3 -->
+                <div class="product-card rounded-xl overflow-hidden shadow-lg fade-in" data-delay="400">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://via.placeholder.com/400x300" alt="Vị Đặc Biệt" class="product-image w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3 text-[#1A3A3A]">Vị Đặc Biệt</h3>
+                        <p class="text-gray-700 mb-4">Sự kết hợp táo bạo giữa truyền thống và hiện đại với những hương vị độc đáo như trà xanh, tiramisu, và trứng muối tan chảy.</p>
+                        <a href="#order" class="inline-block px-6 py-2 bg-[#5D4037] text-white rounded-full hover:bg-[#4E342E] transition-all">Đặt ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order" class="py-20 bg-[#1A3A3A] text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 fade-in">Đặt Hàng</h2>
+            
+            <div class="max-w-2xl mx-auto bg-[#2A4A4A] p-8 rounded-xl shadow-2xl fade-in">
+                <form id="order-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block mb-2 font-medium">Họ và tên</label>
+                        <input type="text" id="name" class="form-input w-full px-4 py-3 rounded-lg bg-[#F5F5F5] text-gray-800 focus:outline-none" required>
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block mb-2 font-medium">Số điện thoại</label>
+                        <input type="tel" id="phone" class="form-input w-full px-4 py-3 rounded-lg bg-[#F5F5F5] text-gray-800 focus:outline-none" required>
+                    </div>
+                    
+                    <div>
+                        <label for="address" class="block mb-2 font-medium">Địa chỉ</label>
+                        <textarea id="address" rows="3" class="form-input w-full px-4 py-3 rounded-lg bg-[#F5F5F5] text-gray-800 focus:outline-none" required></textarea>
+                    </div>
+                    
+                    <div>
+                        <label for="product" class="block mb-2 font-medium">Chọn loại bánh</label>
+                        <select id="product" class="form-input w-full px-4 py-3 rounded-lg bg-[#F5F5F5] text-gray-800 focus:outline-none" required>
+                            <option value="" disabled selected>-- Chọn loại bánh --</option>
+                            <option value="tinh-hoa">Bánh Tinh Hoa</option>
+                            <option value="truyen-thong">Bánh Truyền Thống</option>
+                            <option value="dac-biet">Vị Đặc Biệt</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="notes" class="block mb-2 font-medium">Ghi chú</label>
+                        <textarea id="notes" rows="3" class="form-input w-full px-4 py-3 rounded-lg bg-[#F5F5F5] text-gray-800 focus:outline-none"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="order-button px-8 py-4 rounded-full font-bold text-lg">Đặt hàng ngay</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#0F2A2A] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <h3 class="text-xl font-bold mb-4 text-[#FFD700]">Liên hệ</h3>
+                    <p class="mb-2"><i class="fas fa-phone mr-2 text-[#FFD700]"></i> Hotline: 0123.456.789</p>
+                    <p class="mb-2"><i class="fab fa-whatsapp mr-2 text-[#FFD700]"></i> Zalo: 0123.456.789</p>
+                    <p><i class="fas fa-map-marker-alt mr-2 text-[#FFD700]"></i> Địa chỉ: 123 Đường Lê Lợi, Quận 1, TP.HCM</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="fade-in" data-delay="200">
+                    <h3 class="text-xl font-bold mb-4 text-[#FFD700]">Liên kết nhanh</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-[#FFD700] transition-colors">Trang chủ</a></li>
+                        <li><a href="#story" class="hover:text-[#FFD700] transition-colors">Câu chuyện</a></li>
+                        <li><a href="#products" class="hover:text-[#FFD700] transition-colors">Dòng bánh</a></li>
+                        <li><a href="#order" class="hover:text-[#FFD700] transition-colors">Đặt hàng</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="fade-in" data-delay="400">
+                    <h3 class="text-xl font-bold mb-4 text-[#FFD700]">Kết nối với chúng tôi</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-2xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon text-2xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-2xl"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-2xl"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <p class="mt-4">Đăng ký nhận thông tin ưu đãi:</p>
+                    <div class="flex mt-2">
+                        <input type="email" placeholder="Email của bạn" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button class="bg-[#FFD700] text-[#1A3A3A] px-4 py-2 rounded-r-lg font-medium hover:bg-[#FFC107] transition-colors">Gửi</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center">
+                <p>&copy; 2023 Hiệu Bánh Trung Thu Tùng Anh. Tất cả quyền được bảo lưu.</p>
+                <p class="text-sm mt-2">Website: hieubanhtunganh.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Sticky header effect
+        const header = document.getElementById('header');
+        let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-3');
+            } else {
+                header.classList.add('py-3');
+                header.classList.remove('py-2');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Scroll reveal animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+        
+        // Story section animation
+        const storyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('story-visible');
+                }
+            });
+        }, observerOptions);
+        
+        storyObserver.observe(document.getElementById('story-container'));
+        
+        // Form submission
+        const orderForm = document.getElementById('order-form');
+        
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const product = document.getElementById('product').value;
+            const notes = document.getElementById('notes').value;
+            
+            // In a real application, you would send this data to a server
+            // For this demo, we'll just show an alert
+            alert(`Cảm ơn ${name} đã đặt hàng!\nChúng tôi sẽ liên hệ với bạn qua số điện thoại ${phone} để xác nhận đơn hàng.`);
+            
+            // Reset form
+            orderForm.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (mobileMenu.classList.contains('active')) {
+                        mobileMenu.classList.remove('active');
+                    }
+                    
+                    // Calculate offset for header height
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9649532e453af8d2',t:'MTc1MzQyMjA1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
