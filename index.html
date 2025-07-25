@@ -382,15 +382,15 @@
             font-size: 1.1rem;
         }
         
-        /* Products Section */
-        .products {
+        /* Combo Products Section */
+        .combos {
             padding: 6rem 0;
             background-color: var(--bg-light);
             position: relative;
             overflow: hidden;
         }
         
-        .products::before {
+        .combos::before {
             content: '';
             position: absolute;
             top: 0;
@@ -402,18 +402,204 @@
             z-index: 0;
         }
         
-        .products-header {
+        .combos-header {
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
             z-index: 1;
         }
         
-        .products-header .section-title {
+        .combos-header .section-title {
             display: inline-block;
         }
         
-        .products-header .section-title::after {
+        .combos-header .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .combos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .combo-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .combo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .combo-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .combo-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        
+        .combo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .combo-card:hover .combo-image img {
+            transform: scale(1.05);
+        }
+        
+        .combo-badge {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            z-index: 2;
+            box-shadow: -2px 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .combo-info {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .combo-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-red);
+        }
+        
+        .combo-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-orange-dark);
+            margin-bottom: 1rem;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .combo-desc {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .combo-features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .combo-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .combo-feature i {
+            color: var(--primary-orange-dark);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .combo-price {
+            font-weight: 700;
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: auto;
+        }
+        
+        .combo-price span {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+        
+        .combo-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .select-flavors-btn {
+            flex: 1;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        
+        .select-flavors-btn:hover {
+            background-color: var(--primary-yellow-light);
+            color: var(--text-dark);
+        }
+        
+        .add-to-cart-btn {
+            flex: 1;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* Flavors Section */
+        .flavors {
+            padding: 6rem 0;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flavors::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(249, 177, 122, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .flavors-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flavors-header .section-title {
+            display: inline-block;
+        }
+        
+        .flavors-header .section-title::after {
             left: 50%;
             transform: translateX(-50%);
         }
@@ -462,34 +648,42 @@
             width: 100%;
         }
         
-        .products-grid {
+        .flavors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
             position: relative;
             z-index: 1;
         }
         
-        .product-card {
+        .flavor-card {
             background-color: #fff;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
         }
         
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        .flavor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         
-        .product-image {
-            height: 200px;
+        .flavor-card.selected {
+            border-color: var(--primary-orange-dark);
+            background-color: rgba(249, 177, 122, 0.1);
+        }
+        
+        .flavor-image {
+            height: 150px;
             overflow: hidden;
             position: relative;
         }
         
-        .product-image::before {
+        .flavor-image::before {
             content: '';
             position: absolute;
             top: 0;
@@ -500,47 +694,198 @@
             z-index: 1;
         }
         
-        .product-image img {
+        .flavor-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
         
-        .product-card:hover .product-image img {
+        .flavor-card:hover .flavor-image img {
             transform: scale(1.05);
         }
         
-        .product-info {
-            padding: 1.5rem;
+        .flavor-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 20px;
+            z-index: 2;
         }
         
-        .product-title {
-            font-size: 1.4rem;
+        .flavor-label.bestseller {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+        }
+        
+        .flavor-label.new {
+            background-color: var(--primary-orange-dark);
+            color: var(--text-light);
+        }
+        
+        .flavor-info {
+            padding: 1.2rem;
+        }
+        
+        .flavor-title {
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--primary-red);
         }
         
-        .product-desc {
+        .flavor-desc {
             font-size: 0.9rem;
             color: #666;
-            margin-bottom: 1rem;
-            height: 40px;
+            height: 60px;
             overflow: hidden;
         }
         
-        .product-price {
-            font-weight: 700;
-            color: var(--primary-red);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+        .flavor-select {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            background-color: transparent;
+            z-index: 2;
+            transition: var(--transition);
         }
         
-        .add-to-cart {
+        .flavor-card.selected .flavor-select {
+            background-color: var(--primary-orange-dark);
+            border-color: #fff;
+        }
+        
+        /* Flavor Selection Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 0.8rem;
-            font-size: 0.9rem;
-            text-align: center;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(-50px);
+            transition: var(--transition);
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 0;
+        }
+        
+        .close-modal {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-red-light);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-orange-dark);
+        }
+        
+        .selection-info {
+            background-color: rgba(249, 177, 122, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .selection-count {
+            font-weight: 600;
+        }
+        
+        .selection-count span {
+            color: var(--primary-red);
+        }
+        
+        .modal-tab-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-tab-btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .modal-flavors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        .cancel-btn {
+            background-color: #f0f0f0;
+            color: var(--text-dark);
+        }
+        
+        .cancel-btn:hover {
+            background-color: #e0e0e0;
+            color: var(--text-dark);
+            transform: translateY(-3px);
         }
         
         /* Order Form Section */
@@ -923,6 +1268,12 @@
             margin-bottom: 0.5rem;
         }
         
+        .cart-item-flavors {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        
         .cart-item-quantity {
             display: flex;
             align-items: center;
@@ -1025,6 +1376,45 @@
             visibility: visible;
         }
         
+        /* Selected Flavors Display */
+        .selected-flavors {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .selected-flavors.active {
+            display: block;
+        }
+        
+        .selected-flavors-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .selected-flavor-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .selected-flavor-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .selected-flavor-item i {
+            margin-left: 5px;
+            cursor: pointer;
+            color: var(--primary-yellow);
+        }
+        
         /* Animations */
         @keyframes float {
             0% {
@@ -1079,6 +1469,10 @@
             
             .hero h1 {
                 font-size: 3.5rem;
+            }
+            
+            .combos-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1143,6 +1537,10 @@
             .payment-options {
                 flex-direction: column;
             }
+            
+            .combo-actions {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1164,8 +1562,12 @@
                 margin: 0;
             }
             
-            .products-grid {
-                grid-template-columns: 1fr;
+            .flavors-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .modal-flavors-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -1182,9 +1584,9 @@
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="#home" class="nav-link">Trang chủ</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">Câu chuyện</a></li>
-                    <li class="nav-item"><a href="#products" class="nav-link">Sản phẩm</a></li>
+                    <li class="nav-item"><a href="#combos" class="nav-link">Combo bánh</a></li>
+                    <li class="nav-item"><a href="#flavors" class="nav-link">Khám phá vị bánh</a></li>
                     <li class="nav-item"><a href="#order" class="nav-link">Đặt hàng</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Liên hệ</a></li>
                 </ul>
             </nav>
             
@@ -1212,9 +1614,9 @@
                     <path d="M30 30 Q50 10 70 30 Q90 50 70 70 Q50 90 30 70 Q10 50 30 30" fill="none" stroke="#FFF" stroke-width="2" opacity="0.5"/>
                 </svg>
             </div>
-            <h1 data-aos="fade-up" data-aos-delay="200">Bánh Trung Thu <span>Tùng Anh</span></h1>
+            <h1 data-aos="fade-up" data-aos-delay="200">Dư Vị <span>Tuổi Thơ</span></h1>
             <p data-aos="fade-up" data-aos-delay="300">Kết hợp giữa hương vị truyền thống và sự sáng tạo hiện đại, bánh trung thu Tùng Anh mang đến trải nghiệm ẩm thực độc đáo cho mùa trăng tròn</p>
-            <a href="#products" class="btn hero-btn" data-aos="fade-up" data-aos-delay="400">Khám phá ngay</a>
+            <a href="#combos" class="btn hero-btn" data-aos="fade-up" data-aos-delay="400">Khám phá ngay</a>
         </div>
     </section>
     
@@ -1222,8 +1624,7 @@
     <section class="about" id="about">
         <div class="container about-container">
             <div class="about-image" data-aos="fade-right">
-                <!-- <img src="https://via.placeholder.com/600x400" alt="Câu chuyện Tùng Anh"> -->
-                 <img src="https://images.pexels.com/photos/9863591/pexels-photo-9863591.jpeg" alt="Câu chuyện Tùng Anh">
+                <img src="https://via.placeholder.com/600x400" alt="Câu chuyện Tùng Anh">
             </div>
             <div class="about-content" data-aos="fade-left">
                 <h2 class="section-title">Câu Chuyện Thương Hiệu</h2>
@@ -1234,163 +1635,231 @@
         </div>
     </section>
     
-    <!-- Products Section -->
-    <section class="products" id="products">
+    <!-- Combo Products Section -->
+    <section class="combos" id="combos">
         <div class="container">
-            <div class="products-header">
-                <h2 class="section-title" data-aos="fade-up">Sản Phẩm Của Chúng Tôi</h2>
-                <p data-aos="fade-up" data-aos-delay="100">Khám phá bộ sưu tập bánh trung thu đa dạng với hương vị độc đáo</p>
+            <div class="combos-header">
+                <h2 class="section-title" data-aos="fade-up">Combo Quà Tặng</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Lựa chọn hoàn hảo cho mùa trung thu, gói trọn tình cảm trong những hộp quà tinh tế</p>
             </div>
             
-            <div class="tab-container" data-aos="fade-up" data-aos-delay="200">
-                <button class="tab-btn active" data-tab="traditional">Bánh Truyền Thống</button>
-                <button class="tab-btn" data-tab="modern">Bánh Cách Tân</button>
-            </div>
-            
-            <div class="tab-content" id="traditional" data-aos="fade-up" data-aos-delay="300">
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <!-- <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Thập Cẩm"> -->
-                             <img src="https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Thập Cẩm">
+            <div class="combos-grid">
+                <!-- Combo 2 bánh -->
+                <div class="combo-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="combo-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Combo 2 bánh - Thử là mê">
+                        <div class="combo-badge">Bán chạy</div>
+                    </div>
+                    <div class="combo-info">
+                        <h3 class="combo-title">Combo 2 bánh</h3>
+                        <div class="combo-subtitle">"Thử là mê"</div>
+                        <p class="combo-desc">Combo nhỏ gọn, tiện lợi với 2 bánh trung thu thơm ngon, là lựa chọn hoàn hảo để thưởng thức hoặc làm quà tặng nhỏ xinh.</p>
+                        <div class="combo-features">
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Chọn 2 vị bánh bất kỳ</div>
+                            </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Hộp giấy đơn giản, tag gọn</div>
+                            </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Giao hàng tận nơi</div>
+                            </div>
                         </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Thập Cẩm</h3>
-                            <p class="product-desc">Nhân thập cẩm truyền thống với hạt sen, đậu xanh, mứt bí</p>
-                            <div class="product-price">120.000đ</div>
-                            <button class="btn add-to-cart" data-id="1" data-name="Bánh Thập Cẩm" data-price="120000" data-image="https://via.placeholder.com/300x300">
+                        <div class="combo-price">75.000đ <span>90.000đ</span></div>
+                        <div class="combo-actions">
+                            <button class="btn select-flavors-btn" data-combo="combo2" data-limit="2" data-price="75000">
+                                <i class="fas fa-list-ul"></i> Chọn vị bánh
+                            </button>
+                            <button class="btn add-to-cart-btn" data-combo="combo2" data-name="Combo 2 bánh - Thử là mê" data-price="75000" data-image="https://via.placeholder.com/600x400" disabled>
                                 <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
                             </button>
                         </div>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Đậu Xanh">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Đậu Xanh</h3>
-                            <p class="product-desc">Nhân đậu xanh nguyên chất, vị thanh ngọt tự nhiên</p>
-                            <div class="product-price">90.000đ</div>
-                            <button class="btn add-to-cart" data-id="2" data-name="Bánh Đậu Xanh" data-price="90000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                            </button>
-                        </div>
+                </div>
+                
+                <!-- Combo 4 bánh -->
+                <div class="combo-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="combo-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Combo 4 bánh - Tặng là sang">
+                        <div class="combo-badge">Cao cấp</div>
                     </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Hạt Sen">
+                    <div class="combo-info">
+                        <h3 class="combo-title">Combo 4 bánh</h3>
+                        <div class="combo-subtitle">"Tặng là sang"</div>
+                        <p class="combo-desc">Hộp quà sang trọng với 4 bánh trung thu đa dạng hương vị, là món quà ý nghĩa dành tặng người thân, đối tác trong dịp trung thu.</p>
+                        <div class="combo-features">
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Chọn 4 vị bánh yêu thích</div>
+                            </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Hộp sang trọng, tag đẹp, túi xách</div>
+                            </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Giao hàng tận nơi</div>
+                            </div>
                         </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Hạt Sen</h3>
-                            <p class="product-desc">Nhân hạt sen thượng hạng, vị ngọt thanh nhẹ</p>
-                            <div class="product-price">100.000đ</div>
-                            <button class="btn add-to-cart" data-id="3" data-name="Bánh Hạt Sen" data-price="100000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                        <div class="combo-price">160.000đ <span>200.000đ</span></div>
+                        <div class="combo-actions">
+                            <button class="btn select-flavors-btn" data-combo="combo4" data-limit="4" data-price="160000">
+                                <i class="fas fa-list-ul"></i> Chọn vị bánh
                             </button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Đậu Đỏ">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Đậu Đỏ</h3>
-                            <p class="product-desc">Nhân đậu đỏ mềm mịn, hương vị đậm đà</p>
-                            <div class="product-price">95.000đ</div>
-                            <button class="btn add-to-cart" data-id="4" data-name="Bánh Đậu Đỏ" data-price="95000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1726568948497-ee41ebfbb2ef?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Mè Đen">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Mè Đen</h3>
-                            <p class="product-desc">Nhân mè đen bổ dưỡng, hương vị độc đáo</p>
-                            <div class="product-price">85.000đ</div>
-                            <button class="btn add-to-cart" data-id="5" data-name="Bánh Mè Đen" data-price="85000" data-image="https://via.placeholder.com/300x300">
+                            <button class="btn add-to-cart-btn" data-combo="combo4" data-name="Combo 4 bánh - Tặng là sang" data-price="160000" data-image="https://via.placeholder.com/600x400" disabled>
                                 <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- Flavors Section -->
+    <section class="flavors" id="flavors">
+        <div class="container">
+            <div class="flavors-header">
+                <h2 class="section-title" data-aos="fade-up">Khám Phá Vị Bánh</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Đa dạng hương vị từ truyền thống đến hiện đại, đáp ứng mọi khẩu vị</p>
+            </div>
+            
+            <div class="tab-container" data-aos="fade-up" data-aos-delay="200">
+                <button class="tab-btn active" data-tab="traditional">Vị Truyền Thống</button>
+                <button class="tab-btn" data-tab="modern">Vị Cách Tân</button>
+            </div>
+            
+            <div class="tab-content" id="traditional" data-aos="fade-up" data-aos-delay="300">
+                <div class="flavors-grid">
+                    <!-- Vị Thập Cẩm -->
+                    <div class="flavor-card" data-flavor="thap-cam" data-name="Thập Cẩm">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Thập Cẩm">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label bestseller">Best-seller</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Thập Cẩm</h3>
+                            <p class="flavor-desc">Nhân thập cẩm truyền thống với hạt sen, đậu xanh, mứt bí và trứng muối</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Đậu Xanh -->
+                    <div class="flavor-card" data-flavor="dau-xanh" data-name="Đậu Xanh">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Xanh">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Đậu Xanh</h3>
+                            <p class="flavor-desc">Nhân đậu xanh nguyên chất, vị thanh ngọt tự nhiên, hương thơm dịu nhẹ</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Hạt Sen -->
+                    <div class="flavor-card" data-flavor="hat-sen" data-name="Hạt Sen">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Hạt Sen">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label">Signature</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Hạt Sen</h3>
+                            <p class="flavor-desc">Nhân hạt sen thượng hạng, vị ngọt thanh nhẹ, hương thơm tinh tế</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Đậu Đỏ -->
+                    <div class="flavor-card" data-flavor="dau-do" data-name="Đậu Đỏ">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Đỏ">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Đậu Đỏ</h3>
+                            <p class="flavor-desc">Nhân đậu đỏ mềm mịn, hương vị đậm đà, ngọt dịu tự nhiên</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Mè Đen -->
+                    <div class="flavor-card" data-flavor="me-den" data-name="Mè Đen">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Mè Đen">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Mè Đen</h3>
+                            <p class="flavor-desc">Nhân mè đen bổ dưỡng, hương vị độc đáo, thơm bùi hấp dẫn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="tab-content" id="modern" style="display: none;" data-aos="fade-up" data-aos-delay="300">
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1695915871721-b9798ca8c1ab?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Trà Xanh">
+                <div class="flavors-grid">
+                    <!-- Vị Lava Trứng Muối -->
+                    <div class="flavor-card" data-flavor="lava-trung-muoi" data-name="Lava Trứng Muối">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Lava Trứng Muối">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label bestseller">Best-seller</div>
                         </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Trà Xanh</h3>
-                            <p class="product-desc">Nhân trà xanh Matcha Nhật Bản, vị đắng thanh</p>
-                            <div class="product-price">110.000đ</div>
-                            <button class="btn add-to-cart" data-id="6" data-name="Bánh Trà Xanh" data-price="110000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1695915871721-b9798ca8c1ab?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Tiramisu">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Tiramisu</h3>
-                            <p class="product-desc">Nhân kem phô mai Tiramisu, hương vị Ý đặc trưng</p>
-                            <div class="product-price">120.000đ</div>
-                            <button class="btn add-to-cart" data-id="7" data-name="Bánh Tiramisu" data-price="120000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                            </button>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Lava Trứng Muối</h3>
+                            <p class="flavor-desc">Nhân trứng muối tan chảy khi cắt, kết hợp với đậu xanh mềm mịn</p>
                         </div>
                     </div>
                     
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1695915871721-b9798ca8c1ab?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Chocolate">
+                    <!-- Vị Phô Mai Trà Xanh -->
+                    <div class="flavor-card" data-flavor="pho-mai-tra-xanh" data-name="Phô Mai Trà Xanh">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Phô Mai Trà Xanh">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label new">Mới</div>
                         </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Chocolate</h3>
-                            <p class="product-desc">Nhân chocolate Bỉ cao cấp, vị ngọt đắng hài hòa</p>
-                            <div class="product-price">115.000đ</div>
-                            <button class="btn add-to-cart" data-id="8" data-name="Bánh Chocolate" data-price="115000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1695915871721-b9798ca8c1ab?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Dừa">
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Dừa Lá Dứa</h3>
-                            <p class="product-desc">Nhân dừa non kết hợp với lá dứa thơm mát</p>
-                            <div class="product-price">95.000đ</div>
-                            <button class="btn add-to-cart" data-id="9" data-name="Bánh Dừa Lá Dứa" data-price="95000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                            </button>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Phô Mai Trà Xanh</h3>
+                            <p class="flavor-desc">Nhân phô mai kết hợp với trà xanh Matcha Nhật Bản, vị đắng thanh</p>
                         </div>
                     </div>
                     
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="https://images.unsplash.com/photo-1695915871721-b9798ca8c1ab?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bánh Trung Thu Trái Cây">
+                    <!-- Vị Socola Hạnh Nhân -->
+                    <div class="flavor-card" data-flavor="socola-hanh-nhan" data-name="Socola Hạnh Nhân">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Socola Hạnh Nhân">
+                            <div class="flavor-select"></div>
                         </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Bánh Trái Cây</h3>
-                            <p class="product-desc">Nhân hỗn hợp trái cây nhiệt đới, vị chua ngọt</p>
-                            <div class="product-price">105.000đ</div>
-                            <button class="btn add-to-cart" data-id="10" data-name="Bánh Trái Cây" data-price="105000" data-image="https://via.placeholder.com/300x300">
-                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
-                            </button>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Socola Hạnh Nhân</h3>
+                            <p class="flavor-desc">Nhân socola Bỉ cao cấp với hạnh nhân giòn tan, vị ngọt đắng hài hòa</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Dừa Lá Dứa -->
+                    <div class="flavor-card" data-flavor="dua-la-dua" data-name="Dừa Lá Dứa">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Dừa Lá Dứa">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label">Signature</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Dừa Lá Dứa</h3>
+                            <p class="flavor-desc">Nhân dừa non kết hợp với lá dứa thơm mát, hương vị nhiệt đới</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Trái Cây -->
+                    <div class="flavor-card" data-flavor="trai-cay" data-name="Trái Cây">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Trái Cây">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Trái Cây</h3>
+                            <p class="flavor-desc">Nhân hỗn hợp trái cây nhiệt đới, vị chua ngọt hài hòa, tươi mát</p>
                         </div>
                     </div>
                 </div>
@@ -1448,12 +1917,12 @@
                     
                     <div class="bank-info">
                         <div class="bank-info-title">Chủ tài khoản:</div>
-                        <div class="bank-info-value">Nuyen Van Thoai</div>
+                        <div class="bank-info-value">HIỆU BÁNH TÙNG ANH</div>
                     </div>
                     
                     <div class="bank-info">
                         <div class="bank-info-title">Ngân hàng:</div>
-                        <div class="bank-info-value">MB BANK</div>
+                        <div class="bank-info-value">VIETCOMBANK - Chi nhánh Hải Phòng</div>
                     </div>
                     
                     <div class="bank-info">
@@ -1493,7 +1962,8 @@
                 <ul>
                     <li><a href="#home">Trang chủ</a></li>
                     <li><a href="#about">Câu chuyện</a></li>
-                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#combos">Combo bánh</a></li>
+                    <li><a href="#flavors">Khám phá vị bánh</a></li>
                     <li><a href="#order">Đặt hàng</a></li>
                 </ul>
             </div>
@@ -1510,7 +1980,7 @@
                 </div>
                 <div class="contact-info">
                     <i class="fas fa-envelope"></i>
-                    <div>Email: moitao1239@gmail.com</div>
+                    <div>Email: contact@hieubanhtunganh.com</div>
                 </div>
                 <div class="contact-info">
                     <i class="fas fa-clock"></i>
@@ -1549,6 +2019,171 @@
         <a href="#order" class="btn checkout-btn" id="checkoutBtn">Hoàn tất đặt hàng</a>
     </div>
     
+    <!-- Flavor Selection Modal -->
+    <div class="modal" id="flavorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Chọn vị bánh</h3>
+                <div class="close-modal" id="closeModal"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="modal-body">
+                <div class="selection-info">
+                    <div class="selection-count">Đã chọn: <span id="selectedCount">0</span>/<span id="maxCount">2</span> vị</div>
+                    <div class="combo-name" id="comboName">Combo 2 bánh - "Thử là mê"</div>
+                </div>
+                
+                <div class="modal-tab-container">
+                    <button class="tab-btn modal-tab-btn active" data-modal-tab="modal-traditional">Vị Truyền Thống</button>
+                    <button class="tab-btn modal-tab-btn" data-modal-tab="modal-modern">Vị Cách Tân</button>
+                </div>
+                
+                <div class="modal-tab-content" id="modal-traditional">
+                    <div class="modal-flavors-grid">
+                        <!-- Vị Thập Cẩm -->
+                        <div class="flavor-card" data-flavor="thap-cam" data-name="Thập Cẩm">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Thập Cẩm">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label bestseller">Best-seller</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Thập Cẩm</h3>
+                                <p class="flavor-desc">Nhân thập cẩm truyền thống với hạt sen, đậu xanh, mứt bí</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Đậu Xanh -->
+                        <div class="flavor-card" data-flavor="dau-xanh" data-name="Đậu Xanh">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Xanh">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Đậu Xanh</h3>
+                                <p class="flavor-desc">Nhân đậu xanh nguyên chất, vị thanh ngọt tự nhiên</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Hạt Sen -->
+                        <div class="flavor-card" data-flavor="hat-sen" data-name="Hạt Sen">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Hạt Sen">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label">Signature</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Hạt Sen</h3>
+                                <p class="flavor-desc">Nhân hạt sen thượng hạng, vị ngọt thanh nhẹ</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Đậu Đỏ -->
+                        <div class="flavor-card" data-flavor="dau-do" data-name="Đậu Đỏ">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Đỏ">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Đậu Đỏ</h3>
+                                <p class="flavor-desc">Nhân đậu đỏ mềm mịn, hương vị đậm đà</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Mè Đen -->
+                        <div class="flavor-card" data-flavor="me-den" data-name="Mè Đen">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Mè Đen">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Mè Đen</h3>
+                                <p class="flavor-desc">Nhân mè đen bổ dưỡng, hương vị độc đáo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-tab-content" id="modal-modern" style="display: none;">
+                    <div class="modal-flavors-grid">
+                        <!-- Vị Lava Trứng Muối -->
+                        <div class="flavor-card" data-flavor="lava-trung-muoi" data-name="Lava Trứng Muối">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Lava Trứng Muối">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label bestseller">Best-seller</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Lava Trứng Muối</h3>
+                                <p class="flavor-desc">Nhân trứng muối tan chảy khi cắt, kết hợp với đậu xanh</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Phô Mai Trà Xanh -->
+                        <div class="flavor-card" data-flavor="pho-mai-tra-xanh" data-name="Phô Mai Trà Xanh">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Phô Mai Trà Xanh">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label new">Mới</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Phô Mai Trà Xanh</h3>
+                                <p class="flavor-desc">Nhân phô mai kết hợp với trà xanh Matcha Nhật Bản</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Socola Hạnh Nhân -->
+                        <div class="flavor-card" data-flavor="socola-hanh-nhan" data-name="Socola Hạnh Nhân">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Socola Hạnh Nhân">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Socola Hạnh Nhân</h3>
+                                <p class="flavor-desc">Nhân socola Bỉ cao cấp với hạnh nhân giòn tan</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Dừa Lá Dứa -->
+                        <div class="flavor-card" data-flavor="dua-la-dua" data-name="Dừa Lá Dứa">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Dừa Lá Dứa">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label">Signature</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Dừa Lá Dứa</h3>
+                                <p class="flavor-desc">Nhân dừa non kết hợp với lá dứa thơm mát</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Trái Cây -->
+                        <div class="flavor-card" data-flavor="trai-cay" data-name="Trái Cây">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Trái Cây">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Trái Cây</h3>
+                                <p class="flavor-desc">Nhân hỗn hợp trái cây nhiệt đới, vị chua ngọt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="selected-flavors" id="selectedFlavors">
+                    <div class="selected-flavors-title">Vị đã chọn:</div>
+                    <div class="selected-flavor-list" id="selectedFlavorList">
+                        <!-- Selected flavors will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn cancel-btn" id="cancelSelection">Hủy</button>
+                <button class="btn" id="confirmSelection" disabled>Xác nhận</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
     
@@ -1568,9 +2203,21 @@
             const cartSidebar = document.getElementById('cartSidebar');
             const closeCart = document.getElementById('closeCart');
             const overlay = document.getElementById('overlay');
-            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabBtns = document.querySelectorAll('.tab-btn:not(.modal-tab-btn)');
             const tabContents = document.querySelectorAll('.tab-content');
-            const addToCartBtns = document.querySelectorAll('.add-to-cart');
+            const modalTabBtns = document.querySelectorAll('.modal-tab-btn');
+            const modalTabContents = document.querySelectorAll('.modal-tab-content');
+            const selectFlavorsBtns = document.querySelectorAll('.select-flavors-btn');
+            const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+            const flavorModal = document.getElementById('flavorModal');
+            const closeModal = document.getElementById('closeModal');
+            const cancelSelection = document.getElementById('cancelSelection');
+            const confirmSelection = document.getElementById('confirmSelection');
+            const selectedCount = document.getElementById('selectedCount');
+            const maxCount = document.getElementById('maxCount');
+            const comboName = document.getElementById('comboName');
+            const selectedFlavors = document.getElementById('selectedFlavors');
+            const selectedFlavorList = document.getElementById('selectedFlavorList');
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
             const cartCount = document.querySelector('.cart-count');
@@ -1581,6 +2228,16 @@
             
             // Cart array to store items
             let cart = [];
+            
+            // Current combo selection
+            let currentCombo = {
+                id: '',
+                name: '',
+                price: 0,
+                image: '',
+                limit: 0,
+                selectedFlavors: []
+            };
             
             // Mobile Menu Toggle
             hamburger.addEventListener('click', function() {
@@ -1604,7 +2261,10 @@
             });
             
             closeCart.addEventListener('click', closeCartSidebar);
-            overlay.addEventListener('click', closeCartSidebar);
+            overlay.addEventListener('click', function() {
+                closeCartSidebar();
+                closeFlavorModal();
+            });
             
             function closeCartSidebar() {
                 cartSidebar.classList.remove('active');
@@ -1632,6 +2292,26 @@
                 });
             });
             
+            // Modal Tab Switching
+            modalTabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    modalTabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Hide all tab contents
+                    modalTabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show the selected tab content
+                    const tabId = btn.getAttribute('data-modal-tab');
+                    document.getElementById(tabId).style.display = 'block';
+                });
+            });
+            
             // Payment Method Selection
             paymentOptions.forEach(option => {
                 option.addEventListener('click', () => {
@@ -1651,6 +2331,165 @@
                 });
             });
             
+            // Select Flavors Button Click
+            selectFlavorsBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const comboId = btn.getAttribute('data-combo');
+                    const comboLimit = parseInt(btn.getAttribute('data-limit'));
+                    const comboPrice = parseInt(btn.getAttribute('data-price'));
+                    const comboName = btn.closest('.combo-card').querySelector('.combo-title').textContent;
+                    const comboSubtitle = btn.closest('.combo-card').querySelector('.combo-subtitle').textContent;
+                    const comboImage = btn.closest('.combo-card').querySelector('.combo-image img').src;
+                    
+                    // Set current combo
+                    currentCombo = {
+                        id: comboId,
+                        name: `${comboName} - ${comboSubtitle}`,
+                        price: comboPrice,
+                        image: comboImage,
+                        limit: comboLimit,
+                        selectedFlavors: []
+                    };
+                    
+                    // Update modal
+                    maxCount.textContent = comboLimit;
+                    selectedCount.textContent = '0';
+                    comboName.textContent = currentCombo.name;
+                    
+                    // Clear selected flavors
+                    document.querySelectorAll('.flavor-card.selected').forEach(card => {
+                        card.classList.remove('selected');
+                    });
+                    
+                    selectedFlavorList.innerHTML = '';
+                    selectedFlavors.classList.remove('active');
+                    confirmSelection.disabled = true;
+                    
+                    // Open modal
+                    openFlavorModal();
+                });
+            });
+            
+            // Flavor Card Click in Modal
+            document.querySelectorAll('.modal-flavors-grid .flavor-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const flavorId = card.getAttribute('data-flavor');
+                    const flavorName = card.getAttribute('data-name');
+                    
+                    if (card.classList.contains('selected')) {
+                        // Remove from selection
+                        card.classList.remove('selected');
+                        currentCombo.selectedFlavors = currentCombo.selectedFlavors.filter(flavor => flavor.id !== flavorId);
+                        
+                        // Remove from selected flavors list
+                        const flavorElement = selectedFlavorList.querySelector(`[data-flavor="${flavorId}"]`);
+                        if (flavorElement) {
+                            flavorElement.remove();
+                        }
+                    } else {
+                        // Check if limit reached
+                        if (currentCombo.selectedFlavors.length >= currentCombo.limit) {
+                            alert(`Bạn chỉ có thể chọn tối đa ${currentCombo.limit} vị bánh cho combo này.`);
+                            return;
+                        }
+                        
+                        // Add to selection
+                        card.classList.add('selected');
+                        currentCombo.selectedFlavors.push({
+                            id: flavorId,
+                            name: flavorName
+                        });
+                        
+                        // Add to selected flavors list
+                        const flavorElement = document.createElement('div');
+                        flavorElement.classList.add('selected-flavor-item');
+                        flavorElement.setAttribute('data-flavor', flavorId);
+                        flavorElement.innerHTML = `
+                            ${flavorName}
+                            <i class="fas fa-times remove-flavor" data-flavor="${flavorId}"></i>
+                        `;
+                        selectedFlavorList.appendChild(flavorElement);
+                        
+                        // Add event listener to remove flavor
+                        flavorElement.querySelector('.remove-flavor').addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const flavorToRemove = e.currentTarget.getAttribute('data-flavor');
+                            const flavorCard = document.querySelector(`.modal-flavors-grid .flavor-card[data-flavor="${flavorToRemove}"]`);
+                            
+                            if (flavorCard) {
+                                flavorCard.classList.remove('selected');
+                            }
+                            
+                            currentCombo.selectedFlavors = currentCombo.selectedFlavors.filter(flavor => flavor.id !== flavorToRemove);
+                            flavorElement.remove();
+                            
+                            updateSelectionCount();
+                        });
+                    }
+                    
+                    updateSelectionCount();
+                });
+            });
+            
+            // Update Selection Count
+            function updateSelectionCount() {
+                const count = currentCombo.selectedFlavors.length;
+                selectedCount.textContent = count;
+                
+                // Show/hide selected flavors section
+                if (count > 0) {
+                    selectedFlavors.classList.add('active');
+                } else {
+                    selectedFlavors.classList.remove('active');
+                }
+                
+                // Enable/disable confirm button
+                confirmSelection.disabled = count !== currentCombo.limit;
+            }
+            
+            // Close Flavor Modal
+            function closeFlavorModal() {
+                flavorModal.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Open Flavor Modal
+            function openFlavorModal() {
+                flavorModal.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Close Modal Events
+            closeModal.addEventListener('click', closeFlavorModal);
+            cancelSelection.addEventListener('click', closeFlavorModal);
+            
+            // Confirm Selection
+            confirmSelection.addEventListener('click', () => {
+                // Find the corresponding add to cart button
+                const addToCartBtn = document.querySelector(`.add-to-cart-btn[data-combo="${currentCombo.id}"]`);
+                
+                if (addToCartBtn) {
+                    // Enable the add to cart button
+                    addToCartBtn.disabled = false;
+                    
+                    // Update the add to cart button with selected flavors
+                    addToCartBtn.setAttribute('data-flavors', JSON.stringify(currentCombo.selectedFlavors));
+                    
+                    // Show success message
+                    addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Vị đã chọn';
+                    addToCartBtn.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        addToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Thêm vào giỏ';
+                        addToCartBtn.style.backgroundColor = '';
+                    }, 1500);
+                }
+                
+                closeFlavorModal();
+            });
+            
             // Add to Cart Functionality
             addToCartBtns.forEach(btn => {
                 btn.addEventListener('click', addToCart);
@@ -1658,13 +2497,31 @@
             
             function addToCart(e) {
                 const button = e.currentTarget;
-                const id = button.getAttribute('data-id');
+                const id = button.getAttribute('data-combo');
                 const name = button.getAttribute('data-name');
                 const price = parseInt(button.getAttribute('data-price'));
                 const image = button.getAttribute('data-image');
+                const flavorsJson = button.getAttribute('data-flavors');
+                
+                if (!flavorsJson) {
+                    alert('Vui lòng chọn vị bánh trước khi thêm vào giỏ hàng.');
+                    return;
+                }
+                
+                const flavors = JSON.parse(flavorsJson);
                 
                 // Check if item already exists in cart
-                const existingItem = cart.find(item => item.id === id);
+                const existingItem = cart.find(item => {
+                    if (item.id !== id) return false;
+                    
+                    // Check if flavors are the same
+                    if (item.flavors.length !== flavors.length) return false;
+                    
+                    const flavorIds = flavors.map(f => f.id).sort();
+                    const itemFlavorIds = item.flavors.map(f => f.id).sort();
+                    
+                    return flavorIds.every((id, index) => id === itemFlavorIds[index]);
+                });
                 
                 if (existingItem) {
                     existingItem.quantity++;
@@ -1674,6 +2531,7 @@
                         name,
                         price,
                         image,
+                        flavors,
                         quantity: 1
                     });
                 }
@@ -1684,7 +2542,7 @@
                 button.style.backgroundColor = '#4CAF50';
                 
                 setTimeout(() => {
-                    button.innerHTML = originalText;
+                    button.innerHTML = '<i class="fas fa-shopping-cart"></i> Thêm vào giỏ';
                     button.style.backgroundColor = '';
                 }, 1500);
                 
@@ -1705,9 +2563,13 @@
                     `;
                 } else {
                     cartItems.innerHTML = '';
-                    cart.forEach(item => {
+                    cart.forEach((item, index) => {
                         const cartItemEl = document.createElement('div');
                         cartItemEl.classList.add('cart-item');
+                        
+                        // Create flavor list string
+                        const flavorsList = item.flavors.map(flavor => flavor.name).join(', ');
+                        
                         cartItemEl.innerHTML = `
                             <div class="cart-item-img">
                                 <img src="${item.image}" alt="${item.name}">
@@ -1715,13 +2577,14 @@
                             <div class="cart-item-info">
                                 <h4 class="cart-item-title">${item.name}</h4>
                                 <div class="cart-item-price">${formatPrice(item.price)}đ</div>
+                                <div class="cart-item-flavors">Vị: ${flavorsList}</div>
                                 <div class="cart-item-quantity">
-                                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                    <button class="quantity-btn minus" data-index="${index}">-</button>
                                     <input type="text" class="quantity-input" value="${item.quantity}" readonly>
-                                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                    <button class="quantity-btn plus" data-index="${index}">+</button>
                                 </div>
                             </div>
-                            <div class="remove-item" data-id="${item.id}">
+                            <div class="remove-item" data-index="${index}">
                                 <i class="fas fa-trash-alt"></i>
                             </div>
                         `;
@@ -1748,28 +2611,26 @@
             }
             
             function decreaseQuantity(e) {
-                const id = e.currentTarget.getAttribute('data-id');
-                const item = cart.find(item => item.id === id);
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
                 
-                if (item.quantity > 1) {
-                    item.quantity--;
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
                 } else {
-                    cart = cart.filter(item => item.id !== id);
+                    cart.splice(index, 1);
                 }
                 
                 updateCart();
             }
             
             function increaseQuantity(e) {
-                const id = e.currentTarget.getAttribute('data-id');
-                const item = cart.find(item => item.id === id);
-                item.quantity++;
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                cart[index].quantity++;
                 updateCart();
             }
             
             function removeItem(e) {
-                const id = e.currentTarget.getAttribute('data-id');
-                cart = cart.filter(item => item.id !== id);
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                cart.splice(index, 1);
                 updateCart();
             }
             
@@ -1813,7 +2674,7 @@
                         <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary-yellow); margin-bottom: 1rem;"></i>
                         <h3 style="margin-bottom: 1rem; color: var(--text-light); font-size: 2rem;">Đặt hàng thành công!</h3>
                         <p style="margin-bottom: 2rem;">Cảm ơn ${name} đã đặt hàng. Chúng tôi sẽ liên hệ với bạn qua số điện thoại ${phone} để xác nhận đơn hàng.</p>
-                        <a href="#products" class="btn">Tiếp tục mua sắm</a>
+                        <a href="#combos" class="btn">Tiếp tục mua sắm</a>
                     </div>
                 `;
                 
@@ -1834,7 +2695,8 @@
             
             // Initialize the first tab
             document.querySelector('.tab-btn.active').click();
+            document.querySelector('.modal-tab-btn.active').click();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964b24b5955f04b7',t:'MTc1MzQ0MTEyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964c7d6ea178fd26',t:'MTc1MzQ1NTI0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
