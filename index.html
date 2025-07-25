@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiệu Bánh Trung Thu Tùng Anh - Tinh hoa bánh truyền thống</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Hiệu Bánh Trung Thu Tùng Anh - Dư vị tuổi thơ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         :root {
-            --primary-dark: #0A3D62;
-            --primary-gold: #FFD700;
-            --primary-gold-hover: #F5C71A;
+            --primary-orange: #F9B17A;
+            --primary-orange-dark: #FFA95E;
+            --primary-yellow: #FFD369;
+            --primary-yellow-light: #FFE28A;
+            --primary-red: #A62828;
+            --primary-red-light: #C6412A;
             --text-light: #FFFFFF;
             --text-dark: #333333;
-            --bg-light: #F9F5EB;
-            --bg-dark: #0A3D62;
-            --accent: #E74C3C;
+            --bg-light: #FFF9F2;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
         }
@@ -41,10 +42,10 @@
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Dancing Script', cursive;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary-dark);
+            color: var(--primary-red);
         }
         
         .container {
@@ -57,8 +58,8 @@
         .btn {
             display: inline-block;
             padding: 12px 28px;
-            background-color: var(--primary-gold);
-            color: var(--primary-dark);
+            background-color: var(--primary-orange-dark);
+            color: var(--text-light);
             border: none;
             border-radius: 4px;
             font-weight: 600;
@@ -72,20 +73,20 @@
         }
         
         .btn:hover {
-            background-color: var(--primary-gold-hover);
+            background-image: linear-gradient(to right, var(--primary-yellow), var(--primary-red-light));
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
         
         .btn-outline {
             background-color: transparent;
-            border: 2px solid var(--primary-gold);
-            color: var(--primary-dark);
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange-dark);
         }
         
         .btn-outline:hover {
-            background-color: var(--primary-gold);
-            color: var(--primary-dark);
+            background-color: var(--primary-orange);
+            color: var(--text-light);
         }
         
         /* Header */
@@ -95,7 +96,7 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            background-color: rgba(10, 61, 98, 0.95);
+            background-color: rgba(255, 255, 255, 0.95);
             box-shadow: var(--shadow);
             transition: var(--transition);
             padding: 1rem 0;
@@ -110,6 +111,11 @@
         .logo {
             display: flex;
             align-items: center;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
         }
         
         .logo img {
@@ -118,14 +124,14 @@
         }
         
         .logo-text {
-            color: var(--text-light);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            color: var(--primary-red);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
             font-weight: 700;
         }
         
         .logo-text span {
-            color: var(--primary-gold);
+            color: var(--primary-orange-dark);
         }
         
         .nav-menu {
@@ -138,7 +144,7 @@
         }
         
         .nav-link {
-            color: var(--text-light);
+            color: var(--text-dark);
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
@@ -148,7 +154,7 @@
         }
         
         .nav-link:hover {
-            color: var(--primary-gold);
+            color: var(--primary-orange-dark);
         }
         
         .nav-link::after {
@@ -158,7 +164,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-gold);
+            background-color: var(--primary-orange-dark);
             transition: var(--transition);
         }
         
@@ -173,20 +179,20 @@
         }
         
         .cart-icon i {
-            color: var(--text-light);
+            color: var(--primary-red);
             font-size: 1.5rem;
             transition: var(--transition);
         }
         
         .cart-icon:hover i {
-            color: var(--primary-gold);
+            color: var(--primary-orange-dark);
         }
         
         .cart-count {
             position: absolute;
             top: -8px;
             right: -8px;
-            background-color: var(--accent);
+            background-color: var(--primary-red-light);
             color: var(--text-light);
             font-size: 0.7rem;
             width: 18px;
@@ -207,7 +213,7 @@
             display: block;
             width: 25px;
             height: 3px;
-            background-color: var(--text-light);
+            background-color: var(--primary-red);
             margin: 5px 0;
             transition: var(--transition);
         }
@@ -215,7 +221,9 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background-image: linear-gradient(rgba(10, 61, 98, 0.7), rgba(10, 61, 98, 0.7)), url('https://via.placeholder.com/1920x1080');
+            background-image: 
+                linear-gradient(rgba(166, 40, 40, 0.4), rgba(249, 177, 122, 0.7)),
+                url('https://via.placeholder.com/1920x1080');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -223,22 +231,51 @@
             text-align: center;
             color: var(--text-light);
             padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(255, 255, 255, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
         }
         
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-logo svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             margin-bottom: 1.5rem;
             color: var(--text-light);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .hero h1 span {
-            color: var(--primary-gold);
+            color: var(--primary-yellow-light);
         }
         
         .hero p {
@@ -251,18 +288,46 @@
         
         .hero-btn {
             margin-top: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-red);
+            font-weight: 700;
+            padding: 15px 35px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btn:hover {
+            background-color: var(--text-light);
+            color: var(--primary-red);
+            transform: translateY(-5px) scale(1.05);
         }
         
         /* About Section */
         .about {
             padding: 6rem 0;
             background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(249, 177, 122, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
         }
         
         .about-container {
             display: flex;
             align-items: center;
             gap: 4rem;
+            position: relative;
+            z-index: 1;
         }
         
         .about-image {
@@ -270,12 +335,25 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(166, 40, 40, 0.3), rgba(249, 177, 122, 0.3));
+            z-index: 1;
         }
         
         .about-image img {
             width: 100%;
             height: auto;
             transition: var(--transition);
+            display: block;
         }
         
         .about-content {
@@ -283,7 +361,7 @@
         }
         
         .section-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
             position: relative;
             padding-bottom: 1rem;
@@ -296,7 +374,7 @@
             left: 0;
             width: 80px;
             height: 3px;
-            background-color: var(--primary-gold);
+            background-color: var(--primary-orange);
         }
         
         .about-content p {
@@ -308,11 +386,27 @@
         .products {
             padding: 6rem 0;
             background-color: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(166, 40, 40, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
         }
         
         .products-header {
             text-align: center;
             margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
         
         .products-header .section-title {
@@ -328,6 +422,8 @@
             display: flex;
             justify-content: center;
             margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
         
         .tab-btn {
@@ -350,12 +446,12 @@
             left: 0;
             width: 0;
             height: 3px;
-            background-color: var(--primary-gold);
+            background-color: var(--primary-orange);
             transition: var(--transition);
         }
         
         .tab-btn.active {
-            color: var(--primary-dark);
+            color: var(--primary-red);
         }
         
         .tab-btn.active::after {
@@ -370,6 +466,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .product-card {
@@ -388,6 +486,18 @@
         .product-image {
             height: 200px;
             overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+            z-index: 1;
         }
         
         .product-image img {
@@ -406,9 +516,9 @@
         }
         
         .product-title {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 0.5rem;
-            color: var(--primary-dark);
+            color: var(--primary-red);
         }
         
         .product-desc {
@@ -421,7 +531,7 @@
         
         .product-price {
             font-weight: 700;
-            color: var(--primary-dark);
+            color: var(--primary-red);
             font-size: 1.1rem;
             margin-bottom: 1rem;
         }
@@ -436,13 +546,29 @@
         /* Order Form Section */
         .order-form {
             padding: 6rem 0;
-            background-color: var(--bg-dark);
+            background-color: var(--primary-red);
             color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .order-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(255, 255, 255, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.2;
+            z-index: 0;
         }
         
         .order-form-container {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .order-form .section-title {
@@ -453,6 +579,7 @@
         .order-form .section-title::after {
             left: 50%;
             transform: translateX(-50%);
+            background-color: var(--primary-yellow);
         }
         
         .form-group {
@@ -478,7 +605,7 @@
         
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-gold);
+            border-color: var(--primary-yellow);
             background-color: rgba(255,255,255,0.15);
         }
         
@@ -500,19 +627,114 @@
             padding: 1rem;
             font-size: 1.1rem;
             margin-top: 1rem;
+            background-color: var(--primary-orange-dark);
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-option {
+            flex: 1;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .payment-option:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .payment-option.active {
+            background-color: rgba(255,255,255,0.2);
+            border-color: var(--primary-yellow);
+        }
+        
+        .payment-option i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-yellow);
+        }
+        
+        .payment-option-title {
+            font-weight: 600;
+        }
+        
+        .bank-transfer-info {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        .bank-transfer-info.active {
+            display: block;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            margin: 0 auto 1.5rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .bank-info {
+            margin-bottom: 1rem;
+        }
+        
+        .bank-info-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .bank-info-value {
+            font-family: monospace;
+            font-size: 1.1rem;
+            background-color: rgba(255,255,255,0.1);
+            padding: 0.5rem;
+            border-radius: 4px;
         }
         
         /* Footer */
         .footer {
-            background-color: #051C2C;
+            background-color: #2C1A1A;
             color: var(--text-light);
             padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(255, 255, 255, 0.05)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
         }
         
         .footer-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
         .footer-logo {
@@ -529,11 +751,12 @@
         }
         
         .footer-title {
-            color: var(--text-light);
-            font-size: 1.3rem;
+            color: var(--primary-orange);
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
             position: relative;
             padding-bottom: 0.5rem;
+            font-family: 'Dancing Script', cursive;
         }
         
         .footer-title::after {
@@ -543,7 +766,7 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background-color: var(--primary-gold);
+            background-color: var(--primary-orange);
         }
         
         .footer-links {
@@ -562,7 +785,7 @@
         }
         
         .footer-links a:hover {
-            color: var(--primary-gold);
+            color: var(--primary-orange);
             opacity: 1;
         }
         
@@ -574,7 +797,7 @@
         
         .contact-info i {
             margin-right: 10px;
-            color: var(--primary-gold);
+            color: var(--primary-orange);
             font-size: 1.1rem;
             margin-top: 4px;
         }
@@ -599,8 +822,8 @@
         }
         
         .social-icon:hover {
-            background-color: var(--primary-gold);
-            color: var(--primary-dark);
+            background-color: var(--primary-orange);
+            color: var(--text-dark);
             transform: translateY(-3px);
         }
         
@@ -611,6 +834,8 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
             opacity: 0.7;
+            position: relative;
+            z-index: 1;
         }
         
         /* Cart Sidebar */
@@ -642,8 +867,8 @@
         }
         
         .cart-title {
-            font-size: 1.5rem;
-            color: var(--primary-dark);
+            font-size: 1.8rem;
+            color: var(--primary-red);
         }
         
         .close-cart {
@@ -654,7 +879,7 @@
         }
         
         .close-cart:hover {
-            color: var(--accent);
+            color: var(--primary-red-light);
         }
         
         .cart-items {
@@ -689,7 +914,7 @@
         .cart-item-title {
             font-weight: 600;
             margin-bottom: 0.3rem;
-            color: var(--primary-dark);
+            color: var(--primary-red);
         }
         
         .cart-item-price {
@@ -731,7 +956,7 @@
         }
         
         .remove-item {
-            color: var(--accent);
+            color: var(--primary-red-light);
             font-size: 1.2rem;
             cursor: pointer;
             margin-left: 1rem;
@@ -757,7 +982,7 @@
         .cart-total-price {
             font-size: 1.3rem;
             font-weight: 700;
-            color: var(--primary-dark);
+            color: var(--primary-red);
         }
         
         .checkout-btn {
@@ -800,6 +1025,43 @@
             visibility: visible;
         }
         
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes glow {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(255,211,105,0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(255,211,105,0.8));
+            }
+            100% {
+                filter: drop-shadow(0 0 5px rgba(255,211,105,0.5));
+            }
+        }
+        
+        @keyframes flash {
+            0% {
+                box-shadow: 0 0 0 0 rgba(249, 177, 122, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(249, 177, 122, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 177, 122, 0);
+            }
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .about-container {
@@ -812,11 +1074,11 @@
             }
             
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
         }
         
@@ -827,7 +1089,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background-color: var(--bg-dark);
+                background-color: rgba(255, 255, 255, 0.95);
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
@@ -861,7 +1123,7 @@
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero p {
@@ -877,15 +1139,19 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            .payment-options {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 576px) {
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .tab-container {
@@ -909,7 +1175,7 @@
     <header class="header">
         <div class="container header-container">
             <div class="logo">
-                <div class="logo-text"><span>Tùng Anh</span> Bakery</div>
+                <div class="logo-text">TÙNG ANH</div>
             </div>
             
             <nav>
@@ -938,9 +1204,17 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1 data-aos="fade-up" data-aos-delay="100">Tinh Hoa <span>Bánh Trung Thu</span> Truyền Thống</h1>
-            <p data-aos="fade-up" data-aos-delay="200">Kết hợp giữa hương vị truyền thống và sự sáng tạo hiện đại, bánh trung thu Tùng Anh mang đến trải nghiệm ẩm thực độc đáo cho mùa trăng tròn</p>
-            <a href="#products" class="btn hero-btn" data-aos="fade-up" data-aos-delay="300">Khám phá ngay</a>
+            <div class="hero-logo" data-aos="fade-down" data-aos-delay="100">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="animation: float 6s ease-in-out infinite, glow 3s ease-in-out infinite;">
+                    <circle cx="50" cy="50" r="45" fill="#FFD369" opacity="0.9"/>
+                    <path d="M50 10 L55 30 L75 30 L60 45 L65 65 L50 55 L35 65 L40 45 L25 30 L45 30 Z" fill="#FFF" opacity="0.9"/>
+                    <circle cx="50" cy="50" r="15" fill="#FFF" opacity="0.7"/>
+                    <path d="M30 30 Q50 10 70 30 Q90 50 70 70 Q50 90 30 70 Q10 50 30 30" fill="none" stroke="#FFF" stroke-width="2" opacity="0.5"/>
+                </svg>
+            </div>
+            <h1 data-aos="fade-up" data-aos-delay="200">Dư Vị <span>Tuổi Thơ</span></h1>
+            <p data-aos="fade-up" data-aos-delay="300">Kết hợp giữa hương vị truyền thống và sự sáng tạo hiện đại, bánh trung thu Tùng Anh mang đến trải nghiệm ẩm thực độc đáo cho mùa trăng tròn</p>
+            <a href="#products" class="btn hero-btn" data-aos="fade-up" data-aos-delay="400">Khám phá ngay</a>
         </div>
     </section>
     
@@ -1147,13 +1421,43 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="cakeType" class="form-label">Loại bánh yêu thích</label>
-                    <select id="cakeType" class="form-control" required>
-                        <option value="">-- Chọn loại bánh --</option>
-                        <option value="traditional">Bánh truyền thống</option>
-                        <option value="modern">Bánh cách tân</option>
-                        <option value="mixed">Kết hợp cả hai loại</option>
-                    </select>
+                    <label class="form-label">Phương thức thanh toán</label>
+                    <div class="payment-options">
+                        <div class="payment-option active" data-payment="cod">
+                            <i class="fas fa-truck"></i>
+                            <div class="payment-option-title">Thanh toán khi nhận hàng</div>
+                        </div>
+                        <div class="payment-option" data-payment="bank">
+                            <i class="fas fa-university"></i>
+                            <div class="payment-option-title">Chuyển khoản ngân hàng</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bank-transfer-info" id="bankTransferInfo">
+                    <div class="qr-code">
+                        QR Code Thanh Toán
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Số tài khoản:</div>
+                        <div class="bank-info-value">1234 5678 9012 3456</div>
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Chủ tài khoản:</div>
+                        <div class="bank-info-value">HIỆU BÁNH TÙNG ANH</div>
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Ngân hàng:</div>
+                        <div class="bank-info-value">VIETCOMBANK - Chi nhánh Hải Phòng</div>
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Nội dung chuyển khoản:</div>
+                        <div class="bank-info-value">TUNGANH [Số điện thoại của bạn]</div>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -1171,7 +1475,7 @@
         <div class="container footer-container">
             <div class="footer-about">
                 <div class="footer-logo">
-                    <div class="logo-text" style="font-size: 1.8rem;"><span>Tùng Anh</span> Bakery</div>
+                    <div class="logo-text" style="font-size: 1.8rem;">TÙNG ANH</div>
                 </div>
                 <p>Hiệu bánh trung thu Tùng Anh - Nơi kết nối truyền thống và hiện đại, mang đến những chiếc bánh trung thu thơm ngon, chất lượng cho mọi gia đình.</p>
                 <div class="social-icons">
@@ -1270,6 +1574,8 @@
             const cartCount = document.querySelector('.cart-count');
             const checkoutBtn = document.getElementById('checkoutBtn');
             const orderForm = document.getElementById('orderForm');
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const bankTransferInfo = document.getElementById('bankTransferInfo');
             
             // Cart array to store items
             let cart = [];
@@ -1321,6 +1627,25 @@
                     // Show the selected tab content
                     const tabId = btn.getAttribute('data-tab');
                     document.getElementById(tabId).style.display = 'block';
+                });
+            });
+            
+            // Payment Method Selection
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove active class from all options
+                    paymentOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    option.classList.add('active');
+                    
+                    // Show/hide bank transfer info
+                    const paymentMethod = option.getAttribute('data-payment');
+                    if (paymentMethod === 'bank') {
+                        bankTransferInfo.classList.add('active');
+                    } else {
+                        bankTransferInfo.classList.remove('active');
+                    }
                 });
             });
             
@@ -1483,8 +1808,8 @@
                 // Show success message
                 orderForm.innerHTML = `
                     <div style="text-align: center; padding: 2rem 0;">
-                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary-gold); margin-bottom: 1rem;"></i>
-                        <h3 style="margin-bottom: 1rem; color: var(--text-light);">Đặt hàng thành công!</h3>
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary-yellow); margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-light); font-size: 2rem;">Đặt hàng thành công!</h3>
                         <p style="margin-bottom: 2rem;">Cảm ơn ${name} đã đặt hàng. Chúng tôi sẽ liên hệ với bạn qua số điện thoại ${phone} để xác nhận đơn hàng.</p>
                         <a href="#products" class="btn">Tiếp tục mua sắm</a>
                     </div>
@@ -1509,6 +1834,5 @@
             document.querySelector('.tab-btn.active').click();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9649897244dbf922',t:'MTc1MzQyNDI3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964b24b5955f04b7',t:'MTc1MzQ0MTEyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
