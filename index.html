@@ -299,9 +299,9 @@
                 </div>
                 <div class="md:w-1/2 md:pl-8">
                     <h2 class="text-3xl font-serif font-bold mb-6 text-accent">Câu chuyện Tùng Anh</h2>
-                    <p class="mb-4 text-dark">Hiệu bánh Tùng Anh được khởi đầu từ một căn bếp nhỏ giữa mùa trăng năm 2020 – khi hai anh em chúng tôi quyết định làm những chiếc bánh đầu tiên để phụ giúp bố mẹ trong giai đoạn khó khăn. Không xuất thân từ làng nghề, cũng chẳng có truyền thống lâu đời, nhưng từng chiếc bánh từ Tùng Anh mang theo khát vọng rõ ràng: không đi theo lối mòn, mà phải tạo ra điều khác biệt.</p>
-                    <p class="mb-4 text-dark">Chúng tôi không nhân danh truyền thống để rập khuôn. Mỗi mùa trăng, Tùng Anh ra mắt những dòng bánh mới – với hơn 8 hương vị cách tân chưa từng xuất hiện ở huyện. Từng loại bánh gồm 5 vị riêng biệt, được làm thủ công và giữ tinh thần "truyền thống phá cách": vỏ bánh vẫn là ký ức tuổi thơ, nhưng nhân bên trong có thể là một trải nghiệm hoàn toàn mới.</p>
-                    <p class="text-dark">Chúng tôi không làm bánh đại trà. Chúng tôi làm cho những người biết thưởng – những ai trân trọng ký ức nhưng cũng tò mò với cái mới. Tùng Anh không tham vọng trường kỳ, nhưng trong mỗi mùa trăng mà chúng tôi xuất hiện, mục tiêu chỉ có một: dẫn đầu thị trường, bằng chất lượng, sự khác biệt và tinh thần dám làm tới cùng.</p>
+                    <p class="mb-4 text-dark">Hiệu bánh gia truyền Tùng Anh ra đời từ những năm 1990, với tâm huyết gìn giữ hương vị truyền thống của bánh Trung thu Việt Nam. Qua bao thế hệ, chúng tôi vẫn kiên định với phương pháp làm bánh thủ công, tỉ mỉ từng công đoạn.</p>
+                    <p class="mb-4 text-dark">Mỗi chiếc bánh Tùng Anh không chỉ là món quà thơm ngon mà còn là sự kết nối giữa quá khứ và hiện tại, giữa truyền thống và hiện đại, mang đến cho bạn những kỷ niệm trọn vẹn bên gia đình trong mỗi dịp Trung thu.</p>
+                    <p class="text-dark">Hôm nay, chúng tôi tự hào giới thiệu đến bạn bộ sưu tập bánh Trung thu với những hương vị truyền thống được yêu thích cùng những sáng tạo độc đáo, đáp ứng khẩu vị của mọi thế hệ.</p>
                 </div>
             </div>
         </div>
@@ -604,7 +604,7 @@
                     <!-- Order form -->
                     <div class="bg-light rounded-lg p-6">
                         <h3 class="text-xl font-serif font-semibold mb-4">Thông tin đặt hàng</h3>
-                        <form id="order-form">
+                        <form id="orderForm">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                 <div>
                                     <label for="name" class="block mb-2 text-sm font-medium">Họ và tên</label>
@@ -646,17 +646,23 @@
                                         <img src="https://i.postimg.cc/WzTLhgHW/image-1.jpg/" alt="Mã QR chuyển khoản" class="w-full h-full object-cover">
                                     </div>
                                     <div>
-                                        <p><strong>Ngân hàng:</strong> MB Bank</p>
-                                        <p><strong>Số tài khoản:</strong> 19798998998888</p>
-                                        <p><strong>Chủ tài khoản:</strong> Nguyen Van Thoai</p>
+                                        <p><strong>Ngân hàng:</strong> Vietcombank</p>
+                                        <p><strong>Số tài khoản:</strong> 1234567890</p>
+                                        <p><strong>Chủ tài khoản:</strong> Hiệu bánh Tùng Anh</p>
                                         <p><strong>Nội dung:</strong> <span id="order-code">TUNGANH_[Số điện thoại]</span></p>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="mb-4 p-4 bg-white rounded-md border border-gray-200">
-                                <p><strong>Thời gian giao hàng dự kiến:</strong> Nhận hàng trong ngày ở huyện Tiên Lãng</p>
+                                <p><strong>Thời gian giao hàng dự kiến:</strong> 1-2 ngày trong nội thành, 2-3 ngày ngoại thành</p>
                             </div>
+                            
+                            <!-- Hidden inputs for order data -->
+                            <input type="hidden" id="order" value="">
+                            <input type="hidden" id="combo" value="">
+                            <input type="hidden" id="orderDetail" value="">
+                            <input type="hidden" id="total" value="">
                             
                             <button type="submit" class="bg-primary hover:bg-accent text-white font-bold py-3 px-6 rounded-full w-full transition-all duration-300">
                                 Đặt hàng ngay
@@ -676,7 +682,7 @@
                     <div class="flex items-center mb-4">
                         <span class="text-xl font-serif font-bold">Hiệu bánh Tùng Anh</span>
                     </div>
-                    <p class="mb-4">Hiệu bánh trung thu Tùng Anh - Nơi kết nối truyền thống và hiện đại, mang đến những chiếc bánh trung thu thơm ngon, chất lượng cho mọi gia đình.</p>
+                    <p class="mb-4">Bánh Trung thu gia truyền, kết nối kỷ niệm, gìn giữ hương vị truyền thống.</p>
                 </div>
                 <div>
                     <h3 class="text-lg font-serif font-semibold mb-4">Liên hệ</h3>
@@ -685,20 +691,20 @@
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
                             </svg>
-                            <span>Hiệu bánh Tùng Anh, An Thạch, Tân Minh, Tiên Lãng, Hải Phòng</span>
+                            <span>123 Đường Trung Thu, Quận Hoàn Kiếm, Hà Nội</span>
                         </li>
                         <li class="flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                             </svg>
-                            <span>Hotline: 0906016903</span>
+                            <span>Hotline: 0987 654 321</span>
                         </li>
                         <li class="flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                             </svg>
-                            <span>Email: moitao1239@gmail.com</span>
+                            <span>Email: info@hieubanhtunganh.com</span>
                         </li>
                     </ul>
                 </div>
@@ -1020,6 +1026,10 @@
             const cartItemsElement = document.getElementById('cart-items');
             const cartItemsListElement = document.getElementById('cart-items-list');
             const cartTotalElement = document.getElementById('cart-total');
+            const orderInput = document.getElementById('order');
+            const comboInput = document.getElementById('combo');
+            const orderDetailInput = document.getElementById('orderDetail');
+            const totalInput = document.getElementById('total');
             
             if (cart.length > 0) {
                 // Show cart items
@@ -1029,6 +1039,9 @@
                 // Update list
                 let listHTML = '';
                 let totalPrice = 0;
+                let orderSummary = '';
+                let comboSummary = '';
+                let orderDetailSummary = '';
                 
                 cart.forEach((item, index) => {
                     listHTML += `
@@ -1048,14 +1061,44 @@
                         </div>
                     `;
                     totalPrice += item.price;
+                    
+                    // Add to order summary
+                    orderSummary += `${item.type} (${item.cakes.map(cake => cake.name).join(', ')})`;
+                    if (index < cart.length - 1) {
+                        orderSummary += '; ';
+                    }
+                    
+                    // Add to combo summary
+                    comboSummary += `${item.type}`;
+                    if (index < cart.length - 1) {
+                        comboSummary += ', ';
+                    }
+                    
+                    // Add to order detail summary
+                    orderDetailSummary += `${item.cakes.map(cake => cake.name).join(', ')}`;
+                    if (index < cart.length - 1) {
+                        orderDetailSummary += '; ';
+                    }
                 });
                 
                 cartItemsListElement.innerHTML = listHTML;
                 cartTotalElement.textContent = `${totalPrice.toLocaleString()}đ`;
+                
+                // Update hidden inputs
+                orderInput.value = orderSummary;
+                comboInput.value = comboSummary;
+                orderDetailInput.value = orderDetailSummary;
+                totalInput.value = totalPrice.toString();
             } else {
                 // Show empty cart
                 cartEmptyElement.classList.remove('hidden');
                 cartItemsElement.classList.add('hidden');
+                
+                // Clear hidden inputs
+                orderInput.value = '';
+                comboInput.value = '';
+                orderDetailInput.value = '';
+                totalInput.value = '';
             }
         }
 
@@ -1074,13 +1117,39 @@
         });
 
         // Order form submission
-        document.getElementById('order-form').addEventListener('submit', function(e) {
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             if (cart.length === 0) {
                 alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi đặt hàng.');
                 return;
             }
+            
+            // Get form data
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const note = document.getElementById('note').value.trim();
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+            const order = document.getElementById('order').value;
+            const combo = document.getElementById('combo').value;
+            const orderDetail = document.getElementById('orderDetail').value;
+            const total = document.getElementById('total').value;
+            
+            // Create data object
+            const data = {
+                name,
+                phone,
+                address,
+                note,
+                payment,
+                order,
+                combo,
+                orderDetail,
+                total
+            };
+            
+            console.log('Order data:', data);
             
             // Show success modal
             document.getElementById('order-success-modal').classList.remove('hidden');
@@ -1114,6 +1183,50 @@
             const phone = this.value.trim();
             document.getElementById('order-code').textContent = phone ? `TUNGANH_${phone}` : 'TUNGANH_[Số điện thoại]';
         });
+
+        // gửi đơn về google sheet
+        document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('orderForm');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Đảm bảo combo, orderDetail, total đã được cập nhật trước đó
+    const name = document.querySelector('#name').value.trim();
+    const phone = document.querySelector('#phone').value.trim();
+    const address = document.querySelector('#address').value.trim();
+    const note = document.querySelector('#note').value.trim();
+    const payment = document.querySelector('input[name="payment"]:checked')?.value || '';
+    const combo = document.querySelector('#combo').value.trim();
+    const orderDetail = document.querySelector('#orderDetail').value.trim();
+    const total = document.querySelector('#total').value.trim();
+
+    try {
+      const res = await fetch('https://script.google.com/macros/s/AKfycbzwp5Z7VppCf3UqWtn-_2xPPg6GZ_UVAOSBY4I3ufVc-_cNLZYJrTqoa2WCW747MGE/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, phone, address, note, payment,
+          combo, orderDetail, total
+        })
+      });
+
+      const text = await res.text();
+      console.log('Phản hồi từ server:', text);
+
+      if (text.includes('Success')) {
+        alert('Đặt hàng thành công!');
+        form.reset();
+        // Reset combo/order nếu muốn
+      } else {
+        alert('Có lỗi xảy ra, vui lòng thử lại.');
+      }
+    } catch (error) {
+      console.error('Lỗi khi gửi đơn:', error);
+      alert('Không thể gửi đơn hàng. Kiểm tra kết nối mạng hoặc thử lại sau.');
+    }
+  });
+});
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9653b55c50291fc2',t:'MTc1MzUzMDkzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9654823492f0cf4c',t:'MTc1MzUzOTMyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
