@@ -1185,31 +1185,51 @@
         });
 
         // gửi đơn về google sheet
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwCLDSjlJcwa_ExSBdVGzchGjdsX4y1JU2E3J3aSaiOsw_Qxtu1L5TvxPFU0sUVxkU/exec';
+        const form = document.getElementById("orderForm");
 
-const formData = new FormData();
-formData.append('name', document.getElementById('name').value);
-formData.append('phone', document.getElementById('phone').value);
-formData.append('address', document.getElementById('address').value);
-formData.append('combo', document.getElementById('combo').value);
-formData.append('orderDetail', document.getElementById('orderDetail').value);
-formData.append('note', document.getElementById('note').value);
-formData.append('payment', document.getElementById('payment').value);
-formData.append('total', document.getElementById('total').value);
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-fetch(scriptURL, {
-  method: 'POST',
-  mode: 'no-cors', // Bắt buộc dùng 'no-cors' với Google Apps Script nếu không bật đúng header trong doPost
-  body: formData
-})
-.then(() => {
-  alert("Gửi đơn hàng thành công!");
-})
-.catch(error => {
-  console.error("Lỗi khi gửi đơn:", error);
-  alert("Đã xảy ra lỗi. Vui lòng thử lại.");
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+  const combo = document.getElementById("combo").value;
+  const orderDetail = document.getElementById("orderDetail").value;
+  const note = document.getElementById("note").value;
+  const payment = document.querySelector('input[name="payment"]:checked')?.value || "";
+  const total = document.getElementById("total").value;
+
+  const data = new URLSearchParams();
+  data.append("name", name);
+  data.append("phone", phone);
+  data.append("address", address);
+  data.append("combo", combo);
+  data.append("orderDetail", orderDetail);
+  data.append("note", note);
+  data.append("payment", payment);
+  data.append("total", total);
+
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbwCLDSjlJcwa_ExSBdVGzchGjdsX4y1JU2E3J3aSaiOsw_Qxtu1L5TvxPFU0sUVxkU/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: data.toString()
+    });
+
+    const result = await res.json();
+
+    if (result.status === "success") {
+      alert("Gửi đơn hàng thành công!");
+    } else {
+      alert("Gửi thất bại.");
+    }
+  } catch (err) {
+    alert("Lỗi gửi đơn hàng.");
+    console.error(err);
+  }
 });
-
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9654823492f0cf4c',t:'MTc1MzUzOTMyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
