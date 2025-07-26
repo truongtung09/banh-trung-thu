@@ -1211,24 +1211,27 @@ form.addEventListener("submit", async (e) => {
 
   try {
     const res = await fetch("https://script.google.com/macros/s/AKfycbzi5OilweJwH--OUmiTlz6royOJv17thfOS1717TKLgg2XsXNoP-EgLo8bZd0U_k4M/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: data.toString()
-    });
-
-    const resultText = await res.text();
-
-    if (resultText.trim().toLowerCase() === "success") {
-      alert("Gửi đơn hàng thành công!");
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify(orderData),
+})
+.then((response) => {
+    if (!response.ok) throw new Error("HTTP error " + response.status);
+    return response.json(); // Lỗi nếu không phải JSON
+})
+.then((result) => {
+    console.log("Server response:", result);
+    if (result.status === "success") {
+        alert("Gửi đơn thành công!");
     } else {
-      alert("Gửi thất bại.");
+        alert("Lỗi khi gửi đơn: " + result.message);
     }
-  } catch (err) {
-    alert("Lỗi gửi đơn hàng.");
-    console.error(err);
-  }
+})
+.catch((error) => {
+    console.error("Gửi đơn thất bại:", error);
+    alert("Đã xảy ra lỗi khi gửi đơn.");
 });
 
     </script>
