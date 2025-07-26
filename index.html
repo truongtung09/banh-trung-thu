@@ -1185,50 +1185,31 @@
         });
 
         // gửi đơn về google sheet
-        document.getElementById("orderForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwCLDSjlJcwa_ExSBdVGzchGjdsX4y1JU2E3J3aSaiOsw_Qxtu1L5TvxPFU0sUVxkU/exec';
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const note = document.getElementById("note").value.trim();
-  const payment = document.querySelector('input[name="payment"]:checked')?.value || "";
-  const combo = document.getElementById("combo").value.trim();
-  const orderDetail = document.getElementById("orderDetail").value.trim();
-  const total = document.getElementById("total").value.trim();
+const formData = new FormData();
+formData.append('name', document.getElementById('name').value);
+formData.append('phone', document.getElementById('phone').value);
+formData.append('address', document.getElementById('address').value);
+formData.append('combo', document.getElementById('combo').value);
+formData.append('orderDetail', document.getElementById('orderDetail').value);
+formData.append('note', document.getElementById('note').value);
+formData.append('payment', document.getElementById('payment').value);
+formData.append('total', document.getElementById('total').value);
 
-  const data = {
-    name,
-    phone,
-    address,
-    note,
-    payment,
-    combo,
-    orderDetail,
-    total
-  };
-
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbwCLDSjlJcwa_ExSBdVGzchGjdsX4y1JU2E3J3aSaiOsw_Qxtu1L5TvxPFU0sUVxkU/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data),
-    });
-
-    const text = await response.text();
-    if (text === "Success") {
-      alert("Đặt hàng thành công! Chúng tôi sẽ liên hệ sớm.");
-      document.getElementById("orderForm").reset();
-    } else {
-      alert("Lỗi: " + text);
-    }
-  } catch (error) {
-    console.error("Gửi đơn thất bại:", error);
-    alert("Không thể gửi đơn. Vui lòng thử lại sau.");
-  }
+fetch(scriptURL, {
+  method: 'POST',
+  mode: 'no-cors', // Bắt buộc dùng 'no-cors' với Google Apps Script nếu không bật đúng header trong doPost
+  body: formData
+})
+.then(() => {
+  alert("Gửi đơn hàng thành công!");
+})
+.catch(error => {
+  console.error("Lỗi khi gửi đơn:", error);
+  alert("Đã xảy ra lỗi. Vui lòng thử lại.");
 });
+
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9654823492f0cf4c',t:'MTc1MzUzOTMyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
