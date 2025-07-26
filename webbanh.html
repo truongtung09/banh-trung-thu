@@ -3,1447 +3,2700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiệu Bánh Tùng Anh - Bánh Trung Thu Gia Truyền</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#D94E28', // cam trầm
-                        secondary: '#C41E1E', // đỏ son
-                        accent: '#F2B035', // vàng ấm
-                        dark: '#2C1A0A',
-                        light: '#FFF8E7',
-                    },
-                    fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        sans: ['Montserrat', 'sans-serif'],
-                    },
-                }
-            }
+    <title>Hiệu Bánh Trung Thu Tùng Anh - Dư vị tuổi thơ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root {
+            --primary-orange: #F9B17A;
+            --primary-orange-dark: #FFA95E;
+            --primary-yellow: #FFD369;
+            --primary-yellow-light: #FFE28A;
+            --primary-red: #A62828;
+            --primary-red-light: #C6412A;
+            --text-light: #FFFFFF;
+            --text-dark: #333333;
+            --bg-light: #FFF9F2;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
-    </script>
-    <style type="text/css">
-        body {
-            background-color: #FFF8E7;
-            font-family: 'Montserrat', sans-serif;
-            color: #2C1A0A;
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
             scroll-behavior: smooth;
         }
         
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
         h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-red);
         }
         
-        .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), 
-                        radial-gradient(circle at center, #F2B035 0%, #D94E28 70%, #C41E1E 100%);
-            background-size: cover;
-            background-position: center;
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
         }
         
-        .moon {
-            transition: all 0.5s ease;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-orange-dark);
+            color: var(--text-light);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        .moon:hover {
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8));
+        .btn:hover {
+            background-image: linear-gradient(to right, var(--primary-yellow), var(--primary-red-light));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-orange);
+            color: var(--primary-orange-dark);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-orange);
+            color: var(--text-light);
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding: 1rem 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
             transform: scale(1.05);
         }
         
-        .moon:hover .moon-glow {
-            opacity: 1;
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
         }
         
-        .moon-glow {
-            opacity: 0;
-            transition: opacity 0.5s ease;
+        .logo-text {
+            color: var(--primary-red);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-weight: 700;
         }
         
-        .cake-item {
-            transition: all 0.3s ease;
+        .logo-text span {
+            color: var(--primary-orange-dark);
         }
         
-        .cake-item:hover {
-            transform: translateY(-5px);
+        .nav-menu {
+            display: flex;
+            list-style: none;
         }
         
-        .modal {
-            transition: all 0.3s ease;
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .slide-in {
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .tooltip {
-            position: relative;
-        }
-        
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 120px;
-            background-color: #2C1A0A;
-            color: #FFF8E7;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
-        }
-        
-        .lantern {
-            animation: sway 3s infinite alternate ease-in-out;
-        }
-        
-        @keyframes sway {
-            from { transform: rotate(-3deg); }
-            to { transform: rotate(3deg); }
+        .nav-item {
+            margin-left: 2rem;
         }
         
         .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
             position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-orange-dark);
         }
         
         .nav-link::after {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 0;
             width: 0;
             height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #D94E28;
-            transition: width 0.3s;
+            background-color: var(--primary-orange-dark);
+            transition: var(--transition);
         }
         
         .nav-link:hover::after {
             width: 100%;
         }
         
-        .sticky-nav {
-            position: sticky;
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            margin-left: 2rem;
+        }
+        
+        .cart-icon i {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .cart-icon:hover i {
+            color: var(--primary-orange-dark);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary-red-light);
+            color: var(--text-light);
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-red);
+            margin: 5px 0;
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(166, 40, 40, 0.4), rgba(249, 177, 122, 0.7)),
+                url('https://via.placeholder.com/1920x1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
             top: 0;
-            z-index: 50;
-            backdrop-filter: blur(10px);
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(255, 255, 255, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-logo svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero h1 span {
+            color: var(--primary-yellow-light);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btn {
+            margin-top: 1rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--primary-red);
+            font-weight: 700;
+            padding: 15px 35px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btn:hover {
+            background-color: var(--text-light);
+            color: var(--primary-red);
+            transform: translateY(-5px) scale(1.05);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(249, 177, 122, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(166, 40, 40, 0.3), rgba(249, 177, 122, 0.3));
+            z-index: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-orange);
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Combo Products Section */
+        .combos {
+            padding: 6rem 0;
+            background-color: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .combos::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(166, 40, 40, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .combos-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .combos-header .section-title {
+            display: inline-block;
+        }
+        
+        .combos-header .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .combos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .combo-card {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .combo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .combo-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .combo-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        
+        .combo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .combo-card:hover .combo-image img {
+            transform: scale(1.05);
+        }
+        
+        .combo-badge {
+            position: absolute;
+            top: 20px;
+            right: 0;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            z-index: 2;
+            box-shadow: -2px 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .combo-info {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .combo-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-red);
+        }
+        
+        .combo-subtitle {
+            font-size: 1.2rem;
+            color: var(--primary-orange-dark);
+            margin-bottom: 1rem;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .combo-desc {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .combo-features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .combo-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .combo-feature i {
+            color: var(--primary-orange-dark);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .combo-price {
+            font-weight: 700;
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: auto;
+        }
+        
+        .combo-price span {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+        
+        .combo-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .select-flavors-btn {
+            flex: 1;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+        }
+        
+        .select-flavors-btn:hover {
+            background-color: var(--primary-yellow-light);
+            color: var(--text-dark);
+        }
+        
+        .add-to-cart-btn {
+            flex: 1;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* Flavors Section */
+        .flavors {
+            padding: 6rem 0;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flavors::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(249, 177, 122, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .flavors-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flavors-header .section-title {
+            display: inline-block;
+        }
+        
+        .flavors-header .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tab-btn {
+            padding: 1rem 2rem;
+            background-color: transparent;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            margin: 0 1rem;
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-orange);
+            transition: var(--transition);
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-red);
+        }
+        
+        .tab-btn.active::after {
+            width: 100%;
+        }
+        
+        .tab-btn:hover::after {
+            width: 100%;
+        }
+        
+        .flavors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flavor-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .flavor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .flavor-card.selected {
+            border-color: var(--primary-orange-dark);
+            background-color: rgba(249, 177, 122, 0.1);
+        }
+        
+        .flavor-image {
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .flavor-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+        
+        .flavor-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .flavor-card:hover .flavor-image img {
+            transform: scale(1.05);
+        }
+        
+        .flavor-label {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-yellow);
+            color: var(--text-dark);
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 20px;
+            z-index: 2;
+        }
+        
+        .flavor-label.bestseller {
+            background-color: var(--primary-red);
+            color: var(--text-light);
+        }
+        
+        .flavor-label.new {
+            background-color: var(--primary-orange-dark);
+            color: var(--text-light);
+        }
+        
+        .flavor-info {
+            padding: 1.2rem;
+        }
+        
+        .flavor-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-red);
+        }
+        
+        .flavor-desc {
+            font-size: 0.9rem;
+            color: #666;
+            height: 60px;
+            overflow: hidden;
+        }
+        
+        .flavor-select {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            background-color: transparent;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        
+        .flavor-card.selected .flavor-select {
+            background-color: var(--primary-orange-dark);
+            border-color: #fff;
+        }
+        
+        /* Flavor Selection Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(-50px);
+            transition: var(--transition);
+        }
+        
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 0;
+        }
+        
+        .close-modal {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        
+        .close-modal:hover {
+            color: var(--primary-red-light);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .modal-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-orange-dark);
+        }
+        
+        .selection-info {
+            background-color: rgba(249, 177, 122, 0.1);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .selection-count {
+            font-weight: 600;
+        }
+        
+        .selection-count span {
+            color: var(--primary-red);
+        }
+        
+        .modal-tab-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-tab-btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .modal-flavors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        .cancel-btn {
+            background-color: #f0f0f0;
+            color: var(--text-dark);
+        }
+        
+        .cancel-btn:hover {
+            background-color: #e0e0e0;
+            color: var(--text-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Order Form Section */
+        .order-form {
+            padding: 6rem 0;
+            background-color: var(--primary-red);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .order-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(255, 255, 255, 0.1)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .order-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .order-form .section-title {
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .order-form .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-yellow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .order-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            background-color: var(--primary-orange-dark);
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-option {
+            flex: 1;
+            background-color: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .payment-option:hover {
+            background-color: rgba(255,255,255,0.15);
+        }
+        
+        .payment-option.active {
+            background-color: rgba(255,255,255,0.2);
+            border-color: var(--primary-yellow);
+        }
+        
+        .payment-option i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-yellow);
+        }
+        
+        .payment-option-title {
+            font-weight: 600;
+        }
+        
+        .bank-transfer-info {
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        .bank-transfer-info.active {
+            display: block;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            margin: 0 auto 1.5rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .bank-info {
+            margin-bottom: 1rem;
+        }
+        
+        .bank-info-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .bank-info-value {
+            font-family: monospace;
+            font-size: 1.1rem;
+            background-color: rgba(255,255,255,0.1);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #2C1A1A;
+            color: var(--text-light);
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='wave' patternUnits='userSpaceOnUse' width='100' height='30' patternTransform='scale(2) rotate(0)'%3E%3Cpath d='M-25 9.5c0 5.5 5 10 10 10s10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10 5-10 10-10 10 4.5 10 10 5 10 10 10 10-4.5 10-10' stroke='rgba(255, 255, 255, 0.05)' stroke-width='1' fill='none'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23wave)'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-title {
+            color: var(--primary-orange);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-orange);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-orange);
+            opacity: 1;
+        }
+        
+        .contact-info {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-orange);
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-orange);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background-color: #fff;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 1001;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        
+        .cart-sidebar.active {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-title {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+        }
+        
+        .close-cart {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+        
+        .close-cart:hover {
+            color: var(--primary-red-light);
+        }
+        
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .cart-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--primary-red);
+        }
+        
+        .cart-item-price {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-flavors {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            height: 25px;
+            text-align: center;
+            margin: 0 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        .remove-item {
+            color: var(--primary-red-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: var(--transition);
+        }
+        
+        .remove-item:hover {
+            transform: scale(1.1);
+        }
+        
+        .cart-total {
+            padding: 1rem 0;
+            border-top: 2px solid #eee;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-total-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-total-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red);
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+        
+        .empty-cart p {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Selected Flavors Display */
+        .selected-flavors {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .selected-flavors.active {
+            display: block;
+        }
+        
+        .selected-flavors-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .selected-flavor-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .selected-flavor-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .selected-flavor-item i {
+            margin-left: 5px;
+            cursor: pointer;
+            color: var(--primary-yellow);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes glow {
+            0% {
+                filter: drop-shadow(0 0 5px rgba(255,211,105,0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(255,211,105,0.8));
+            }
+            100% {
+                filter: drop-shadow(0 0 5px rgba(255,211,105,0.5));
+            }
+        }
+        
+        @keyframes flash {
+            0% {
+                box-shadow: 0 0 0 0 rgba(249, 177, 122, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(249, 177, 122, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 177, 122, 0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-content {
+                flex: none;
+                width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .combos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .payment-options {
+                flex-direction: column;
+            }
+            
+            .combo-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tab-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .flavors-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .modal-flavors-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="sticky-nav bg-light/90 shadow-md">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="text-primary font-serif text-2xl font-bold">Tùng Anh</div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">TÙNG ANH</div>
             </div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#intro" class="nav-link text-dark hover:text-primary transition">Giới thiệu</a>
-                <a href="#cakes" class="nav-link text-dark hover:text-primary transition">Dòng bánh</a>
-                <a href="#combos" class="nav-link text-dark hover:text-primary transition">Combo</a>
-                <a href="#order" class="nav-link text-dark hover:text-primary transition">Đặt hàng</a>
-                <a href="#contact" class="nav-link text-dark hover:text-primary transition">Liên hệ</a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Trang chủ</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Câu chuyện</a></li>
+                    <li class="nav-item"><a href="#combos" class="nav-link">Combo bánh</a></li>
+                    <li class="nav-item"><a href="#flavors" class="nav-link">Khám phá vị bánh</a></li>
+                    <li class="nav-item"><a href="#order" class="nav-link">Đặt hàng</a></li>
+                </ul>
+            </nav>
+            
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
             </div>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-dark focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-light/95 p-4 absolute w-full">
-            <div class="flex flex-col space-y-3">
-                <a href="#intro" class="text-dark hover:text-primary transition py-2">Giới thiệu</a>
-                <a href="#cakes" class="text-dark hover:text-primary transition py-2">Dòng bánh</a>
-                <a href="#combos" class="text-dark hover:text-primary transition py-2">Combo</a>
-                <a href="#order" class="text-dark hover:text-primary transition py-2">Đặt hàng</a>
-                <a href="#contact" class="text-dark hover:text-primary transition py-2">Liên hệ</a>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </nav>
-
+    </header>
+    
     <!-- Hero Section -->
-    <section class="hero-bg min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-dark/30"></div>
-        
-        <!-- Moon SVG -->
-        <div class="moon absolute top-20 right-20 md:right-40 cursor-pointer">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="60" cy="60" r="55" fill="#F9F3D7" />
-                <circle class="moon-glow" cx="60" cy="60" r="65" fill="url(#moon-glow)" />
-                <path d="M45 45 Q60 35, 75 45 Q85 55, 75 75 Q60 85, 45 75 Q35 65, 45 45" fill="#E8DDB5" />
-                <defs>
-                    <radialGradient id="moon-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 60) rotate(90) scale(70)">
-                        <stop stop-color="white" stop-opacity="0.7" />
-                        <stop offset="1" stop-color="white" stop-opacity="0" />
-                    </radialGradient>
-                </defs>
-            </svg>
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-logo" data-aos="fade-down" data-aos-delay="100">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="animation: float 6s ease-in-out infinite, glow 3s ease-in-out infinite;">
+                    <circle cx="50" cy="50" r="45" fill="#FFD369" opacity="0.9"/>
+                    <path d="M50 10 L55 30 L75 30 L60 45 L65 65 L50 55 L35 65 L40 45 L25 30 L45 30 Z" fill="#FFF" opacity="0.9"/>
+                    <circle cx="50" cy="50" r="15" fill="#FFF" opacity="0.7"/>
+                    <path d="M30 30 Q50 10 70 30 Q90 50 70 70 Q50 90 30 70 Q10 50 30 30" fill="none" stroke="#FFF" stroke-width="2" opacity="0.5"/>
+                </svg>
+            </div>
+            <h1 data-aos="fade-up" data-aos-delay="200">Bánh Trung Thu <span>Tùng Anh</span></h1>
+            <p data-aos="fade-up" data-aos-delay="300">Kết hợp giữa hương vị truyền thống và sự sáng tạo hiện đại, bánh trung thu Tùng Anh mang đến trải nghiệm ẩm thực độc đáo cho mùa trăng tròn</p>
+            <a href="#combos" class="btn hero-btn" data-aos="fade-up" data-aos-delay="400">Khám phá ngay</a>
         </div>
-        
-        <!-- Lantern SVG -->
-        <div class="lantern absolute top-40 left-20 hidden md:block">
-            <svg width="60" height="100" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M30 10 L35 20 L35 70 L25 70 L25 20 L30 10Z" fill="#D94E28" />
-                <path d="M25 20 L35 20 L40 30 L40 60 L20 60 L20 30 L25 20Z" fill="#F2B035" />
-                <path d="M30 0 L30 10" stroke="#C41E1E" stroke-width="2" />
-                <path d="M25 70 L35 70 L32 80 L28 80 L25 70Z" fill="#C41E1E" />
-                <path d="M28 80 L32 80 L32 90 L28 90 L28 80Z" fill="#D94E28" />
-                <path d="M25 30 L35 30" stroke="#C41E1E" stroke-width="1" />
-                <path d="M25 40 L35 40" stroke="#C41E1E" stroke-width="1" />
-                <path d="M25 50 L35 50" stroke="#C41E1E" stroke-width="1" />
-            </svg>
-        </div>
-        
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <div class="bg-dark/40 backdrop-blur-sm p-8 rounded-lg inline-block">
-                <h1 class="text-4xl md:text-6xl font-serif font-bold text-light mb-4">Hiệu Bánh Tùng Anh</h1>
-                <p class="text-xl text-light/90 mb-8">Hương vị truyền thống, ký ức tuổi thơ</p>
-                <a href="#cakes" class="bg-primary hover:bg-primary/90 text-light font-medium py-3 px-8 rounded-full transition transform hover:scale-105 inline-block">
-                    Khám phá bánh ngay
-                </a>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-image" data-aos="fade-right">
+                <img src="https://via.placeholder.com/600x400" alt="Câu chuyện Tùng Anh">
+            </div>
+            <div class="about-content" data-aos="fade-left">
+                <h2 class="section-title">Câu Chuyện Thương Hiệu</h2>
+                <p>Hiệu bánh Tùng Anh được khởi đầu từ một căn bếp nhỏ giữa mùa trăng năm 2020 – khi hai anh em chúng tôi quyết định làm những chiếc bánh đầu tiên để phụ giúp bố mẹ trong giai đoạn khó khăn. Không xuất thân từ làng nghề, cũng chẳng có truyền thống lâu đời, nhưng từng chiếc bánh từ Tùng Anh mang theo khát vọng rõ ràng: không đi theo lối mòn, mà phải tạo ra điều khác biệt.</p>
+                <p>Chúng tôi không nhân danh truyền thống để rập khuôn. Mỗi mùa trăng, Tùng Anh ra mắt những dòng bánh mới – với hơn 8 hương vị cách tân chưa từng xuất hiện ở huyện. Từng loại bánh gồm 5 vị riêng biệt, được làm thủ công và giữ tinh thần "truyền thống phá cách": vỏ bánh vẫn là ký ức tuổi thơ, nhưng nhân bên trong có thể là một trải nghiệm hoàn toàn mới.</p>
+                <p>Chúng tôi không làm bánh đại trà. Chúng tôi làm cho những người biết thưởng – những ai trân trọng ký ức nhưng cũng tò mò với cái mới. Tùng Anh không tham vọng trường kỳ, nhưng trong mỗi mùa trăng mà chúng tôi xuất hiện, mục tiêu chỉ có một: dẫn đầu thị trường, bằng chất lượng, sự khác biệt và tinh thần dám làm tới cùng.</p>
             </div>
         </div>
     </section>
-
-    <!-- Brand Story -->
-    <section id="intro" class="py-16 bg-light">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2 fade-in">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary mb-6">Câu chuyện Tùng Anh</h2>
-                    <p class="text-dark/80 mb-4">Hiệu bánh gia truyền Tùng Anh được thành lập từ năm 1995, với hơn 25 năm gìn giữ và phát triển những công thức bánh trung thu truyền thống.</p>
-                    <p class="text-dark/80 mb-4">Mỗi chiếc bánh đều được làm thủ công, tỉ mỉ từ những nguyên liệu tự nhiên, không chất bảo quản, mang đến hương vị thuần khiết như chính những ký ức tuổi thơ của bao thế hệ.</p>
-                    <p class="text-dark/80">Ngày nay, chúng tôi vẫn giữ nguyên tinh hoa của bánh truyền thống, đồng thời sáng tạo những hương vị mới để đáp ứng thị hiếu hiện đại, nhưng vẫn đảm bảo giữ trọn vẹn linh hồn của bánh trung thu gia truyền.</p>
-                </div>
-                <div class="md:w-1/2 slide-in">
-                    <!-- Illustration of mooncake making process -->
-                    <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-                        <rect x="50" y="50" width="300" height="200" rx="10" fill="#FFF0D9" />
-                        
-                        <!-- Baker -->
-                        <circle cx="120" cy="120" r="25" fill="#F2D7B5" /> <!-- Head -->
-                        <path d="M120 145 L120 200" stroke="#D94E28" stroke-width="4" /> <!-- Body -->
-                        <path d="M120 160 L90 190" stroke="#D94E28" stroke-width="4" /> <!-- Left arm -->
-                        <path d="M120 160 L150 180" stroke="#D94E28" stroke-width="4" /> <!-- Right arm -->
-                        <path d="M120 200 L100 240" stroke="#D94E28" stroke-width="4" /> <!-- Left leg -->
-                        <path d="M120 200 L140 240" stroke="#D94E28" stroke-width="4" /> <!-- Right leg -->
-                        
-                        <!-- Table with mooncakes -->
-                        <rect x="180" y="170" width="150" height="10" fill="#C49A6C" /> <!-- Table top -->
-                        <rect x="190" y="180" width="10" height="60" fill="#C49A6C" /> <!-- Table leg 1 -->
-                        <rect x="310" y="180" width="10" height="60" fill="#C49A6C" /> <!-- Table leg 2 -->
-                        
-                        <!-- Mooncakes -->
-                        <circle cx="210" cy="150" r="15" fill="#D94E28" />
-                        <circle cx="250" cy="150" r="15" fill="#F2B035" />
-                        <circle cx="290" cy="150" r="15" fill="#C41E1E" />
-                        
-                        <!-- Patterns on mooncakes -->
-                        <path d="M210 145 L210 155" stroke="#FFF0D9" stroke-width="2" />
-                        <path d="M205 150 L215 150" stroke="#FFF0D9" stroke-width="2" />
-                        <path d="M250 145 L250 155" stroke="#FFF0D9" stroke-width="2" />
-                        <path d="M245 150 L255 150" stroke="#FFF0D9" stroke-width="2" />
-                        <path d="M290 145 L290 155" stroke="#FFF0D9" stroke-width="2" />
-                        <path d="M285 150 L295 150" stroke="#FFF0D9" stroke-width="2" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cake Categories -->
-    <section id="cakes" class="py-16 bg-gradient-to-b from-light to-light/70">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary text-center mb-12">Dòng Bánh Trung Thu</h2>
-            
-            Traditional Cakes
-            <div class="mb-16">
-                <h3 class="text-2xl font-serif font-bold text-secondary mb-8 text-center">Bánh Truyền Thống</h3>
-                <p class="text-dark/80 text-center max-w-2xl mx-auto mb-8">Giữ nguyên hương vị thuần Việt qua bao thế hệ, những chiếc bánh truyền thống của Tùng Anh là sự kết hợp hoàn hảo giữa vỏ bánh giòn tan và nhân bánh đậm đà.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('traditional', 'sen')">
-                        <div class="h-40 bg-accent flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#D94E28" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 L55 50 M50 45 L50 55" stroke="#D94E28" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Nhân Sen</h4>
-                            <p class="text-dark/70 text-sm">Vị ngọt thanh tao từ hạt sen</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('traditional', 'dau')">
-                        <div class="h-40 bg-accent flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#C41E1E" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 45 L55 55 M45 55 L55 45" stroke="#C41E1E" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Nhân Đậu Đỏ</h4>
-                            <p class="text-dark/70 text-sm">Vị ngọt dịu từ đậu đỏ hảo hạng</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('traditional', 'thap')">
-                        <div class="h-40 bg-accent flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#F2B035" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 L55 50" stroke="#F2B035" stroke-width="1.5" />
-                                <path d="M50 45 L50 55" stroke="#F2B035" stroke-width="1.5" />
-                                <path d="M47 47 L53 53" stroke="#F2B035" stroke-width="1.5" />
-                                <path d="M47 53 L53 47" stroke="#F2B035" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Nhân Thập Cẩm</h4>
-                            <p class="text-dark/70 text-sm">Hòa quyện nhiều hương vị truyền thống</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('traditional', 'dua')">
-                        <div class="h-40 bg-accent flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#8B5A2B" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 C45 45, 55 45, 55 50 C55 55, 45 55, 45 50" stroke="#8B5A2B" stroke-width="1.5" fill="none" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Nhân Dừa</h4>
-                            <p class="text-dark/70 text-sm">Vị béo ngậy từ cơm dừa tươi</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('traditional', 'dau-xanh')">
-                        <div class="h-40 bg-accent flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#4F7942" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 L55 50" stroke="#4F7942" stroke-width="1.5" />
-                                <path d="M47 47 L53 53" stroke="#4F7942" stroke-width="1.5" />
-                                <path d="M47 53 L53 47" stroke="#4F7942" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Nhân Đậu Xanh</h4>
-                            <p class="text-dark/70 text-sm">Vị thanh nhẹ từ đậu xanh</p>
-                        </div>
-                    </div>
-                </div>
+    
+    <!-- Combo Products Section -->
+    <section class="combos" id="combos">
+        <div class="container">
+            <div class="combos-header">
+                <h2 class="section-title" data-aos="fade-up">Combo Quà Tặng</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Lựa chọn hoàn hảo cho mùa trung thu, gói trọn tình cảm trong những hộp quà tinh tế</p>
             </div>
             
-            <!-- Modern Cakes -->
-            <div>
-                <h3 class="text-2xl font-serif font-bold text-secondary mb-8 text-center">Bánh Cách Tân</h3>
-                <p class="text-dark/80 text-center max-w-2xl mx-auto mb-8">Sự sáng tạo độc đáo kết hợp giữa hương vị truyền thống và xu hướng hiện đại, mang đến trải nghiệm mới mẻ nhưng vẫn giữ được nét đặc trưng của bánh trung thu.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('modern', 'matcha')">
-                        <div class="h-40 bg-primary/20 flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#4CAF50" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 L55 50 M50 45 L50 55" stroke="#4CAF50" stroke-width="1.5" />
-                                <path d="M45 45 L55 55" stroke="#4CAF50" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Matcha Đậu Đỏ</h4>
-                            <p class="text-dark/70 text-sm">Hương vị Nhật Bản tinh tế</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('modern', 'tieu')">
-                        <div class="h-40 bg-primary/20 flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#8D6E63" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 L55 50" stroke="#8D6E63" stroke-width="1.5" />
-                                <path d="M47 47 L53 53" stroke="#8D6E63" stroke-width="1.5" />
-                                <path d="M47 53 L53 47" stroke="#8D6E63" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Tiêu Đen Hạt Dẻ</h4>
-                            <p class="text-dark/70 text-sm">Vị đậm đà với hậu vị tiêu nhẹ</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('modern', 'tra')">
-                        <div class="h-40 bg-primary/20 flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#FF9800" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 C45 45, 55 45, 55 50 C55 55, 45 55, 45 50" stroke="#FF9800" stroke-width="1.5" fill="none" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Trà Ô Long</h4>
-                            <p class="text-dark/70 text-sm">Hương trà thơm tinh tế</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('modern', 'sua')">
-                        <div class="h-40 bg-primary/20 flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#9C27B0" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 50 L55 50" stroke="#9C27B0" stroke-width="1.5" />
-                                <path d="M50 45 L50 55" stroke="#9C27B0" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Sữa Dừa Khoai Môn</h4>
-                            <p class="text-dark/70 text-sm">Vị béo ngậy, màu tím hấp dẫn</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cake-item bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="showCakeModal('modern', 'hat')">
-                        <div class="h-40 bg-primary/20 flex items-center justify-center">
-                            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="50" cy="50" r="40" fill="#795548" />
-                                <path d="M30 50 L70 50 M50 30 L50 70" stroke="#FFF0D9" stroke-width="3" />
-                                <circle cx="50" cy="50" r="15" fill="#FFF0D9" />
-                                <path d="M45 45 L55 55" stroke="#795548" stroke-width="1.5" />
-                                <path d="M45 55 L55 45" stroke="#795548" stroke-width="1.5" />
-                            </svg>
-                        </div>
-                        <div class="p-4">
-                            <h4 class="font-serif font-bold text-dark">Hạt Dẻ Socola</h4>
-                            <p class="text-dark/70 text-sm">Vị ngọt đắng quyến rũ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Combo Section -->
-    <section id="combos" class="py-16 bg-gradient-to-b from-light/70 to-light">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary text-center mb-12">Combo Bánh Trung Thu</h2>
-            <p class="text-dark/80 text-center max-w-2xl mx-auto mb-8">Tự do lựa chọn các vị bánh yêu thích của bạn trong các combo hấp dẫn dưới đây.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="combos-grid">
                 <!-- Combo 2 bánh -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="bg-primary p-4 text-light">
-                        <h3 class="font-serif font-bold text-xl text-center">Combo 2 Bánh</h3>
+                <div class="combo-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="combo-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Combo 2 bánh - Thử là mê">
+                        <div class="combo-badge">Bán chạy</div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-dark/80 mb-4 text-center">Chọn 2 vị bánh yêu thích</p>
-                        
-                        <div class="combo-selection mb-6" data-combo="2" data-max="2">
-                            <div class="grid grid-cols-2 gap-4 mb-4">
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="sen" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Sen</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dau" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Đậu Đỏ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="thap" data-price="85000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Thập Cẩm</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dua" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Dừa</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dau-xanh" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Đậu Xanh</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="matcha" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Matcha Đậu Đỏ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="tieu" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Tiêu Đen Hạt Dẻ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="tra" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Trà Ô Long</span>
-                                    </div>
-                                </div>
+                    <div class="combo-info">
+                        <h3 class="combo-title">Combo 2 bánh</h3>
+                        <div class="combo-subtitle">"Thử là mê"</div>
+                        <p class="combo-desc">Combo nhỏ gọn, tiện lợi với 2 bánh trung thu thơm ngon, là lựa chọn hoàn hảo để thưởng thức hoặc làm quà tặng nhỏ xinh.</p>
+                        <div class="combo-features">
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Chọn 2 vị bánh bất kỳ</div>
                             </div>
-                            
-                            <div class="selected-items mb-4">
-                                <p class="text-sm text-dark/70 mb-2">Bánh đã chọn:</p>
-                                <div class="selected-list flex flex-wrap gap-2">
-                                    <span class="text-dark/50 text-sm italic">Chưa chọn bánh nào</span>
-                                </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Hộp giấy đơn giản, tag gọn</div>
                             </div>
-                            
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-sm text-dark/70">Tổng tiền:</p>
-                                    <p class="font-bold text-primary combo-price">0 VNĐ</p>
-                                </div>
-                                <button class="add-to-cart bg-primary text-light py-2 px-4 rounded-lg hover:bg-primary/90 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                                    Thêm vào giỏ
-                                </button>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Giao hàng tận nơi</div>
                             </div>
+                        </div>
+                        <div class="combo-price">75.000đ <span>90.000đ</span></div>
+                        <div class="combo-actions">
+                            <button class="btn select-flavors-btn" data-combo="combo2" data-limit="2" data-price="75000">
+                                <i class="fas fa-list-ul"></i> Chọn vị bánh
+                            </button>
+                            <button class="btn add-to-cart-btn" data-combo="combo2" data-name="Combo 2 bánh - Thử là mê" data-price="75000" data-image="https://via.placeholder.com/600x400" disabled>
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Combo 4 bánh -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="bg-secondary p-4 text-light">
-                        <h3 class="font-serif font-bold text-xl text-center">Combo 4 Bánh</h3>
+                <div class="combo-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="combo-image">
+                        <img src="https://via.placeholder.com/600x400" alt="Combo 4 bánh - Tặng là sang">
+                        <div class="combo-badge">Cao cấp</div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-dark/80 mb-4 text-center">Chọn 4 vị bánh yêu thích</p>
-                        
-                        <div class="combo-selection mb-6" data-combo="4" data-max="4">
-                            <div class="grid grid-cols-2 gap-4 mb-4">
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="sen" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Sen</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dau" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Đậu Đỏ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="thap" data-price="85000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Thập Cẩm</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dua" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Dừa</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dau-xanh" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Đậu Xanh</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="matcha" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Matcha Đậu Đỏ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="tieu" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Tiêu Đen Hạt Dẻ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="tra" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Trà Ô Long</span>
-                                    </div>
-                                </div>
+                    <div class="combo-info">
+                        <h3 class="combo-title">Combo 4 bánh</h3>
+                        <div class="combo-subtitle">"Tặng là sang"</div>
+                        <p class="combo-desc">Hộp quà sang trọng với 4 bánh trung thu đa dạng hương vị, là món quà ý nghĩa dành tặng người thân, đối tác trong dịp trung thu.</p>
+                        <div class="combo-features">
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Chọn 4 vị bánh yêu thích</div>
                             </div>
-                            
-                            <div class="selected-items mb-4">
-                                <p class="text-sm text-dark/70 mb-2">Bánh đã chọn:</p>
-                                <div class="selected-list flex flex-wrap gap-2">
-                                    <span class="text-dark/50 text-sm italic">Chưa chọn bánh nào</span>
-                                </div>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Hộp sang trọng, tag đẹp, túi xách</div>
                             </div>
-                            
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-sm text-dark/70">Tổng tiền:</p>
-                                    <p class="font-bold text-primary combo-price">0 VNĐ</p>
-                                </div>
-                                <button class="add-to-cart bg-primary text-light py-2 px-4 rounded-lg hover:bg-primary/90 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                                    Thêm vào giỏ
-                                </button>
+                            <div class="combo-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <div>Giao hàng tận nơi</div>
                             </div>
+                        </div>
+                        <div class="combo-price">160.000đ <span>200.000đ</span></div>
+                        <div class="combo-actions">
+                            <button class="btn select-flavors-btn" data-combo="combo4" data-limit="4" data-price="160000">
+                                <i class="fas fa-list-ul"></i> Chọn vị bánh
+                            </button>
+                            <button class="btn add-to-cart-btn" data-combo="combo4" data-name="Combo 4 bánh - Tặng là sang" data-price="160000" data-image="https://via.placeholder.com/600x400" disabled>
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Flavors Section -->
+    <section class="flavors" id="flavors">
+        <div class="container">
+            <div class="flavors-header">
+                <h2 class="section-title" data-aos="fade-up">Khám Phá Vị Bánh</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Đa dạng hương vị từ truyền thống đến hiện đại, đáp ứng mọi khẩu vị</p>
+            </div>
+            
+            <div class="tab-container" data-aos="fade-up" data-aos-delay="200">
+                <button class="tab-btn active" data-tab="traditional">Vị Truyền Thống</button>
+                <button class="tab-btn" data-tab="modern">Vị Cách Tân</button>
+            </div>
+            
+            <div class="tab-content" id="traditional" data-aos="fade-up" data-aos-delay="300">
+                <div class="flavors-grid">
+                    <!-- Nướng Thập Cẩm -->
+                    <div class="flavor-card" data-flavor="thap-cam" data-name="Thập Cẩm">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label bestseller">Best-seller</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Nướng Thập Cẩm</h3>
+                            <p class="flavor-desc">Đậm đà truyền thống, nhân đầy sắc vị, hài hòa vị mặn ngọt tinh tế.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Đậu Xanh -->
+                    <div class="flavor-card" data-flavor="dau-xanh" data-name="Đậu Xanh">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Trà xanh</h3>
+                            <p class="flavor-desc">Thơm dịu vị trà, hậu ngọt thanh, lớp vỏ mềm mịn tan nơi đầu lưỡi.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Hạt Sen -->
+                    <div class="flavor-card" data-flavor="hat-sen" data-name="Hạt Sen">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label">Signature</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Khoai môn</h3>
+                            <p class="flavor-desc">Béo bùi khoai môn hòa quyện sữa nhẹ, mềm dẻo, dịu dàng mà cuốn hút.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Đậu Đỏ -->
+                    <div class="flavor-card" data-flavor="dau-do" data-name="Đậu Đỏ">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Dẻo thập cẩm</h3>
+                            <p class="flavor-desc">Lớp vỏ mịn mát, nhân mặn ngọt đậm đà, đậm chất thu xưa.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Mè Đen -->
+                    <div class="flavor-card" data-flavor="me-den" data-name="Mè Đen">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Sữa dừa</h3>
+                            <p class="flavor-desc">Vị ngọt thanh, thơm ngậy, tan chảy nơi đầu lưỡi như nụ cười tháng Tám.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="modern" style="display: none;" data-aos="fade-up" data-aos-delay="300">
+                <div class="flavors-grid">
+                    <!-- Vị Lava Trứng Muối -->
+                    <div class="flavor-card" data-flavor="lava-trung-muoi" data-name="Lava Trứng Muối">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label bestseller">Best-seller</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Mochi trà xanh</h3>
+                            <p class="flavor-desc">Vỏ dẻo mịn lạnh, nhân trà xanh mát lành, nhẹ nhàng mà gây nghiện.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Phô Mai Trà Xanh -->
+                    <div class="flavor-card" data-flavor="pho-mai-tra-xanh" data-name="Phô Mai Trà Xanh">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label new">Mới</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Mochi bò cay</h3>
+                            <p class="flavor-desc">Bất ngờ vị cay nồng quyện lớp mochi mềm lạnh, thỏa cơn mê mới lạ.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Socola Hạnh Nhân -->
+                    <div class="flavor-card" data-flavor="socola-hanh-nhan" data-name="Socola Hạnh Nhân">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Bò cay trứng muối</h3>
+                            <p class="flavor-desc">Đậm vị bò cay, béo mặn trứng muối, nổ tung trong từng lớp bánh.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Dừa Lá Dứa -->
+                    <div class="flavor-card" data-flavor="dua-la-dua" data-name="Dừa Lá Dứa">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                            <div class="flavor-label">Signature</div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Khoai môn trứng muối sữa dừa</h3>
+                            <p class="flavor-desc">Béo thơm ba tầng vị: khoai, sữa, trứng muối – quyến rũ không lối thoát.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Vị Trái Cây -->
+                    <div class="flavor-card" data-flavor="trai-cay" data-name="Trái Cây">
+                        <div class="flavor-image">
+                            <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu ">
+                            <div class="flavor-select"></div>
+                        </div>
+                        <div class="flavor-info">
+                            <h3 class="flavor-title">Trà xanh mochi trứng muối</h3>
+                            <p class="flavor-desc">Mochi lạnh dẻo, nhân trà xanh thanh mát và trứng muối đầy bùng nổ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Order Form Section -->
+    <section class="order-form" id="order">
+        <div class="container order-form-container">
+            <h2 class="section-title" data-aos="fade-up">Đặt Hàng Ngay</h2>
+            <p class="text-center" data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 2rem;">Điền thông tin đặt hàng để nhận bánh trung thu Tùng Anh tươi ngon</p>
+            
+            <form id="orderForm" data-aos="fade-up" data-aos-delay="200">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Họ và tên</label>
+                        <input type="text" id="name" class="form-control" placeholder="Nhập họ và tên" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Số điện thoại</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Nhập số điện thoại" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="form-label">Địa chỉ nhận hàng</label>
+                    <input type="text" id="address" class="form-control" placeholder="Nhập địa chỉ đầy đủ" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phương thức thanh toán</label>
+                    <div class="payment-options">
+                        <div class="payment-option active" data-payment="cod">
+                            <i class="fas fa-truck"></i>
+                            <div class="payment-option-title">Thanh toán khi nhận hàng</div>
+                        </div>
+                        <div class="payment-option" data-payment="bank">
+                            <i class="fas fa-university"></i>
+                            <div class="payment-option-title">Chuyển khoản ngân hàng</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Combo 6 bánh -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div class="bg-accent p-4 text-dark">
-                        <h3 class="font-serif font-bold text-xl text-center">Combo 6 Bánh</h3>
+                <div class="bank-transfer-info" id="bankTransferInfo">
+                    <div class="qr-code">
+                        QR Code Thanh Toán
                     </div>
-                    <div class="p-6">
-                        <p class="text-dark/80 mb-4 text-center">Chọn 6 vị bánh yêu thích</p>
-                        
-                        <div class="combo-selection mb-6" data-combo="6" data-max="6">
-                            <div class="grid grid-cols-2 gap-4 mb-4">
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="sen" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Sen</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dau" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Đậu Đỏ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="thap" data-price="85000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Thập Cẩm</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dua" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Dừa</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="traditional" data-flavor="dau-xanh" data-price="80000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Nhân Đậu Xanh</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="matcha" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Matcha Đậu Đỏ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="tieu" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Tiêu Đen Hạt Dẻ</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="tra" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Trà Ô Long</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="sua" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Sữa Dừa Khoai Môn</span>
-                                    </div>
-                                </div>
-                                <div class="cake-selection bg-light rounded-lg p-3 cursor-pointer" data-selected="false" data-type="modern" data-flavor="hat" data-price="90000">
-                                    <div class="flex items-center">
-                                        <div class="w-6 h-6 rounded-full border-2 border-primary mr-2 flex items-center justify-center selection-indicator">
-                                            <div class="w-3 h-3 rounded-full bg-primary hidden"></div>
-                                        </div>
-                                        <span class="text-sm">Hạt Dẻ Socola</span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="selected-items mb-4">
-                                <p class="text-sm text-dark/70 mb-2">Bánh đã chọn:</p>
-                                <div class="selected-list flex flex-wrap gap-2">
-                                    <span class="text-dark/50 text-sm italic">Chưa chọn bánh nào</span>
-                                </div>
-                            </div>
-                            
-                            <div class="flex justify-between items-center">
-                                <div>
-                                    <p class="text-sm text-dark/70">Tổng tiền:</p>
-                                    <p class="font-bold text-primary combo-price">0 VNĐ</p>
-                                </div>
-                                <button class="add-to-cart bg-primary text-light py-2 px-4 rounded-lg hover:bg-primary/90 transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                                    Thêm vào giỏ
-                                </button>
-                            </div>
-                        </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Số tài khoản:</div>
+                        <div class="bank-info-value">19798998998888</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Shopping Cart -->
-    <section id="cart" class="py-16 bg-light">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary text-center mb-12">Giỏ Hàng</h2>
-            
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div id="cart-empty" class="text-center py-8">
-                    <svg class="w-16 h-16 mx-auto mb-4 text-primary/50" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
-                    <p class="text-dark/70">Giỏ hàng của bạn đang trống</p>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Chủ tài khoản:</div>
+                        <div class="bank-info-value">Nguyễn Văn Thoại</div>
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Ngân hàng:</div>
+                        <div class="bank-info-value">MB BANK</div>
+                    </div>
+                    
+                    <div class="bank-info">
+                        <div class="bank-info-title">Nội dung chuyển khoản:</div>
+                        <div class="bank-info-value">TUNGANH [Số điện thoại của bạn]</div>
+                    </div>
                 </div>
                 
-                <div id="cart-items" class="hidden">
-                    <div class="overflow-x-auto">
-                        <table class="w-full mb-6">
-                            <thead>
-                                <tr class="border-b border-dark/10">
-                                    <th class="py-2 px-4 text-left">Sản phẩm</th>
-                                    <th class="py-2 px-4 text-center">Số lượng</th>
-                                    <th class="py-2 px-4 text-right">Giá</th>
-                                    <th class="py-2 px-4 text-right">Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody id="cart-table-body">
-                                <!-- Cart items will be added here dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <div class="flex justify-between items-center border-t border-dark/10 pt-4">
-                        <div>
-                            <p class="text-dark/70">Tổng tiền:</p>
-                            <p class="font-bold text-xl text-primary" id="cart-total">0 VNĐ</p>
-                        </div>
-                        <button id="checkout-btn" class="bg-primary text-light py-3 px-6 rounded-lg hover:bg-primary/90 transition">
-                            Tiến hành đặt hàng
-                        </button>
-                    </div>
+                <div class="form-group">
+                    <label for="note" class="form-label">Ghi chú</label>
+                    <textarea id="note" class="form-control" rows="4" placeholder="Nhập yêu cầu đặc biệt (nếu có)"></textarea>
                 </div>
-            </div>
+                
+                <button type="submit" class="btn order-btn">Đặt hàng ngay</button>
+            </form>
         </div>
     </section>
-
-    <!-- Order Form -->
-    <section id="order" class="py-16 bg-gradient-to-b from-light to-light/70">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold text-primary text-center mb-12">Đặt Hàng</h2>
-            
-            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
-                <form id="order-form" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-dark font-medium mb-2">Họ và tên</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-dark font-medium mb-2">Số điện thoại</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label for="address" class="block text-dark font-medium mb-2">Địa chỉ giao hàng</label>
-                        <textarea id="address" name="address" rows="3" class="w-full px-4 py-2 border border-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" required></textarea>
-                    </div>
-                    
-                    <div>
-                        <label for="note" class="block text-dark font-medium mb-2">Ghi chú (nếu có)</label>
-                        <textarea id="note" name="note" rows="2" class="w-full px-4 py-2 border border-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-                    </div>
-                    
-                    <div>
-                        <p class="block text-dark font-medium mb-2">Phương thức thanh toán</p>
-                        <div class="space-y-2">
-                            <div class="flex items-center">
-                                <input type="radio" id="payment-cod" name="payment" value="cod" class="w-4 h-4 text-primary" checked>
-                                <label for="payment-cod" class="ml-2 text-dark">Thanh toán khi nhận hàng (COD)</label>
-                            </div>
-                            <div class="flex items-center">
-                                <input type="radio" id="payment-transfer" name="payment" value="transfer" class="w-4 h-4 text-primary">
-                                <label for="payment-transfer" class="ml-2 text-dark">Chuyển khoản ngân hàng</label>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Bank transfer details (hidden by default) -->
-                    <div id="bank-transfer-details" class="hidden bg-light/70 p-4 rounded-lg">
-                        <h4 class="font-medium text-dark mb-3">Thông tin chuyển khoản</h4>
-                        <div class="flex flex-col md:flex-row gap-4 items-center">
-                            <div class="md:w-1/3">
-                                <!-- QR Code SVG -->
-                                <!-- <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" class="mx-auto">
-                                    <rect width="150" height="150" fill="white"/>
-                                    <rect x="20" y="20" width="30" height="30" fill="black"/>
-                                    <rect x="25" y="25" width="20" height="20" fill="white"/>
-                                    <rect x="30" y="30" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="100" y="20" width="30" height="30" fill="black"/>
-                                    <rect x="105" y="25" width="20" height="20" fill="white"/>
-                                    <rect x="110" y="30" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="20" y="100" width="30" height="30" fill="black"/>
-                                    <rect x="25" y="105" width="20" height="20" fill="white"/>
-                                    <rect x="30" y="110" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="60" y="20" width="10" height="10" fill="black"/>
-                                    <rect x="80" y="20" width="10" height="10" fill="black"/>
-                                    <rect x="60" y="40" width="10" height="10" fill="black"/>
-                                    <rect x="80" y="40" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="60" y="60" width="10" height="10" fill="black"/>
-                                    <rect x="70" y="70" width="10" height="10" fill="black"/>
-                                    <rect x="80" y="80" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="20" y="60" width="10" height="10" fill="black"/>
-                                    <rect x="40" y="60" width="10" height="10" fill="black"/>
-                                    <rect x="20" y="80" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="100" y="60" width="10" height="10" fill="black"/>
-                                    <rect x="120" y="60" width="10" height="10" fill="black"/>
-                                    <rect x="100" y="80" width="10" height="10" fill="black"/>
-                                    <rect x="120" y="80" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="60" y="100" width="10" height="10" fill="black"/>
-                                    <rect x="80" y="100" width="10" height="10" fill="black"/>
-                                    <rect x="60" y="120" width="10" height="10" fill="black"/>
-                                    <rect x="80" y="120" width="10" height="10" fill="black"/>
-                                    
-                                    <rect x="100" y="100" width="10" height="10" fill="black"/>
-                                    <rect x="110" y="110" width="10" height="10" fill="black"/>
-                                    <rect x="120" y="120" width="10" height="10" fill="black"/>
-                                </svg> -->
-                                <img src="assets/img/image-1.jpg" alt="QR Code" width="150" height="150" class="mx-auto" />
-                            </div>
-                            <div class="md:w-2/3">
-                                <p class="mb-1"><span class="font-medium">Ngân hàng:</span> MB BANK</p>
-                                <p class="mb-1"><span class="font-medium">Số tài khoản:</span> 19798998998888</p>
-                                <p class="mb-1"><span class="font-medium">Chủ tài khoản:</span> Nguyen Van Thoai</p>
-                                <p class="mb-1"><span class="font-medium">Nội dung chuyển khoản:</span> <span id="transfer-code" class="font-bold">TUNGANH[Số điện thoại]</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-light/70 p-4 rounded-lg">
-                        <p class="font-medium text-dark mb-2">Thời gian giao hàng dự kiến:</p>
-                        <p class="text-primary font-bold">Trong ngày khi ở huyện Tiên Lãng</p>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button type="submit" class="bg-primary text-light py-3 px-8 rounded-full hover:bg-primary/90 transition transform hover:scale-105">
-                            Hoàn tất đặt hàng
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Footer -->
-    <footer id="contact" class="bg-dark text-light py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="font-serif text-2xl font-bold text-accent mb-4">Hiệu Bánh Tùng Anh</h3>
-                    <p class="mb-2">Bánh trung thu gia truyền từ năm 1995</p>
-                    <p>Mang hương vị truyền thống đến mọi nhà</p>
+    <footer class="footer" id="contact">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="logo-text" style="font-size: 1.8rem;">TÙNG ANH</div>
                 </div>
-                
-                <div>
-                    <h4 class="font-serif text-xl font-bold text-accent mb-4">Liên hệ</h4>
-                    <p class="mb-2">Địa chỉ: 123 Đường Lê Lợi, Quận 1, TP.HCM</p>
-                    <p class="mb-2">Hotline: 0123.456.789</p>
-                    <p>Email: info@hieubanhtunganh.com</p>
-                </div>
-                
-                <div>
-                    <h4 class="font-serif text-xl font-bold text-accent mb-4">Kết nối</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-light hover:text-accent transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-light hover:text-accent transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-light hover:text-accent transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-light hover:text-accent transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.04 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8.01 12.27C8.12 12.44 9.62 14.94 12.08 16.01C12.57 16.27 12.95 16.41 13.25 16.52C13.73 16.7 14.17 16.67 14.5 16.63C14.89 16.58 15.89 16.03 16.11 15.54C16.33 15.05 16.33 14.63 16.28 14.54C16.23 14.46 16.07 14.41 15.84 14.31C15.61 14.21 14.39 13.64 14.18 13.57C13.97 13.5 13.81 13.47 13.65 13.7C13.49 13.92 13.05 14.44 12.91 14.6C12.77 14.75 12.63 14.77 12.4 14.67C12.17 14.57 11.36 14.31 10.41 13.47C9.66 12.81 9.16 12 9.03 11.78C8.89 11.56 9.01 11.43 9.13 11.31C9.24 11.2 9.37 11.04 9.5 10.9C9.62 10.76 9.66 10.66 9.73 10.5C9.8 10.34 9.76 10.2 9.71 10.08C9.66 9.96 9.17 8.73 8.94 8.3C8.72 7.87 8.5 7.93 8.35 7.93C8.21 7.92 8.05 7.91 7.89 7.91L8.53 7.33Z"></path>
-                            </svg>
-                        </a>
-                    </div>
+                <p>Hiệu bánh trung thu Tùng Anh - Nơi kết nối truyền thống và hiện đại, mang đến những chiếc bánh trung thu thơm ngon, chất lượng cho mọi gia đình.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
             
-            <div class="border-t border-light/20 mt-8 pt-8 text-center">
-                <p>&copy; 2023 Hiệu Bánh Tùng Anh. Tất cả quyền được bảo lưu.</p>
+            <div class="footer-links">
+                <h3 class="footer-title">Liên kết nhanh</h3>
+                <ul>
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#about">Câu chuyện</a></li>
+                    <li><a href="#combos">Combo bánh</a></li>
+                    <li><a href="#flavors">Khám phá vị bánh</a></li>
+                    <li><a href="#order">Đặt hàng</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3 class="footer-title">Thông tin liên hệ</h3>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>Hiệu bánh Tùng Anh, An Thạch, Tân Minh, Tiên Lãng, Hải Phòng</div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>Hotline: 0123.456.789</div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <div>Email: moitao1239@gmail.com</div>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-clock"></i>
+                    <div>Giờ làm việc: 8:00 - 21:00 (Thứ 2 - Chủ nhật)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <div class="container">
+                &copy; 2023 Hiệu Bánh Trung Thu Tùng Anh. All Rights Reserved.
             </div>
         </div>
     </footer>
-
-    <!-- Cake Modal -->
-    <div id="cake-modal" class="fixed inset-0 bg-dark/50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 id="modal-title" class="font-serif font-bold text-xl text-primary"></h3>
-                    <button id="close-modal" class="text-dark/50 hover:text-dark">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
+    
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Giỏ hàng của bạn</h3>
+            <div class="close-cart" id="closeCart"><i class="fas fa-times"></i></div>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Giỏ hàng của bạn đang trống</p>
+            </div>
+        </div>
+        
+        <div class="cart-total">
+            <div class="cart-total-title">Tổng tiền:</div>
+            <div class="cart-total-price" id="cartTotal">0đ</div>
+        </div>
+        
+        <a href="#order" class="btn checkout-btn" id="checkoutBtn">Hoàn tất đặt hàng</a>
+    </div>
+    
+    <!-- Flavor Selection Modal -->
+    <div class="modal" id="flavorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Chọn vị bánh</h3>
+                <div class="close-modal" id="closeModal"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="modal-body">
+                <div class="selection-info">
+                    <div class="selection-count">Đã chọn: <span id="selectedCount">0</span>/<span id="maxCount">2</span> vị</div>
+                    <div class="combo-name" id="comboName">Combo 2 bánh - "Thử là mê"</div>
                 </div>
                 
-                <div id="modal-content" class="space-y-4">
-                    <!-- Content will be added dynamically -->
+                <div class="modal-tab-container">
+                    <button class="tab-btn modal-tab-btn active" data-modal-tab="modal-traditional">Vị Truyền Thống</button>
+                    <button class="tab-btn modal-tab-btn" data-modal-tab="modal-modern">Vị Cách Tân</button>
                 </div>
+                
+                <div class="modal-tab-content" id="modal-traditional">
+                    <div class="modal-flavors-grid">
+                        <!-- Vị Thập Cẩm -->
+                        <div class="flavor-card" data-flavor="thap-cam" data-name="Thập Cẩm">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Thập Cẩm">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label bestseller">Best-seller</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Nướng Thập Cẩm</h3>
+                                <p class="flavor-desc">Đậm đà truyền thống, nhân đầy sắc vị, hài hòa vị mặn ngọt tinh tế.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Đậu Xanh -->
+                        <div class="flavor-card" data-flavor="dau-xanh" data-name="Đậu Xanh">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Xanh">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Trà Xanh</h3>
+                                <p class="flavor-desc">Thơm dịu vị trà, hậu ngọt thanh, lớp vỏ mềm mịn tan nơi đầu lưỡi.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Hạt Sen -->
+                        <div class="flavor-card" data-flavor="hat-sen" data-name="Hạt Sen">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Hạt Sen">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label">Signature</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Khoai Môn</h3>
+                                <p class="flavor-desc">Béo bùi khoai môn hòa quyện sữa nhẹ, mềm dẻo, dịu dàng mà cuốn hút.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Đậu Đỏ -->
+                        <div class="flavor-card" data-flavor="dau-do" data-name="Đậu Đỏ">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Đậu Đỏ">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Sữa Dừa</h3>
+                                <p class="flavor-desc">Vị ngọt thanh, thơm ngậy, tan chảy nơi đầu lưỡi như nụ cười tháng Tám.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Mè Đen -->
+                        <div class="flavor-card" data-flavor="me-den" data-name="Mè Đen">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Mè Đen">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Dẻo thập cẩm</h3>
+                                <p class="flavor-desc">Lớp vỏ mịn mát, nhân mặn ngọt đậm đà, đậm chất thu xưa.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-tab-content" id="modal-modern" style="display: none;">
+                    <div class="modal-flavors-grid">
+                        <!-- Vị Lava Trứng Muối -->
+                        <div class="flavor-card" data-flavor="lava-trung-muoi" data-name="Lava Trứng Muối">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Lava Trứng Muối">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label bestseller">Best-seller</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Mochi trà xanh</h3>
+                                <p class="flavor-desc">Vỏ dẻo mịn lạnh, nhân trà xanh mát lành, nhẹ nhàng mà gây nghiện.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Phô Mai Trà Xanh -->
+                        <div class="flavor-card" data-flavor="pho-mai-tra-xanh" data-name="Phô Mai Trà Xanh">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Phô Mai Trà Xanh">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label new">Mới</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Mochi bò cay</h3>
+                                <p class="flavor-desc">Bất ngờ vị cay nồng quyện lớp mochi mềm lạnh, thỏa cơn mê mới lạ.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Socola Hạnh Nhân -->
+                        <div class="flavor-card" data-flavor="socola-hanh-nhan" data-name="Socola Hạnh Nhân">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Socola Hạnh Nhân">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Bò cay trứng muối</h3>
+                                <p class="flavor-desc">Đậm vị bò cay, béo mặn trứng muối, nổ tung trong từng lớp bánh.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Dừa Lá Dứa -->
+                        <div class="flavor-card" data-flavor="dua-la-dua" data-name="Dừa Lá Dứa">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Dừa Lá Dứa">
+                                <div class="flavor-select"></div>
+                                <div class="flavor-label">Signature</div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Khoai môn trứng muối sữa dừa</h3>
+                                <p class="flavor-desc">Béo thơm ba tầng vị: khoai, sữa, trứng muối – quyến rũ không lối thoát.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Vị Trái Cây -->
+                        <div class="flavor-card" data-flavor="trai-cay" data-name="Trái Cây">
+                            <div class="flavor-image">
+                                <img src="https://via.placeholder.com/300x300" alt="Bánh Trung Thu Trái Cây">
+                                <div class="flavor-select"></div>
+                            </div>
+                            <div class="flavor-info">
+                                <h3 class="flavor-title">Trà xanh mochi trứng muối</h3>
+                                <p class="flavor-desc">Mochi lạnh dẻo, nhân trà xanh thanh mát và trứng muối đầy bùng nổ.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="selected-flavors" id="selectedFlavors">
+                    <div class="selected-flavors-title">Vị đã chọn:</div>
+                    <div class="selected-flavor-list" id="selectedFlavorList">
+                        <!-- Selected flavors will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn cancel-btn" id="cancelSelection">Hủy</button>
+                <button class="btn" id="confirmSelection" disabled>Xác nhận</button>
             </div>
         </div>
     </div>
-
-    <!-- Order Success Modal -->
-    <div id="success-modal" class="fixed inset-0 bg-dark/50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
-            <div class="p-6">
-                <div class="text-center">
-                    <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <h3 class="font-serif font-bold text-xl text-primary mb-2">Đặt hàng thành công!</h3>
-                    <p class="text-dark/80 mb-6">Cảm ơn bạn đã đặt bánh tại Hiệu Bánh Tùng Anh. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
-                    <button id="close-success-modal" class="bg-primary text-light py-2 px-6 rounded-lg hover:bg-primary/90 transition">
-                        Đóng
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+    
     <script>
-        // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('hidden');
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
             });
-        });
-        
-        // Cake modal functionality
-        const cakeModal = document.getElementById('cake-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalContent = document.getElementById('modal-content');
-        const closeModal = document.getElementById('close-modal');
-        
-        // Cake data
-        const cakeData = {
-            traditional: {
-                sen: {
-                    name: "Bánh Trung Thu Nhân Sen",
-                    price: "80.000 VNĐ",
-                    description: "Bánh trung thu nhân sen truyền thống với vị ngọt thanh tao từ hạt sen tuyển chọn, kết hợp cùng vỏ bánh giòn tan.",
-                    ingredients: "Hạt sen, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#D94E28"
-                },
-                dau: {
-                    name: "Bánh Trung Thu Nhân Đậu Đỏ",
-                    price: "80.000 VNĐ",
-                    description: "Bánh trung thu nhân đậu đỏ với vị ngọt dịu từ đậu đỏ hảo hạng, mang đến hương vị truyền thống đậm đà.",
-                    ingredients: "Đậu đỏ, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#C41E1E"
-                },
-                thap: {
-                    name: "Bánh Trung Thu Nhân Thập Cẩm",
-                    price: "85.000 VNĐ",
-                    description: "Bánh trung thu nhân thập cẩm với sự hòa quyện của nhiều nguyên liệu truyền thống, tạo nên hương vị đặc trưng khó quên.",
-                    ingredients: "Hạt sen, đậu xanh, mứt bí, jambon, hạt dưa, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#F2B035"
-                },
-                dua: {
-                    name: "Bánh Trung Thu Nhân Dừa",
-                    price: "80.000 VNĐ",
-                    description: "Bánh trung thu nhân dừa với vị béo ngậy từ cơm dừa tươi, mang đến hương vị Nam Bộ đặc trưng.",
-                    ingredients: "Cơm dừa tươi, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#8B5A2B"
-                },
-                "dau-xanh": {
-                    name: "Bánh Trung Thu Nhân Đậu Xanh",
-                    price: "80.000 VNĐ",
-                    description: "Bánh trung thu nhân đậu xanh với vị thanh nhẹ, là lựa chọn truyền thống được yêu thích qua nhiều thế hệ.",
-                    ingredients: "Đậu xanh, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#4F7942"
-                }
-            },
-            modern: {
-                matcha: {
-                    name: "Bánh Trung Thu Matcha Đậu Đỏ",
-                    price: "90.000 VNĐ",
-                    description: "Bánh trung thu matcha đậu đỏ với sự kết hợp tinh tế giữa vị đắng nhẹ của bột trà xanh Nhật Bản và vị ngọt của đậu đỏ.",
-                    ingredients: "Bột matcha Nhật Bản, đậu đỏ, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#4CAF50"
-                },
-                tieu: {
-                    name: "Bánh Trung Thu Tiêu Đen Hạt Dẻ",
-                    price: "90.000 VNĐ",
-                    description: "Bánh trung thu tiêu đen hạt dẻ với vị đậm đà của hạt dẻ và hậu vị cay nhẹ từ tiêu đen, tạo nên trải nghiệm ẩm thực độc đáo.",
-                    ingredients: "Hạt dẻ, tiêu đen, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#8D6E63"
-                },
-                tra: {
-                    name: "Bánh Trung Thu Trà Ô Long",
-                    price: "90.000 VNĐ",
-                    description: "Bánh trung thu trà ô long với hương trà thơm tinh tế, mang đến cảm giác nhẹ nhàng, thanh tao.",
-                    ingredients: "Trà ô long, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#FF9800"
-                },
-                sua: {
-                    name: "Bánh Trung Thu Sữa Dừa Khoai Môn",
-                    price: "90.000 VNĐ",
-                    description: "Bánh trung thu sữa dừa khoai môn với vị béo ngậy của sữa dừa kết hợp cùng khoai môn tím, tạo nên màu sắc và hương vị hấp dẫn.",
-                    ingredients: "Sữa dừa, khoai môn tím, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#9C27B0"
-                },
-                hat: {
-                    name: "Bánh Trung Thu Hạt Dẻ Socola",
-                    price: "90.000 VNĐ",
-                    description: "Bánh trung thu hạt dẻ socola với vị ngọt đắng quyến rũ của socola kết hợp cùng hạt dẻ giòn tan.",
-                    ingredients: "Hạt dẻ, socola, đường, mật ong, dầu thực vật, bột mì, trứng, hương liệu tự nhiên.",
-                    weight: "150g",
-                    color: "#795548"
-                }
+            
+            // Variables
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const cartIcon = document.getElementById('cartIcon');
+            const cartSidebar = document.getElementById('cartSidebar');
+            const closeCart = document.getElementById('closeCart');
+            const overlay = document.getElementById('overlay');
+            const tabBtns = document.querySelectorAll('.tab-btn:not(.modal-tab-btn)');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const modalTabBtns = document.querySelectorAll('.modal-tab-btn');
+            const modalTabContents = document.querySelectorAll('.modal-tab-content');
+            const selectFlavorsBtns = document.querySelectorAll('.select-flavors-btn');
+            const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+            const flavorModal = document.getElementById('flavorModal');
+            const closeModal = document.getElementById('closeModal');
+            const cancelSelection = document.getElementById('cancelSelection');
+            const confirmSelection = document.getElementById('confirmSelection');
+            const selectedCount = document.getElementById('selectedCount');
+            const maxCount = document.getElementById('maxCount');
+            const comboName = document.getElementById('comboName');
+            const selectedFlavors = document.getElementById('selectedFlavors');
+            const selectedFlavorList = document.getElementById('selectedFlavorList');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const cartCount = document.querySelector('.cart-count');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const orderForm = document.getElementById('orderForm');
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            const bankTransferInfo = document.getElementById('bankTransferInfo');
+            
+            // Cart array to store items
+            let cart = [];
+            
+            // Current combo selection
+            let currentCombo = {
+                id: '',
+                name: '',
+                price: 0,
+                image: '',
+                limit: 0,
+                selectedFlavors: []
+            };
+            
+            // Mobile Menu Toggle
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking a nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Cart Sidebar Toggle
+            cartIcon.addEventListener('click', function() {
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeCart.addEventListener('click', closeCartSidebar);
+            overlay.addEventListener('click', function() {
+                closeCartSidebar();
+                closeFlavorModal();
+            });
+            
+            function closeCartSidebar() {
+                cartSidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
             }
-        };
-        
-        function showCakeModal(type, flavor) {
-            const cake = cakeData[type][flavor];
             
-            modalTitle.textContent = cake.name;
+            // Tab Switching
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show the selected tab content
+                    const tabId = btn.getAttribute('data-tab');
+                    document.getElementById(tabId).style.display = 'block';
+                });
+            });
             
-            modalContent.innerHTML = `
-                <div class="flex justify-center mb-4">
-                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="60" cy="60" r="50" fill="${cake.color}" />
-                        <path d="M30 60 L90 60 M60 30 L60 90" stroke="#FFF0D9" stroke-width="4" />
-                        <circle cx="60" cy="60" r="20" fill="#FFF0D9" />
-                        <path d="M55 60 L65 60 M60 55 L60 65" stroke="${cake.color}" stroke-width="2" />
-                    </svg>
-                </div>
-                <p class="font-bold text-primary text-center mb-4">${cake.price}</p>
-                <p class="text-dark/80 mb-4">${cake.description}</p>
-                <div class="space-y-2">
-                    <p><span class="font-medium">Thành phần:</span> ${cake.ingredients}</p>
-                    <p><span class="font-medium">Khối lượng:</span> ${cake.weight}</p>
-                </div>
-            `;
+            // Modal Tab Switching
+            modalTabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    modalTabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+                    
+                    // Hide all tab contents
+                    modalTabContents.forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show the selected tab content
+                    const tabId = btn.getAttribute('data-modal-tab');
+                    document.getElementById(tabId).style.display = 'block';
+                });
+            });
             
-            cakeModal.classList.remove('hidden');
-        }
-        
-        closeModal.addEventListener('click', function() {
-            cakeModal.classList.add('hidden');
-        });
-        
-        // Close modal when clicking outside
-        cakeModal.addEventListener('click', function(e) {
-            if (e.target === cakeModal) {
-                cakeModal.classList.add('hidden');
-            }
-        });
-        
-        // Combo selection functionality
-        const cakeSelections = document.querySelectorAll('.cake-selection');
-        
-        cakeSelections.forEach(selection => {
-            selection.addEventListener('click', function() {
-                const comboContainer = this.closest('.combo-selection');
-                const maxSelections = parseInt(comboContainer.dataset.max);
-                const selectedItems = comboContainer.querySelectorAll('.cake-selection[data-selected="true"]');
+            // Payment Method Selection
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove active class from all options
+                    paymentOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    option.classList.add('active');
+                    
+                    // Show/hide bank transfer info
+                    const paymentMethod = option.getAttribute('data-payment');
+                    if (paymentMethod === 'bank') {
+                        bankTransferInfo.classList.add('active');
+                    } else {
+                        bankTransferInfo.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Select Flavors Button Click
+            selectFlavorsBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const comboId = btn.getAttribute('data-combo');
+                    const comboLimit = parseInt(btn.getAttribute('data-limit'));
+                    const comboPrice = parseInt(btn.getAttribute('data-price'));
+                    const comboName = btn.closest('.combo-card').querySelector('.combo-title').textContent;
+                    const comboSubtitle = btn.closest('.combo-card').querySelector('.combo-subtitle').textContent;
+                    const comboImage = btn.closest('.combo-card').querySelector('.combo-image img').src;
+                    
+                    // Set current combo
+                    currentCombo = {
+                        id: comboId,
+                        name: `${comboName} - ${comboSubtitle}`,
+                        price: comboPrice,
+                        image: comboImage,
+                        limit: comboLimit,
+                        selectedFlavors: []
+                    };
+                    
+                    // Update modal
+                    maxCount.textContent = comboLimit;
+                    selectedCount.textContent = '0';
+                    comboName.textContent = currentCombo.name;
+                    
+                    // Clear selected flavors
+                    document.querySelectorAll('.flavor-card.selected').forEach(card => {
+                        card.classList.remove('selected');
+                    });
+                    
+                    selectedFlavorList.innerHTML = '';
+                    selectedFlavors.classList.remove('active');
+                    confirmSelection.disabled = true;
+                    
+                    // Open modal
+                    openFlavorModal();
+                });
+            });
+            
+            // Flavor Card Click in Modal
+            document.querySelectorAll('.modal-flavors-grid .flavor-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const flavorId = card.getAttribute('data-flavor');
+                    const flavorName = card.getAttribute('data-name');
+                    
+                    if (card.classList.contains('selected')) {
+                        // Remove from selection
+                        card.classList.remove('selected');
+                        currentCombo.selectedFlavors = currentCombo.selectedFlavors.filter(flavor => flavor.id !== flavorId);
+                        
+                        // Remove from selected flavors list
+                        const flavorElement = selectedFlavorList.querySelector(`[data-flavor="${flavorId}"]`);
+                        if (flavorElement) {
+                            flavorElement.remove();
+                        }
+                    } else {
+                        // Check if limit reached
+                        if (currentCombo.selectedFlavors.length >= currentCombo.limit) {
+                            alert(`Bạn chỉ có thể chọn tối đa ${currentCombo.limit} vị bánh cho combo này.`);
+                            return;
+                        }
+                        
+                        // Add to selection
+                        card.classList.add('selected');
+                        currentCombo.selectedFlavors.push({
+                            id: flavorId,
+                            name: flavorName
+                        });
+                        
+                        // Add to selected flavors list
+                        const flavorElement = document.createElement('div');
+                        flavorElement.classList.add('selected-flavor-item');
+                        flavorElement.setAttribute('data-flavor', flavorId);
+                        flavorElement.innerHTML = `
+                            ${flavorName}
+                            <i class="fas fa-times remove-flavor" data-flavor="${flavorId}"></i>
+                        `;
+                        selectedFlavorList.appendChild(flavorElement);
+                        
+                        // Add event listener to remove flavor
+                        flavorElement.querySelector('.remove-flavor').addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const flavorToRemove = e.currentTarget.getAttribute('data-flavor');
+                            const flavorCard = document.querySelector(`.modal-flavors-grid .flavor-card[data-flavor="${flavorToRemove}"]`);
+                            
+                            if (flavorCard) {
+                                flavorCard.classList.remove('selected');
+                            }
+                            
+                            currentCombo.selectedFlavors = currentCombo.selectedFlavors.filter(flavor => flavor.id !== flavorToRemove);
+                            flavorElement.remove();
+                            
+                            updateSelectionCount();
+                        });
+                    }
+                    
+                    updateSelectionCount();
+                });
+            });
+            
+            // Update Selection Count
+            function updateSelectionCount() {
+                const count = currentCombo.selectedFlavors.length;
+                selectedCount.textContent = count;
                 
-                if (this.dataset.selected === "false" && selectedItems.length >= maxSelections) {
-                    alert(`Bạn chỉ có thể chọn tối đa ${maxSelections} bánh cho combo này.`);
+                // Show/hide selected flavors section
+                if (count > 0) {
+                    selectedFlavors.classList.add('active');
+                } else {
+                    selectedFlavors.classList.remove('active');
+                }
+                
+                // Enable/disable confirm button
+                confirmSelection.disabled = count !== currentCombo.limit;
+            }
+            
+            // Close Flavor Modal
+            function closeFlavorModal() {
+                flavorModal.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Open Flavor Modal
+            function openFlavorModal() {
+                flavorModal.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Close Modal Events
+            closeModal.addEventListener('click', closeFlavorModal);
+            cancelSelection.addEventListener('click', closeFlavorModal);
+            
+            // Confirm Selection
+            confirmSelection.addEventListener('click', () => {
+                // Find the corresponding add to cart button
+                const addToCartBtn = document.querySelector(`.add-to-cart-btn[data-combo="${currentCombo.id}"]`);
+                
+                if (addToCartBtn) {
+                    // Enable the add to cart button
+                    addToCartBtn.disabled = false;
+                    
+                    // Update the add to cart button with selected flavors
+                    addToCartBtn.setAttribute('data-flavors', JSON.stringify(currentCombo.selectedFlavors));
+                    
+                    // Show success message
+                    addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Vị đã chọn';
+                    addToCartBtn.style.backgroundColor = '#4CAF50';
+                    
+                    setTimeout(() => {
+                        addToCartBtn.innerHTML = '<i class="fas fa-shopping-cart"></i> Thêm vào giỏ';
+                        addToCartBtn.style.backgroundColor = '';
+                    }, 1500);
+                }
+                
+                closeFlavorModal();
+            });
+            
+            // Add to Cart Functionality
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', addToCart);
+            });
+            
+            function addToCart(e) {
+                const button = e.currentTarget;
+                const id = button.getAttribute('data-combo');
+                const name = button.getAttribute('data-name');
+                const price = parseInt(button.getAttribute('data-price'));
+                const image = button.getAttribute('data-image');
+                const flavorsJson = button.getAttribute('data-flavors');
+                
+                if (!flavorsJson) {
+                    alert('Vui lòng chọn vị bánh trước khi thêm vào giỏ hàng.');
                     return;
                 }
                 
-                // Toggle selection
-                if (this.dataset.selected === "true") {
-                    this.dataset.selected = "false";
-                    this.querySelector('.selection-indicator div').classList.add('hidden');
-                } else {
-                    this.dataset.selected = "true";
-                    this.querySelector('.selection-indicator div').classList.remove('hidden');
-                }
+                const flavors = JSON.parse(flavorsJson);
                 
-                updateSelectedList(comboContainer);
-                updateComboPrice(comboContainer);
-                updateAddToCartButton(comboContainer);
-            });
-        });
-        
-        function updateSelectedList(comboContainer) {
-            const selectedList = comboContainer.querySelector('.selected-list');
-            const selectedItems = comboContainer.querySelectorAll('.cake-selection[data-selected="true"]');
-            
-            if (selectedItems.length === 0) {
-                selectedList.innerHTML = '<span class="text-dark/50 text-sm italic">Chưa chọn bánh nào</span>';
-                return;
-            }
-            
-            let html = '';
-            selectedItems.forEach(item => {
-                const type = item.dataset.type;
-                const flavor = item.dataset.flavor;
-                const cake = cakeData[type][flavor];
-                
-                html += `<span class="bg-primary/10 text-primary px-2 py-1 rounded text-sm">${cake.name.replace('Bánh Trung Thu ', '')}</span>`;
-            });
-            
-            selectedList.innerHTML = html;
-        }
-        
-        function updateComboPrice(comboContainer) {
-            const priceElement = comboContainer.querySelector('.combo-price');
-            const selectedItems = comboContainer.querySelectorAll('.cake-selection[data-selected="true"]');
-            
-            let totalPrice = 0;
-            selectedItems.forEach(item => {
-                totalPrice += parseInt(item.dataset.price);
-            });
-            
-            // Apply combo discount (10% for combo)
-            if (selectedItems.length > 0) {
-                totalPrice = Math.round(totalPrice * 0.9);
-            }
-            
-            priceElement.textContent = totalPrice.toLocaleString() + ' VNĐ';
-        }
-        
-        function updateAddToCartButton(comboContainer) {
-            const addToCartBtn = comboContainer.querySelector('.add-to-cart');
-            const selectedItems = comboContainer.querySelectorAll('.cake-selection[data-selected="true"]');
-            const maxSelections = parseInt(comboContainer.dataset.max);
-            
-            if (selectedItems.length === maxSelections) {
-                addToCartBtn.disabled = false;
-            } else {
-                addToCartBtn.disabled = true;
-            }
-        }
-        
-        // Shopping cart functionality
-        const cart = [];
-        
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const comboContainer = this.closest('.combo-selection');
-                const comboType = comboContainer.dataset.combo;
-                const selectedItems = comboContainer.querySelectorAll('.cake-selection[data-selected="true"]');
-                
-                // Calculate price
-                let totalPrice = 0;
-                const selectedCakes = [];
-                
-                selectedItems.forEach(item => {
-                    const type = item.dataset.type;
-                    const flavor = item.dataset.flavor;
-                    const cake = cakeData[type][flavor];
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => {
+                    if (item.id !== id) return false;
                     
-                    totalPrice += parseInt(item.dataset.price);
-                    selectedCakes.push({
-                        name: cake.name,
-                        type: type,
-                        flavor: flavor
+                    // Check if flavors are the same
+                    if (item.flavors.length !== flavors.length) return false;
+                    
+                    const flavorIds = flavors.map(f => f.id).sort();
+                    const itemFlavorIds = item.flavors.map(f => f.id).sort();
+                    
+                    return flavorIds.every((id, index) => id === itemFlavorIds[index]);
+                });
+                
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        flavors,
+                        quantity: 1
                     });
-                });
+                }
                 
-                // Apply combo discount
-                totalPrice = Math.round(totalPrice * 0.9);
+                // Show success message
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Đã thêm';
+                button.style.backgroundColor = '#4CAF50';
                 
-                // Add to cart
-                cart.push({
-                    id: Date.now(),
-                    type: `Combo ${comboType} Bánh`,
-                    cakes: selectedCakes,
-                    price: totalPrice,
-                    quantity: 1
-                });
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-shopping-cart"></i> Thêm vào giỏ';
+                    button.style.backgroundColor = '';
+                }, 1500);
                 
-                updateCartDisplay();
-                
-                // Reset selections
-                selectedItems.forEach(item => {
-                    item.dataset.selected = "false";
-                    item.querySelector('.selection-indicator div').classList.add('hidden');
-                });
-                
-                updateSelectedList(comboContainer);
-                updateComboPrice(comboContainer);
-                updateAddToCartButton(comboContainer);
-                
-                alert('Đã thêm vào giỏ hàng!');
-            });
-        });
-        
-        function updateCartDisplay() {
-            const cartEmpty = document.getElementById('cart-empty');
-            const cartItems = document.getElementById('cart-items');
-            const cartTableBody = document.getElementById('cart-table-body');
-            const cartTotal = document.getElementById('cart-total');
-            
-            if (cart.length === 0) {
-                cartEmpty.classList.remove('hidden');
-                cartItems.classList.add('hidden');
-                return;
+                updateCart();
             }
             
-            cartEmpty.classList.add('hidden');
-            cartItems.classList.remove('hidden');
-            
-            // Update cart items
-            let html = '';
-            let totalPrice = 0;
-            
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                totalPrice += itemTotal;
+            function updateCart() {
+                // Update cart count
+                cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
                 
-                let cakesList = '';
-                item.cakes.forEach(cake => {
-                    cakesList += `<div class="text-sm">${cake.name.replace('Bánh Trung Thu ', '')}</div>`;
-                });
-                
-                html += `
-                    <tr class="border-b border-dark/10">
-                        <td class="py-4 px-4">
-                            <div class="font-medium">${item.type}</div>
-                            ${cakesList}
-                        </td>
-                        <td class="py-4 px-4 text-center">
-                            <div class="flex items-center justify-center">
-                                <button class="quantity-btn decrease-btn px-2 py-1 bg-light rounded-l" data-id="${item.id}">-</button>
-                                <span class="px-3 py-1 bg-light">${item.quantity}</span>
-                                <button class="quantity-btn increase-btn px-2 py-1 bg-light rounded-r" data-id="${item.id}">+</button>
-                            </div>
-                        </td>
-                        <td class="py-4 px-4 text-right">${item.price.toLocaleString()} VNĐ</td>
-                        <td class="py-4 px-4 text-right">
-                            <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            });
-            
-            cartTableBody.innerHTML = html;
-            cartTotal.textContent = totalPrice.toLocaleString() + ' VNĐ';
-            
-            // Add event listeners for quantity buttons and remove buttons
-            document.querySelectorAll('.quantity-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = parseInt(this.dataset.id);
-                    const item = cart.find(item => item.id === id);
-                    
-                    if (this.classList.contains('increase-btn')) {
-                        item.quantity += 1;
-                    } else if (this.classList.contains('decrease-btn')) {
-                        if (item.quantity > 1) {
-                            item.quantity -= 1;
-                        }
-                    }
-                    
-                    updateCartDisplay();
-                });
-            });
-            
-            document.querySelectorAll('.remove-item').forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = parseInt(this.dataset.id);
-                    const index = cart.findIndex(item => item.id === id);
-                    
-                    if (index !== -1) {
-                        cart.splice(index, 1);
-                        updateCartDisplay();
-                    }
-                });
-            });
-        }
-        
-        // Payment method toggle
-        const paymentRadios = document.querySelectorAll('input[name="payment"]');
-        const bankTransferDetails = document.getElementById('bank-transfer-details');
-        
-        paymentRadios.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'transfer') {
-                    bankTransferDetails.classList.remove('hidden');
+                // Update cart items display
+                if (cart.length === 0) {
+                    cartItems.innerHTML = `
+                        <div class="empty-cart">
+                            <i class="fas fa-shopping-basket"></i>
+                            <p>Giỏ hàng của bạn đang trống</p>
+                        </div>
+                    `;
                 } else {
-                    bankTransferDetails.classList.add('hidden');
+                    cartItems.innerHTML = '';
+                    cart.forEach((item, index) => {
+                        const cartItemEl = document.createElement('div');
+                        cartItemEl.classList.add('cart-item');
+                        
+                        // Create flavor list string
+                        const flavorsList = item.flavors.map(flavor => flavor.name).join(', ');
+                        
+                        cartItemEl.innerHTML = `
+                            <div class="cart-item-img">
+                                <img src="${item.image}" alt="${item.name}">
+                            </div>
+                            <div class="cart-item-info">
+                                <h4 class="cart-item-title">${item.name}</h4>
+                                <div class="cart-item-price">${formatPrice(item.price)}đ</div>
+                                <div class="cart-item-flavors">Vị: ${flavorsList}</div>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn minus" data-index="${index}">-</button>
+                                    <input type="text" class="quantity-input" value="${item.quantity}" readonly>
+                                    <button class="quantity-btn plus" data-index="${index}">+</button>
+                                </div>
+                            </div>
+                            <div class="remove-item" data-index="${index}">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        `;
+                        cartItems.appendChild(cartItemEl);
+                    });
+                    
+                    // Add event listeners to quantity buttons and remove buttons
+                    document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                        btn.addEventListener('click', decreaseQuantity);
+                    });
+                    
+                    document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                        btn.addEventListener('click', increaseQuantity);
+                    });
+                    
+                    document.querySelectorAll('.remove-item').forEach(btn => {
+                        btn.addEventListener('click', removeItem);
+                    });
+                }
+                
+                // Update cart total
+                const total = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                cartTotal.textContent = `${formatPrice(total)}đ`;
+            }
+            
+            function decreaseQuantity(e) {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+                
+                updateCart();
+            }
+            
+            function increaseQuantity(e) {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                cart[index].quantity++;
+                updateCart();
+            }
+            
+            function removeItem(e) {
+                const index = parseInt(e.currentTarget.getAttribute('data-index'));
+                cart.splice(index, 1);
+                updateCart();
+            }
+            
+            // Format price with commas
+            function formatPrice(price) {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            }
+            
+            // Checkout button
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length > 0) {
+                    closeCartSidebar();
+                    
+                    // Scroll to order form
+                    document.getElementById('order').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Flash the order form to draw attention
+                    const orderFormEl = document.querySelector('.order-form-container');
+                    orderFormEl.style.animation = 'flash 1s';
+                    
+                    setTimeout(() => {
+                        orderFormEl.style.animation = '';
+                    }, 1000);
                 }
             });
-        });
-        
-        // Order form submission
-        const orderForm = document.getElementById('order-form');
-        const successModal = document.getElementById('success-modal');
-        const closeSuccessModal = document.getElementById('close-success-modal');
-        const transferCode = document.getElementById('transfer-code');
-        const phoneInput = document.getElementById('phone');
-        
-        phoneInput.addEventListener('input', function() {
-            transferCode.textContent = `TUNGANH_${this.value}`;
-        });
-        
-        orderForm.addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            if (cart.length === 0) {
-                alert('Giỏ hàng của bạn đang trống. Vui lòng thêm sản phẩm vào giỏ hàng trước khi đặt hàng.');
-                return;
-            }
+            // Order form submission
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                
+                // Show success message
+                orderForm.innerHTML = `
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--primary-yellow); margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 1rem; color: var(--text-light); font-size: 2rem;">Đặt hàng thành công!</h3>
+                        <p style="margin-bottom: 2rem;">Cảm ơn ${name} đã đặt hàng. Chúng tôi sẽ liên hệ với bạn qua số điện thoại ${phone} để xác nhận đơn hàng.</p>
+                        <a href="#combos" class="btn">Tiếp tục mua sắm</a>
+                    </div>
+                `;
+                
+                // Reset cart
+                cart = [];
+                updateCart();
+            });
             
-            // Show success modal
-            successModal.classList.remove('hidden');
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '0.5rem 0';
+                } else {
+                    header.style.padding = '1rem 0';
+                }
+            });
             
-            // Reset form and cart
-            orderForm.reset();
-            cart.length = 0;
-            updateCartDisplay();
-        });
-        
-        closeSuccessModal.addEventListener('click', function() {
-            successModal.classList.add('hidden');
-        });
-        
-        // Close success modal when clicking outside
-        successModal.addEventListener('click', function(e) {
-            if (e.target === successModal) {
-                successModal.classList.add('hidden');
-            }
-        });
-        
-        // Checkout button
-        document.getElementById('checkout-btn').addEventListener('click', function() {
-            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+            // Initialize the first tab
+            document.querySelector('.tab-btn.active').click();
+            document.querySelector('.modal-tab-btn.active').click();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9651efd2576af4fb',t:'MTc1MzUxMjM1NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'964c7d6ea178fd26',t:'MTc1MzQ1NTI0MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
