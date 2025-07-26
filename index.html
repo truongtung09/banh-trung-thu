@@ -1190,48 +1190,27 @@
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
-  const combo = document.getElementById("combo").value;
-  const orderDetail = document.getElementById("orderDetail").value;
-  const note = document.getElementById("note").value;
-  const payment = document.querySelector('input[name="payment"]:checked')?.value || "";
-  const total = document.getElementById("total").value;
+  // Cập nhật lại các input ẩn nếu cần ở đây
 
-  const data = new URLSearchParams();
-  data.append("name", name);
-  data.append("phone", phone);
-  data.append("address", address);
-  data.append("combo", combo);
-  data.append("orderDetail", orderDetail);
-  data.append("note", note);
-  data.append("payment", payment);
-  data.append("total", total);
+  const formData = new FormData(form); // Dùng form có sẵn trong HTML
 
   try {
     const res = await fetch("https://script.google.com/macros/s/AKfycbzi5OilweJwH--OUmiTlz6royOJv17thfOS1717TKLgg2XsXNoP-EgLo8bZd0U_k4M/exec", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify(orderData),
-})
-.then((response) => {
-    if (!response.ok) throw new Error("HTTP error " + response.status);
-    return response.json(); // Lỗi nếu không phải JSON
-})
-.then((result) => {
-    console.log("Server response:", result);
-    if (result.status === "success") {
-        alert("Gửi đơn thành công!");
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await res.json();
+    if (result.result === "success") {
+      alert("Gửi đơn thành công!");
+      form.reset();
     } else {
-        alert("Lỗi khi gửi đơn: " + result.message);
+      alert("Lỗi khi gửi đơn: " + result.message);
     }
-})
-.catch((error) => {
+  } catch (error) {
     console.error("Gửi đơn thất bại:", error);
     alert("Đã xảy ra lỗi khi gửi đơn.");
+  }
 });
 
     </script>
