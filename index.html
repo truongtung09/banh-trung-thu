@@ -627,11 +627,11 @@
                                 <label class="block mb-2 text-sm font-medium">Phương thức thanh toán</label>
                                 <div class="space-y-2">
                                     <div class="flex items-center">
-                                        <input type="radio" id="cod" name="payment" value="cod" class="mr-2" checked>
+                                        <input type="radio" id="cod" name="payment" value="COD" class="mr-2" checked>
                                         <label for="cod">Thanh toán khi nhận hàng (COD)</label>
                                     </div>
                                     <div class="flex items-center">
-                                        <input type="radio" id="transfer" name="payment" value="transfer" class="mr-2">
+                                        <input type="radio" id="transfer" name="payment" value="Chuyển khoản" class="mr-2">
                                         <label for="transfer">Chuyển khoản ngân hàng</label>
                                     </div>
                                 </div>
@@ -1116,103 +1116,122 @@
             document.getElementById('bank-info').classList.remove('hidden');
         });
 
-        // Order form submission with Google Sheet integration
-       document.getElementById('orderForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    if (cart.length === 0) {
-        alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi đặt hàng.');
-        return;
-    }
-    
-    // Validate form
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const address = document.getElementById('address').value.trim();
-    
-    if (!name || !phone || !address) {
-        alert('Vui lòng điền đầy đủ thông tin họ tên, số điện thoại và địa chỉ.');
-        return;
-    }
-    
-    // Get form data
-    const note = document.getElementById('note').value.trim();
-    const payment = document.querySelector('input[name="payment"]:checked').value;
-    const order = document.getElementById('order').value;
-    const combo = document.getElementById('combo').value;
-    const orderDetail = document.getElementById('orderDetail').value;
-    const total = document.getElementById('total').value;
-    
-    // Create data object
-    const data = {
-        name,
-        phone,
-        address,
-        note,
-        payment,
-        order,
-        combo,
-        orderDetail,
-        total
-    };
-    
-    // Show loading state
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Đang xử lý...';
-    
-    // URL của Google Apps Script Web App (sử dụng URL doGet)
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyBOSjty-4BYOOlpu6LdXPZUqAv3wid8_XkmsJ8gtIPKMOUaWOhl9-6keFlYDzwpGU/exec';
-    
-    // Tạo iframe ẩn để giao tiếp với Google Apps Script
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = scriptURL;
-    document.body.appendChild(iframe);
-    
-    // Thiết lập xử lý thông điệp từ iframe
-    window.addEventListener('message', function messageHandler(event) {
-        // Kiểm tra nguồn tin cậy (URL của Google Apps Script)
-        if (event.origin.includes('script.google.com')) {
-            // Xóa event listener để tránh xử lý nhiều lần
-            window.removeEventListener('message', messageHandler);
+        // Update order code with phone number instead of name
+        document.getElementById('phone').addEventListener('input', function() {
+            const phone = this.value.trim();
+            document.getElementById('order-code').textContent = phone ? `TUNGANH_${phone}` : 'TUNGANH_[Số điện thoại]';
+        });
+
+        // Order form submission with Google Form integration
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Xóa iframe
-            document.body.removeChild(iframe);
+            if (cart.length === 0) {
+                alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi đặt hàng.');
+                return;
+            }
             
-            // Reset submit button
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
+            // Validate form
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
             
-            // Xử lý phản hồi
-            const response = event.data;
-            if (response.success) {
-                // Show success modal
+            if (!name || !phone || !address) {
+                alert('Vui lòng điền đầy đủ thông tin họ tên, số điện thoại và địa chỉ.');
+                return;
+            }
+            
+            // Get form data
+            const note = document.getElementById('note').value.trim();
+            const payment = document.querySelector('input[name="payment"]:checked').value;
+            const combo = document.getElementById('combo').value;
+            const orderDetail = document.getElementById('orderDetail').value;
+            const total = document.getElementById('total').value;
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Đang xử lý...';
+            
+            // URL của Google Form
+            const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScCEq_lm1xkvZNLAL5ojsjLgZGDsRfqtEPXdDq82Aw2jk_W7g/formResponse';
+            
+            // Tạo form ẩn để gửi dữ liệu
+            const hiddenForm = document.createElement('form');
+            hiddenForm.method = 'POST';
+            hiddenForm.action = googleFormURL;
+            hiddenForm.target = 'hidden-iframe'; // Sử dụng iframe để tránh chuyển hướng
+            hiddenForm.style.display = 'none';
+            
+            // Tạo iframe ẩn để nhận kết quả mà không chuyển hướng trang
+            const iframe = document.createElement('iframe');
+            iframe.name = 'hidden-iframe';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            // Thêm các trường dữ liệu vào form với ID đã được xác định
+            const addField = (name, value) => {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.name = name;
+                input.value = value;
+                hiddenForm.appendChild(input);
+            };
+            
+            // Thêm các trường với ID chính xác
+            addField('entry.1081031594', name); // Họ và tên
+            addField('entry.2134578142', phone); // Số điện thoại
+            addField('entry.1218412768', address); // Địa chỉ giao hàng
+            addField('entry.727051010', note); // Ghi chú
+            addField('entry.832172766', payment); // Phương thức thanh toán
+            addField('entry.2058720523', combo); // Combo
+            addField('entry.356026913', orderDetail); // Chi tiết đơn hàng
+            addField('entry.2030446657', total); // Tổng tiền
+            
+            // Thêm form vào trang
+            document.body.appendChild(hiddenForm);
+            
+            // Xử lý khi iframe load xong (form đã được gửi)
+            iframe.onload = function() {
+                // Xóa form và iframe
+                document.body.removeChild(hiddenForm);
+                document.body.removeChild(iframe);
+                
+                // Reset submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                
+                // Hiển thị thông báo thành công
                 document.getElementById('order-success-modal').classList.remove('hidden');
                 
                 // Reset cart and form
                 cart = [];
                 updateCartUI();
                 e.target.reset();
-            } else {
-                // Show error message
-                alert('Có lỗi xảy ra: ' + (response.message || 'Không thể gửi đơn hàng'));
-            }
-        }
-    });
-    
-    // Đợi iframe load xong rồi gửi dữ liệu
-    iframe.onload = function() {
-        iframe.contentWindow.postMessage(data, scriptURL);
-    };
-});
+            };
+            
+            // Gửi form
+            hiddenForm.submit();
+        });
 
-        // Update order code with phone number instead of name
-        document.getElementById('phone').addEventListener('input', function() {
-            const phone = this.value.trim();
-            document.getElementById('order-code').textContent = phone ? `TUNGANH_${phone}` : 'TUNGANH_[Số điện thoại]';
+        function closeOrderSuccessModal() {
+            document.getElementById('order-success-modal').classList.add('hidden');
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            const modalContainer = document.getElementById('modal-container');
+            const successModal = document.getElementById('order-success-modal');
+            
+            if (e.target === modalContainer) {
+                closeModal();
+            }
+            
+            if (e.target === successModal) {
+                closeOrderSuccessModal();
+            }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965b4008a1a9f87d',t:'MTc1MzYxMDAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965c0beab2e9820b',t:'MTc1MzYxODM2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
