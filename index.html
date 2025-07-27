@@ -753,8 +753,8 @@
             <svg class="w-16 h-16 text-green-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <h3 class="text-2xl font-serif font-bold mb-2">Đặt hàng thành công!</h3>
-            <p class="mb-4">Cảm ơn bạn đã đặt bánh Trung thu Tùng Anh. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
+            <h3 class="text-2xl font-serif font-bold mb-2">Đơn hàng đã được chuẩn bị!</h3>
+            <p class="mb-4">Vui lòng kiểm tra thông tin và nhấn nút "Gửi" trên Google Form để hoàn tất đặt hàng.</p>
             <button class="bg-primary hover:bg-accent text-white font-bold py-2 px-6 rounded-full transition-all duration-300" onclick="closeOrderSuccessModal()">
                 Đóng
             </button>
@@ -1122,7 +1122,7 @@
             document.getElementById('order-code').textContent = phone ? `TUNGANH_${phone}` : 'TUNGANH_[Số điện thoại]';
         });
 
-        // Order form submission with Google Form integration using fetch API
+        // Order form submission with Google Form redirect
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1155,60 +1155,48 @@
             submitBtn.innerHTML = 'Đang xử lý...';
             
             // URL của Google Form
-            const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScCEq_lm1xkvZNLAL5ojsjLgZGDsRfqtEPXdDq82Aw2jk_W7g/formResponse';
+            const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScCEq_lm1xkvZNLAL5ojsjLgZGDsRfqtEPXdDq82Aw2jk_W7g/viewform';
             
-            // Chuẩn bị dữ liệu form
-            const formData = new URLSearchParams();
-            formData.append('entry.1081031594', name); // Họ và tên
-            formData.append('entry.2134578142', phone); // Số điện thoại
-            formData.append('entry.1218412768', address); // Địa chỉ giao hàng
-            formData.append('entry.727051010', note); // Ghi chú
-            formData.append('entry.832172766', payment); // Phương thức thanh toán
-            formData.append('entry.2058720523', combo); // Combo
-            formData.append('entry.356026913', orderDetail); // Chi tiết đơn hàng
-            formData.append('entry.2030446657', total); // Tổng tiền
+            // Chuẩn bị dữ liệu form để đính kèm vào URL
+            const params = new URLSearchParams();
+            params.append('entry.1081031594', name); // Họ và tên
+            params.append('entry.2134578142', phone); // Số điện thoại
+            params.append('entry.1218412768', address); // Địa chỉ giao hàng
+            params.append('entry.727051010', note); // Ghi chú
+            params.append('entry.832172766', payment); // Phương thức thanh toán
+            params.append('entry.2058720523', combo); // Combo
+            params.append('entry.356026913', orderDetail); // Chi tiết đơn hàng
+            params.append('entry.2030446657', total); // Tổng tiền
             
-            // Sử dụng fetch API để gửi dữ liệu
-            fetch(googleFormURL, {
-                method: 'POST',
-                mode: 'no-cors', // Quan trọng để tránh lỗi CORS
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: formData
-            })
-            .then(() => {
-                // Reset submit button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-                
-                // Hiển thị thông báo thành công
-                document.getElementById('order-success-modal').classList.remove('hidden');
-                
-                // Reset cart and form
-                cart = [];
-                updateCartUI();
-                e.target.reset();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                
-                // Reset submit button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-                
-                // Vẫn hiển thị thông báo thành công vì Google Form không trả về phản hồi do mode: 'no-cors'
-                document.getElementById('order-success-modal').classList.remove('hidden');
-                
-                // Reset cart and form
-                cart = [];
-                updateCartUI();
-                e.target.reset();
-            });
+            // Tạo URL đầy đủ với dữ liệu đã điền sẵn
+            const fullURL = `${googleFormURL}?${params.toString()}`;
+            
+            // Hiển thị thông báo thành công
+            document.getElementById('order-success-modal').classList.remove('hidden');
+            
+            // Reset submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+            
+            // Lưu URL để chuyển hướng sau khi đóng modal
+            window.redirectURL = fullURL;
         });
 
         function closeOrderSuccessModal() {
             document.getElementById('order-success-modal').classList.add('hidden');
+            
+            // Chuyển hướng đến Google Form với dữ liệu đã điền sẵn
+            if (window.redirectURL) {
+                window.open(window.redirectURL, '_blank');
+                
+                // Reset cart and form
+                cart = [];
+                updateCartUI();
+                document.getElementById('orderForm').reset();
+                
+                // Clear redirect URL
+                window.redirectURL = null;
+            }
         }
 
         // Close modals when clicking outside
@@ -1225,5 +1213,6 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965c2883a08ece2b',t:'MTc1MzYxOTUzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965c3f8187a881a7',t:'MTc1MzYyMDQ3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
