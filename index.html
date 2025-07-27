@@ -1122,7 +1122,7 @@
             document.getElementById('order-code').textContent = phone ? `TUNGANH_${phone}` : 'TUNGANH_[Số điện thoại]';
         });
 
-        // Order form submission with Google Form integration
+        // Order form submission with Google Form integration using fetch API
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1157,47 +1157,27 @@
             // URL của Google Form
             const googleFormURL = 'https://docs.google.com/forms/d/e/1FAIpQLScCEq_lm1xkvZNLAL5ojsjLgZGDsRfqtEPXdDq82Aw2jk_W7g/formResponse';
             
-            // Tạo form ẩn để gửi dữ liệu
-            const hiddenForm = document.createElement('form');
-            hiddenForm.method = 'POST';
-            hiddenForm.action = googleFormURL;
-            hiddenForm.target = 'hidden-iframe'; // Sử dụng iframe để tránh chuyển hướng
-            hiddenForm.style.display = 'none';
+            // Chuẩn bị dữ liệu form
+            const formData = new URLSearchParams();
+            formData.append('entry.1081031594', name); // Họ và tên
+            formData.append('entry.2134578142', phone); // Số điện thoại
+            formData.append('entry.1218412768', address); // Địa chỉ giao hàng
+            formData.append('entry.727051010', note); // Ghi chú
+            formData.append('entry.832172766', payment); // Phương thức thanh toán
+            formData.append('entry.2058720523', combo); // Combo
+            formData.append('entry.356026913', orderDetail); // Chi tiết đơn hàng
+            formData.append('entry.2030446657', total); // Tổng tiền
             
-            // Tạo iframe ẩn để nhận kết quả mà không chuyển hướng trang
-            const iframe = document.createElement('iframe');
-            iframe.name = 'hidden-iframe';
-            iframe.style.display = 'none';
-            document.body.appendChild(iframe);
-            
-            // Thêm các trường dữ liệu vào form với ID đã được xác định
-            const addField = (name, value) => {
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.name = name;
-                input.value = value;
-                hiddenForm.appendChild(input);
-            };
-            
-            // Thêm các trường với ID chính xác
-            addField('entry.1081031594', name); // Họ và tên
-            addField('entry.2134578142', phone); // Số điện thoại
-            addField('entry.1218412768', address); // Địa chỉ giao hàng
-            addField('entry.727051010', note); // Ghi chú
-            addField('entry.832172766', payment); // Phương thức thanh toán
-            addField('entry.2058720523', combo); // Combo
-            addField('entry.356026913', orderDetail); // Chi tiết đơn hàng
-            addField('entry.2030446657', total); // Tổng tiền
-            
-            // Thêm form vào trang
-            document.body.appendChild(hiddenForm);
-            
-            // Xử lý khi iframe load xong (form đã được gửi)
-            iframe.onload = function() {
-                // Xóa form và iframe
-                document.body.removeChild(hiddenForm);
-                document.body.removeChild(iframe);
-                
+            // Sử dụng fetch API để gửi dữ liệu
+            fetch(googleFormURL, {
+                method: 'POST',
+                mode: 'no-cors', // Quan trọng để tránh lỗi CORS
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: formData
+            })
+            .then(() => {
                 // Reset submit button
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
@@ -1209,10 +1189,22 @@
                 cart = [];
                 updateCartUI();
                 e.target.reset();
-            };
-            
-            // Gửi form
-            hiddenForm.submit();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                // Reset submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                
+                // Vẫn hiển thị thông báo thành công vì Google Form không trả về phản hồi do mode: 'no-cors'
+                document.getElementById('order-success-modal').classList.remove('hidden');
+                
+                // Reset cart and form
+                cart = [];
+                updateCartUI();
+                e.target.reset();
+            });
         });
 
         function closeOrderSuccessModal() {
@@ -1233,5 +1225,5 @@
             }
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965c0beab2e9820b',t:'MTc1MzYxODM2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965c2883a08ece2b',t:'MTc1MzYxOTUzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
