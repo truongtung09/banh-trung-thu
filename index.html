@@ -1185,84 +1185,122 @@
         });
 
         // gửi đơn về google sheet
-        document.addEventListener("DOMContentLoaded", () => {
+
+    </script>
+<script>// Global variables
+let selectedComboSize = 0;
+let selectedCakes = [];
+let cart = [];
+
+// Mobile menu toggle
+document.getElementById('menu-toggle').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Modal functions (unchanged)
+function openModal(id) { /* ... */ }
+function closeModal() { /* ... */ }
+
+// Combo selection functions (unchanged)
+function selectCombo(element, size) { /* ... */ }
+function selectCake(element) { /* ... */ }
+function updateCakeSummary() { /* ... */ }
+function addToCart() { /* ... */ }
+function updateCartUI() { /* ... */ }
+function removeFromCart(index) { /* ... */ }
+
+// Payment method toggle (unchanged)
+document.getElementById('cod').addEventListener('change', function() { /* ... */ });
+document.getElementById('transfer').addEventListener('change', function() { /* ... */ });
+
+function closeOrderSuccessModal() {
+    document.getElementById('order-success-modal').classList.add('hidden');
+}
+
+// Order form submission with Fetch
+document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("orderForm");
     if (form) {
         form.addEventListener("submit", (e) => {
-            e.preventDefault(); // Ngăn reload trang
-            submitOrder();
+            e.preventDefault();
+            
+            if (cart.length === 0) {
+                alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi đặt hàng.');
+                return;
+            }
+            
+            // Lấy giá trị từ form
+            const name = document.getElementById("name")?.value.trim() || "";
+            const phone = document.getElementById("phone")?.value.trim() || "";
+            const address = document.getElementById("address")?.value.trim() || "";
+            const note = document.getElementById("note")?.value.trim() || "";
+            const payment = document.querySelector('input[name="payment"]:checked')?.value || "cod";
+            const total = document.getElementById("total")?.value.trim() || "0";
+            const combo = document.getElementById("combo")?.value.trim() || "";
+            const orderDetail = document.getElementById("orderDetail")?.value.trim() || "";
+
+            // Debug chi tiết
+            console.log("Input elements:", {
+                nameInput: document.getElementById("name"),
+                phoneInput: document.getElementById("phone"),
+                addressInput: document.getElementById("address")
+            });
+            console.log("Dữ liệu gửi:", { name, phone, address, note, payment, total, combo, orderDetail });
+
+            // Validate
+            if (!name || !phone || !address) {
+                alert("Vui lòng điền đầy đủ họ tên, số điện thoại và địa chỉ!");
+                console.log("Validate failed - Empty fields:", { name, phone, address });
+                return;
+            }
+
+            // Gửi dữ liệu qua Fetch
+            fetch("https://script.google.com/macros/s/AKfycbzFdfgK0RjKXzqF9K6A_le4H-oJ0ArNBDmxtXLdrJec632hXTpvnonIIf5TA6mczzg/exec", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name,
+                    phone,
+                    address,
+                    note,
+                    payment,
+                    total,
+                    combo,
+                    orderDetail
+                })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    alert("✅ Gửi đơn thành công!");
+                    document.getElementById("orderForm").reset();
+                    cart = [];
+                    updateCartUI();
+                    document.getElementById('order-success-modal').classList.remove('hidden');
+                } else {
+                    alert("❌ Lỗi: " + data.message);
+                }
+            })
+            .catch(err => {
+                console.error("Fetch error:", err);
+                alert("❌ Fetch error: " + err.message);
+            });
         });
     } else {
         console.error("Form with id 'orderForm' not found!");
     }
 });
 
-const submitOrder = () => {
-    // Lấy giá trị từ order form
-    const nameInput = document.getElementById("name");
-    const phoneInput = document.getElementById("phone");
-    const addressInput = document.getElementById("address");
-    const noteInput = document.getElementById("note");
-    const paymentInputs = document.querySelectorAll('input[name="payment"]');
+// Close modals when clicking outside (unchanged)
+window.addEventListener('click', function(e) { /* ... */ });
 
-    const name = nameInput ? nameInput.value.trim() : "";
-    const phone = phoneInput ? phoneInput.value.trim() : "";
-    const address = addressInput ? addressInput.value.trim() : "";
-    const note = noteInput ? noteInput.value.trim() : "";
-    const payment = Array.from(paymentInputs).find(input => input.checked)?.value || "cod";
-
-    // Lấy total từ giỏ hàng
-    const total = document.getElementById("cart-total")?.textContent.trim().replace("đ", "").replace(/\D/g, "") || "0";
-
-    // Hidden inputs (rỗng nếu không dùng)
-    const combo = document.getElementById("combo")?.value.trim() || "";
-    const orderDetail = document.getElementById("orderDetail")?.value.trim() || "";
-
-    // Debug chi tiết
-    console.log("Input elements:", { nameInput, phoneInput, addressInput });
-    console.log("Dữ liệu gửi:", { name, phone, address, note, payment, total, combo, orderDetail });
-
-    // Validate với kiểm tra null
-    if (!name || !phone || !address) {
-        alert("Vui lòng điền đầy đủ họ tên, số điện thoại và địa chỉ!");
-        console.log("Validate failed - Empty fields:", { name, phone, address });
-        return;
-    }
-
-    fetch("https://script.google.com/macros/s/AKfycbwELweSvts_y60LC9YSKbA2cky2rMSEDW8JMpvSzJKfLs0toHGfVCL8gbQX45436Dc/exec", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            name,
-            phone,
-            address,
-            note,
-            payment,
-            total,
-            combo,
-            orderDetail
-        })
-    })
-    .then(res => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-    })
-    .then(data => {
-        if (data.success) {
-            alert("✅ Gửi đơn thành công!");
-            document.getElementById("orderForm").reset(); // Reset form
-        } else {
-            alert("❌ Lỗi: " + data.message);
-        }
-    })
-    .catch(err => {
-        console.error("Fetch error:", err);
-        alert("❌ Fetch error: " + err.message);
-    });
-};
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9654823492f0cf4c',t:'MTc1MzUzOTMyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+// Update order code with phone number (unchanged)
+document.getElementById('phone').addEventListener('input', function() { /* ... */ });</script></body>
 </html>
