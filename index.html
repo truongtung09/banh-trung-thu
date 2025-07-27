@@ -1117,111 +1117,96 @@
         });
 
         // Order form submission with Google Sheet integration
-        document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+       document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (cart.length === 0) {
+        alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi đặt hàng.');
+        return;
+    }
+    
+    // Validate form
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const address = document.getElementById('address').value.trim();
+    
+    if (!name || !phone || !address) {
+        alert('Vui lòng điền đầy đủ thông tin họ tên, số điện thoại và địa chỉ.');
+        return;
+    }
+    
+    // Get form data
+    const note = document.getElementById('note').value.trim();
+    const payment = document.querySelector('input[name="payment"]:checked').value;
+    const order = document.getElementById('order').value;
+    const combo = document.getElementById('combo').value;
+    const orderDetail = document.getElementById('orderDetail').value;
+    const total = document.getElementById('total').value;
+    
+    // Create data object
+    const data = {
+        name,
+        phone,
+        address,
+        note,
+        payment,
+        order,
+        combo,
+        orderDetail,
+        total
+    };
+    
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Đang xử lý...';
+    
+    // URL của Google Apps Script Web App (sử dụng URL doGet)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyWPduazYtrgOvSFxXc-DTprcmTJgSOTJDsIzfgN4RJuqvyGWKG-JteYZtiLufEBA/exec';
+    
+    // Tạo iframe ẩn để giao tiếp với Google Apps Script
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = scriptURL;
+    document.body.appendChild(iframe);
+    
+    // Thiết lập xử lý thông điệp từ iframe
+    window.addEventListener('message', function messageHandler(event) {
+        // Kiểm tra nguồn tin cậy (URL của Google Apps Script)
+        if (event.origin.includes('script.google.com')) {
+            // Xóa event listener để tránh xử lý nhiều lần
+            window.removeEventListener('message', messageHandler);
             
-            if (cart.length === 0) {
-                alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi đặt hàng.');
-                return;
-            }
+            // Xóa iframe
+            document.body.removeChild(iframe);
             
-            // Validate form
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const address = document.getElementById('address').value.trim();
+            // Reset submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
             
-            if (!name || !phone || !address) {
-                alert('Vui lòng điền đầy đủ thông tin họ tên, số điện thoại và địa chỉ.');
-                return;
-            }
-            
-            // Get form data
-            const note = document.getElementById('note').value.trim();
-            const payment = document.querySelector('input[name="payment"]:checked').value;
-            const order = document.getElementById('order').value;
-            const combo = document.getElementById('combo').value;
-            const orderDetail = document.getElementById('orderDetail').value;
-            const total = document.getElementById('total').value;
-            
-            // Create data object
-            const data = {
-                name,
-                phone,
-                address,
-                note,
-                payment,
-                order,
-                combo,
-                orderDetail,
-                total
-            };
-            
-            // Send data to Google Sheet
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbxQuPbajyPX2cbuGFccgNU9ruJYDTClJsyKKITJA4u_c8S6i2ZUTFrr90oqIrwt4jg/exec'; // URL sẽ được điền sau khi deploy Google Apps Script
-            
-            // Show loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Đang xử lý...';
-            
-            fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
+            // Xử lý phản hồi
+            const response = event.data;
+            if (response.success) {
+                // Show success modal
+                document.getElementById('order-success-modal').classList.remove('hidden');
                 
-                // Reset submit button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-                
-                if (data.success) {
-                    // Show success modal
-                    document.getElementById('order-success-modal').classList.remove('hidden');
-                    
-                    // Reset cart and form
-                    cart = [];
-                    updateCartUI();
-                    this.reset();
-                } else {
-                    // Show error message
-                    alert('Có lỗi xảy ra: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                
-                // Reset submit button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-                
+                // Reset cart and form
+                cart = [];
+                updateCartUI();
+                e.target.reset();
+            } else {
                 // Show error message
-                alert('Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại sau.');
-            });
-        });
-
-        function closeOrderSuccessModal() {
-            document.getElementById('order-success-modal').classList.add('hidden');
+                alert('Có lỗi xảy ra: ' + (response.message || 'Không thể gửi đơn hàng'));
+            }
         }
-
-        // Close modals when clicking outside
-        window.addEventListener('click', function(e) {
-            const modalContainer = document.getElementById('modal-container');
-            const successModal = document.getElementById('order-success-modal');
-            
-            if (e.target === modalContainer) {
-                closeModal();
-            }
-            
-            if (e.target === successModal) {
-                closeOrderSuccessModal();
-            }
-        });
+    });
+    
+    // Đợi iframe load xong rồi gửi dữ liệu
+    iframe.onload = function() {
+        iframe.contentWindow.postMessage(data, scriptURL);
+    };
+});
 
         // Update order code with phone number instead of name
         document.getElementById('phone').addEventListener('input', function() {
