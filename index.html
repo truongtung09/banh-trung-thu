@@ -1116,7 +1116,7 @@
             document.getElementById('bank-info').classList.remove('hidden');
         });
 
-        // Order form submission
+        // Order form submission with Google Sheet integration
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1125,10 +1125,17 @@
                 return;
             }
             
-            // Get form data
+            // Validate form
             const name = document.getElementById('name').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const address = document.getElementById('address').value.trim();
+            
+            if (!name || !phone || !address) {
+                alert('Vui lòng điền đầy đủ thông tin họ tên, số điện thoại và địa chỉ.');
+                return;
+            }
+            
+            // Get form data
             const note = document.getElementById('note').value.trim();
             const payment = document.querySelector('input[name="payment"]:checked').value;
             const order = document.getElementById('order').value;
@@ -1149,15 +1156,53 @@
                 total
             };
             
-            console.log('Order data:', data);
+            // Send data to Google Sheet
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyWPduazYtrgOvSFxXc-DTprcmTJgSOTJDsIzfgN4RJuqvyGWKG-JteYZtiLufEBA/exec'; // URL sẽ được điền sau khi deploy Google Apps Script
             
-            // Show success modal
-            document.getElementById('order-success-modal').classList.remove('hidden');
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Đang xử lý...';
             
-            // Reset cart and form
-            cart = [];
-            updateCartUI();
-            this.reset();
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                
+                // Reset submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                
+                if (data.success) {
+                    // Show success modal
+                    document.getElementById('order-success-modal').classList.remove('hidden');
+                    
+                    // Reset cart and form
+                    cart = [];
+                    updateCartUI();
+                    this.reset();
+                } else {
+                    // Show error message
+                    alert('Có lỗi xảy ra: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                
+                // Reset submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                
+                // Show error message
+                alert('Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại sau.');
+            });
         });
 
         function closeOrderSuccessModal() {
@@ -1183,124 +1228,6 @@
             const phone = this.value.trim();
             document.getElementById('order-code').textContent = phone ? `TUNGANH_${phone}` : 'TUNGANH_[Số điện thoại]';
         });
-
-        // gửi đơn về google sheet
-
     </script>
-<script>// Global variables
-let selectedComboSize = 0;
-let selectedCakes = [];
-let cart = [];
-
-// Mobile menu toggle
-document.getElementById('menu-toggle').addEventListener('click', function() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.toggle('hidden');
-});
-
-// Modal functions (unchanged)
-function openModal(id) { /* ... */ }
-function closeModal() { /* ... */ }
-
-// Combo selection functions (unchanged)
-function selectCombo(element, size) { /* ... */ }
-function selectCake(element) { /* ... */ }
-function updateCakeSummary() { /* ... */ }
-function addToCart() { /* ... */ }
-function updateCartUI() { /* ... */ }
-function removeFromCart(index) { /* ... */ }
-
-// Payment method toggle (unchanged)
-document.getElementById('cod').addEventListener('change', function() { /* ... */ });
-document.getElementById('transfer').addEventListener('change', function() { /* ... */ });
-
-function closeOrderSuccessModal() {
-    document.getElementById('order-success-modal').classList.add('hidden');
-}
-
-// Order form submission with Fetch
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("orderForm");
-    if (form) {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            
-            if (cart.length === 0) {
-                alert('Giỏ hàng của bạn đang trống. Vui lòng chọn sản phẩm trước khi đặt hàng.');
-                return;
-            }
-            
-            // Lấy giá trị từ form
-            const name = document.getElementById("name")?.value.trim() || "";
-            const phone = document.getElementById("phone")?.value.trim() || "";
-            const address = document.getElementById("address")?.value.trim() || "";
-            const note = document.getElementById("note")?.value.trim() || "";
-            const payment = document.querySelector('input[name="payment"]:checked')?.value || "cod";
-            const total = document.getElementById("total")?.value.trim() || "0";
-            const combo = document.getElementById("combo")?.value.trim() || "";
-            const orderDetail = document.getElementById("orderDetail")?.value.trim() || "";
-
-            // Debug chi tiết
-            console.log("Input elements:", {
-                nameInput: document.getElementById("name"),
-                phoneInput: document.getElementById("phone"),
-                addressInput: document.getElementById("address")
-            });
-            console.log("Dữ liệu gửi:", { name, phone, address, note, payment, total, combo, orderDetail });
-
-            // Validate
-            if (!name || !phone || !address) {
-                alert("Vui lòng điền đầy đủ họ tên, số điện thoại và địa chỉ!");
-                console.log("Validate failed - Empty fields:", { name, phone, address });
-                return;
-            }
-
-            // Gửi dữ liệu qua Fetch
-            fetch("https://script.google.com/macros/s/AKfycbxXBC7GxVgkOmf_V1mC2MJ6nHZII_otFE_uXrzcPw-M6bVvxZ0UH2gWZwHhxaAjYng/exec", {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name,
-                    phone,
-                    address,
-                    note,
-                    payment,
-                    total,
-                    combo,
-                    orderDetail
-                })
-            })
-            .then(res => {
-                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-                return res.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    alert("✅ Gửi đơn thành công!");
-                    document.getElementById("orderForm").reset();
-                    cart = [];
-                    updateCartUI();
-                    document.getElementById('order-success-modal').classList.remove('hidden');
-                } else {
-                    alert("❌ Lỗi: " + data.message);
-                }
-            })
-            .catch(err => {
-                console.error("Fetch error:", err);
-                alert("❌ Fetch error: " + err.message);
-            });
-        });
-    } else {
-        console.error("Form with id 'orderForm' not found!");
-    }
-});
-
-// Close modals when clicking outside (unchanged)
-window.addEventListener('click', function(e) { /* ... */ });
-
-// Update order code with phone number (unchanged)
-document.getElementById('phone').addEventListener('input', function() { /* ... */ });</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'965b4008a1a9f87d',t:'MTc1MzYxMDAxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
